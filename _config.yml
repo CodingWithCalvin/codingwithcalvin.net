@@ -1,0 +1,144 @@
+# -------------------
+# Jekyll Config
+# --------------------
+baseurl: "https://codingwithcalvin.netlify.app"
+url: "https://codingwithcalvin.netlify.app"
+permalink: pretty
+markdown: kramdown
+highlighter: none
+
+# Plugins
+plugins:
+  - jekyll-environment-variables
+  - jekyll-paginate
+
+permalink: /:title/
+paginate: 9
+paginate_path: "/blog/:num"
+future: false
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: null 
+      sitemap: false
+      comments: false
+      sharing: false
+      image: null  
+      image_alt: null  
+  -
+    scope:
+      path: "page"
+      type: "pages"
+    values:
+      layout: page 
+      sitemap: true      
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      sitemap: true
+      comments: true
+      sharing: true
+      image: "cover.png"
+      image_alt: "cover.jpg"
+      excerpt_separator: "<!--more-->"
+      youtube: null
+
+# SCSS
+sass:
+  style: compact
+
+# Excludes
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE
+  - netlify.toml
+
+
+# -------------------
+# Theme Config
+# --------------------
+title: "Coding with Calvin"
+
+category_dir: 'category'
+
+analytics:
+  google_analytics_id: ""
+
+disqus:
+  shortname: "calvinallen" # Your disqus shortcode. leave this blank to disable comments globally
+
+mailchimp:
+  form_action_url: 
+
+contact_form: 
+  use_netlify_form: true
+  use_formspree_form: false
+  formspree_endpoint: 
+
+colors:
+  #light-mode colors
+  primary: "#3391CB"
+  primary_2: "#3391CB"
+  primary_text: "#f9fafb"
+  background: "#ffffff"
+  background_2: "#f6f6f6"
+  background_3: "#f1f3f4"
+  text: "#191a1a"
+  text_2: "#555555"
+  logo_text: "#191a1a"
+
+fonts:
+  google_fonts: "https://fonts.googleapis.com/css2?family=Fira+Mono&family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;500;600;700&display=swap"
+  heading: "Merriweather"
+  base: "Open Sans"
+  monospace: "Fira Mono"
+  logo: "Open Sans"
+
+logo:
+  logo_text: "Coding with Calvin"
+  logo_image: assets/images/logo/logo.png
+  logo_image_mobile: assets/images/logo/logo-mobile.png
+  logo_image_invert: assets/images/logo/logo-invert.png
+  logo_image_invert_mobile: assets/images/logo/logo-invert-mobile.png
+  logo_image_desktop_height: "60px"
+  logo_image_desktop_width: "115px"
+  logo_image_mobile_height: "27px"
+  logo_image_mobile_width: "20px"
+  show_logo_image_on_mobile: false
+  show_logo_image_on_desktop: false
+  show_logo_text_on_mobile: false
+  show_logo_text_on_desktop: false
+
+menu: 
+  show_dropdown_items_in_mobile_menu: false
+  show_social_media_in_mobile_menu: true
+
+header: 
+  fixed: false
+
+footer:
+  enable_footer: true # show/hide the entire footer
+  footer_title: "Coding with Calvin"
+  footer_description: "Curate is a creative portfolio for Jekyll by Zerostatic Themes."
+  enable_social_media_icons: false
+  enable_menu_footer_primary: false
+  enable_menu_footer_secondary: false
+  enable_menu_footer_tertiary: false
+  footer_primary_menu_title: "Projects"
+  footer_secondary_menu_title: "Agency"
+  footer_tertiary_menu_title: ""
+
+bottom:
+  enable_bottom: false # show/hide the entire bottom (below the footer)
+  enable_bottom_menu: false # if enabled, the bottom menu can be edited in `_data/menu.yml`
+  copyright_text: "© 2022 Coding with Calvin"
+
+

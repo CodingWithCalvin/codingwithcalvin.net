@@ -1,0 +1,11 @@
+---
+layout: basic
+title: Contact
+body_classes: page-contact
+---
+
+{% if site.contact_form.use_netlify_form %}
+    {% include framework/global/forms/netlify/form-contact-netlify.html %}
+{% elsif site.contact_form.use_formspree_form and site.contact_form.formspree_endpoint %}
+    {% include framework/global/forms/netlify/form-contact-formspree.html %}
+{% endif %}
