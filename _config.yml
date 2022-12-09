@@ -1,8 +1,8 @@
 # -------------------
 # Jekyll Config
 # --------------------
-baseurl: "https://codingwithcalvin.netlify.app"
-url: "https://codingwithcalvin.netlify.app"
+baseurl: "https://www.codingwithcalvin.net"
+url: "https://www.codingwithcalvin.net"
 permalink: pretty
 markdown: kramdown
 highlighter: none
