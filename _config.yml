@@ -127,7 +127,7 @@ header:
 footer:
   enable_footer: true # show/hide the entire footer
   footer_title: "Coding with Calvin"
-  footer_description: "Curate is a creative portfolio for Jekyll by Zerostatic Themes."
+  footer_description: "Inside my digital mind"
   enable_social_media_icons: false
   enable_menu_footer_primary: false
   enable_menu_footer_secondary: false
