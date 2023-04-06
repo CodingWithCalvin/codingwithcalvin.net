@@ -4,3 +4,8 @@
 
 [build.environment]
   JEKYLL_ENV = "production"
+
+[[redirects]]
+  from = "/introduction-the-visual-studoi-vsix-signer-github-action"
+  to = "/introducing-the-visual-studio-vsix-signer-github-action"
+  status = 301
