@@ -1,7 +1,7 @@
 ---
 title: "Introducing the 'Visual Studio VSIX Versioner' GitHub Action"
 date: "2023-04-05T12:00:45-04:00"
-categories: [dotnet, csharp, vsix, devops]
+categories: [dotnet, csharp, extensibility, devops]
 description: "Having problems versioning that Visual Studio extension you're trying to publish through a GitHub workflow? I gotchu."
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Extending Visual Studio CodeLens Functionality"
 date: "2022-05-24T12:19:53-05:00"
-categories: [dotnet,csharp,vsix]
+categories: [dotnet, csharp, extensibility]
 description: "If you have your own Visual Studio extension, and you want to add your own custom CodeLens entries - I'm here to help, because I just (finally!) figured out how to do this (plus a few extras!)"
 ---
 
@@ -11,8 +11,8 @@ First, let me start by saying that I've only "proven" this method with VS2019 an
 
 The biggest things to note about extending CodeLens is that -
 
-* It requires a separate project in your solution
-* It runs out-of-process from your main extension / Visual Studio
+- It requires a separate project in your solution
+- It runs out-of-process from your main extension / Visual Studio
 
 With that in mind, let's jump into some code.
 
@@ -61,7 +61,7 @@ We need to decorate the class with some attributes to get things lined up and na
 [ContentType("CSharp")]
 [LocalizedName(typeof(Resources), Id)]
 [Priority(210)]
-public class CodeLevelMetricsProvider : IAsyncCodeLensDataPointProvider 
+public class CodeLevelMetricsProvider : IAsyncCodeLensDataPointProvider
 {
     internal const string Id = "CustomCodeLensProvider";
     // snip for brevity in this example
@@ -70,18 +70,18 @@ public class CodeLevelMetricsProvider : IAsyncCodeLensDataPointProvider
 
 Let's discuss each attribute and why we need it.
 
-* `[Export(typeof(IAsyncCodeLensDataPointProvider))]`
-  * This tells the `MEF` (Managed Extensibility Framework) framework that we have a custom code lens provider in this class.
-* `[Name(Id)]`
-  * Provides a unique name to the provider for internal usage. Note that we did also add the `internal const string Id = "CustomCodeLensProvider";` into the class so we could reference this value (we'll need it again here in a minute).
-* `[ContentType("CSharp")]`
-  * We only want our Custom CodeLens provider to work within CSharp (`.cs`) files. You can have multiple of these, of course, depending on what you need to target.
-* `[LocalizedName(typeof(Resources), Id)]`
-  * This one needs a `Resources.resx` file in the project, so go ahead and create that and add a single entry that matches the value of the `Id` field. This is where Visual Studio will get the "friendly" name for the provider for the options dialog (and maybe others?) That should look something like this -
-  ![Custom CodeLens Provider Resource File](./CustomCodeLensProviderResourceFile.png)
-* `[Priority(210)]`
-  * This tells Visual Studio *WHERE* to place your Code Lens entry, in relation to other Code Lens entries. If the default configuration for Code Lens is utilized, this results in our entry being second in line, after the built-in "number of references" Code Lens entry that Visual Studio ships with.
-  
+- `[Export(typeof(IAsyncCodeLensDataPointProvider))]`
+  - This tells the `MEF` (Managed Extensibility Framework) framework that we have a custom code lens provider in this class.
+- `[Name(Id)]`
+  - Provides a unique name to the provider for internal usage. Note that we did also add the `internal const string Id = "CustomCodeLensProvider";` into the class so we could reference this value (we'll need it again here in a minute).
+- `[ContentType("CSharp")]`
+  - We only want our Custom CodeLens provider to work within CSharp (`.cs`) files. You can have multiple of these, of course, depending on what you need to target.
+- `[LocalizedName(typeof(Resources), Id)]`
+  - This one needs a `Resources.resx` file in the project, so go ahead and create that and add a single entry that matches the value of the `Id` field. This is where Visual Studio will get the "friendly" name for the provider for the options dialog (and maybe others?) That should look something like this -
+    ![Custom CodeLens Provider Resource File](./CustomCodeLensProviderResourceFile.png)
+- `[Priority(210)]`
+  - This tells Visual Studio _WHERE_ to place your Code Lens entry, in relation to other Code Lens entries. If the default configuration for Code Lens is utilized, this results in our entry being second in line, after the built-in "number of references" Code Lens entry that Visual Studio ships with.
+
 Now, if we take a look at our `CodeLensDataPointProvider` class now, we should look like this -
 
 ```csharp
@@ -90,7 +90,7 @@ Now, if we take a look at our `CodeLensDataPointProvider` class now, we should l
 [ContentType("CSharp")]
 [LocalizedName(typeof(Resources), Id)]
 [Priority(210)]
-public class CodeLensDataPointProvider : IAsyncCodeLensDataPointProvider 
+public class CodeLensDataPointProvider : IAsyncCodeLensDataPointProvider
 {
     internal const string Id = "CustomCodeLensProvider";
 
@@ -117,7 +117,7 @@ Between that entry, and the `Export(typeof(IAsyncCodeLensDataPointProvider))]`, 
 For this example, I want our entries to show up for methods - ONLY, and we can do that in the `CanCreateDataPointAsync` method of our provider, like so -
 
 ```csharp
-public Task<bool> CanCreateDataPointAsync(CodeLensDescriptor descriptor, CodeLensDescriptorContext context, CancellationToken token) 
+public Task<bool> CanCreateDataPointAsync(CodeLensDescriptor descriptor, CodeLensDescriptorContext context, CancellationToken token)
 {
     var methodsOnly = descriptor.Kind == CodeElementKinds.Method;
     return Task.FromResult(methodsOnly);
@@ -136,12 +136,12 @@ public Task<IAsyncCodeLensDataPoint> CreateDataPointAsync(CodeLensDescriptor des
 Back over in the `CodeLensDataPoint` class file, let's stub out those methods as well (and add a constructor) -
 
 ```csharp
-public class CodeLensDataPoint : IAsyncCodeLensDataPoint 
+public class CodeLensDataPoint : IAsyncCodeLensDataPoint
 {
     public CodeLensDataPoint(CodeLensDescriptor descriptor) {
         Descriptor = descriptor;
     }
-  
+
     public Task<CodeLensDataPointDescriptor> GetDataAsync(CodeLensDescriptorContext descriptorContext, CancellationToken token) {
         return Task.FromResult(new CodeLensDataPointDescriptor {
             Description = "Shows Up Inline",

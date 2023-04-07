@@ -1,7 +1,7 @@
 ---
 title: "Is CodeLens Enabled?"
 date: "2022-06-08T12:20:36-05:00"
-categories: [csharp,dotnet,vsix]
+categories: [csharp, dotnet, extensibility]
 description: "What this did, however, is gave us cause for figuring out if CodeLens is enabled in Visual Studio at all (our provider doesn't do much good if everything is disabled)."
 ---
 
@@ -11,8 +11,8 @@ What this did, however, is gave us cause for figuring out if CodeLens is enabled
 
 The questions are / become -
 
-* Is CodeLens Enabled?
-* Is our custom CodeLens provider enabled?
+- Is CodeLens Enabled?
+- Is our custom CodeLens provider enabled?
 
 If either of them is "false", then we can provide some markup in the extension to explain how to turn it on, etc. I.e., "if you want to use this feature, you must turn on "this" and "that". Go to "this settings page to enable", etc.
 
@@ -25,7 +25,7 @@ I'm not going to go into great detail about the service provider, MEF, or COM, b
 First, I created a new interface and service, because DI / IOC / MEF / etc. -
 
 ```csharp
-public interface IVsSettings 
+public interface IVsSettings
 {
     bool IsCodeLevelMetricsEnabled();
     bool IsCodeLensEnabled();
@@ -33,12 +33,12 @@ public interface IVsSettings
 
 [Export(typeof(IVsSettings))]
 [PartCreationPolicy(CreationPolicy.Shared)]
-public class VsSettings : IVsSettings 
+public class VsSettings : IVsSettings
 {
     private readonly ISettingsManager _roamingSettingsManager;
 
     [ImportingConstructor]
-    public VsSettings([Import(typeof(SVsServiceProvider))] IServiceProvider serviceProvider) 
+    public VsSettings([Import(typeof(SVsServiceProvider))] IServiceProvider serviceProvider)
     {
         _roamingSettingsManager = serviceProvider.GetService(typeof(SVsSettingsPersistenceManager)) as ISettingsManager;
     }
@@ -50,7 +50,7 @@ We need to inject the service provider here, so that we can resolve the settings
 Adding to our definitions above, we now have this -
 
 ```csharp
-public interface IVsSettings 
+public interface IVsSettings
 {
     bool IsCodeLevelMetricsEnabled();
     bool IsCodeLensEnabled();
@@ -58,7 +58,7 @@ public interface IVsSettings
 
 [Export(typeof(IVsSettings))]
 [PartCreationPolicy(CreationPolicy.Shared)]
-public class VsSettings : IVsSettings 
+public class VsSettings : IVsSettings
 {
     private readonly ISettingsManager _settingsManager;
 
@@ -67,7 +67,7 @@ public class VsSettings : IVsSettings
     private class SVsSettingsPersistenceManager { }
 
     [ImportingConstructor]
-    public VsSettings([Import(typeof(SVsServiceProvider))] IServiceProvider serviceProvider) 
+    public VsSettings([Import(typeof(SVsServiceProvider))] IServiceProvider serviceProvider)
     {
         _settingsManager = serviceProvider.GetService(typeof(SVsSettingsPersistenceManager)) as ISettingsManager;
     }
@@ -79,7 +79,7 @@ Now, I can't really explain how / what / why that's needed - or what that GUID e
 Once that's done, I added a (generic) method to obtain a setting from the store -
 
 ```csharp
-public interface IVsSettings 
+public interface IVsSettings
 {
     bool IsCodeLevelMetricsEnabled();
     bool IsCodeLensEnabled();
@@ -87,7 +87,7 @@ public interface IVsSettings
 
 [Export(typeof(IVsSettings))]
 [PartCreationPolicy(CreationPolicy.Shared)]
-public class VsSettings : IVsSettings 
+public class VsSettings : IVsSettings
 {
     private readonly ISettingsManager _settingsManager;
 
@@ -95,13 +95,13 @@ public class VsSettings : IVsSettings
     private class SVsSettingsPersistenceManager { }
 
     [ImportingConstructor]
-    public VsSettings([Import(typeof(SVsServiceProvider))] IServiceProvider serviceProvider) 
+    public VsSettings([Import(typeof(SVsServiceProvider))] IServiceProvider serviceProvider)
     {
         _settingsManager = serviceProvider.GetService(typeof(SVsSettingsPersistenceManager)) as ISettingsManager;
     }
 
     //     THIS PART
-    public T GetSetting<T>(string settingPath) 
+    public T GetSetting<T>(string settingPath)
     {
         return _settingsManager.TryGetValue(settingPath, out T value); // could throw an exception
     }

@@ -1,6 +1,6 @@
 ---
 title: "Visual Studio Extension - Open in Notepad++"
-categories: [extensions, visualstudio, notepadplusplus, oss]
+categories: [extensibility, visualstudio, notepadplusplus, oss]
 ---
 
 The past weekend, I took a few moments to relish in the "fun" that is programming something that is not work-related. That creation came to be a Visual Studio extension, known as, "Open in Notepad++".
@@ -11,7 +11,7 @@ Well, it adds a new item to the context menu when right-clicking files/folders i
 
 ![Context Menu](context-menu.png)
 
-The extension will attempt to find your installation of Notepad++, but if for some reason it cannot, you can always manually update the path in ``Tools | Open in Notepad++``:
+The extension will attempt to find your installation of Notepad++, but if for some reason it cannot, you can always manually update the path in `Tools | Open in Notepad++`:
 
 ![Settings Pane](settings-pane.png)
 

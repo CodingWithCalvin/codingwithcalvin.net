@@ -1,7 +1,7 @@
 ---
 title: "Extending Visual Studio CodeLens Functionality - Part II"
 date: "2023-04-01T16:34:44-04:00"
-categories: [dotnet,csharp,vsix]
+categories: [dotnet, csharp, extensibility]
 description: "You've got your own Visual Studio extension with custom CodeLens entries (because you used part I of this series), but now you find yourself needing to call code in the main extension host FROM the CodeLens Provider. How? Read on!"
 ---
 
@@ -9,13 +9,13 @@ description: "You've got your own Visual Studio extension with custom CodeLens e
 >
 > 1. [Extending Visual Studio CodeLens Functionality](https://codingwithcalvin.net/extending-visual-studio-codelens-functionality/)
 > 1. **YOU ARE HERE!**
-> 1. *Coming Soon!*
+> 1. _Coming Soon!_
 
-If you remember Part I of this blog post series (which was only 8 months ago - sorry about that 😬), you'll know that in *THIS* post, we're going to talk about how you can make calls back into services in your extension host *FROM* the CodeLens provider.
+If you remember Part I of this blog post series (which was only 8 months ago - sorry about that 😬), you'll know that in _THIS_ post, we're going to talk about how you can make calls back into services in your extension host _FROM_ the CodeLens provider.
 
-Since the CodeLens provider / service runs out of process from your main extension, its hard to get back to some of the goodness you've already built out there - like services, commands, etc.  But, fear not, with a couple interfaces and some MEF injection, we can make it all work!
+Since the CodeLens provider / service runs out of process from your main extension, its hard to get back to some of the goodness you've already built out there - like services, commands, etc. But, fear not, with a couple interfaces and some MEF injection, we can make it all work!
 
-Let's start with a base request of getting the Visual Studio process ID *FROM* the CodeLens provider. Now, since the CodeLens provider runs out of process from your extension, that means it also runs out of process from Visual Studio, too, which means we can't access it directly from our provider.
+Let's start with a base request of getting the Visual Studio process ID _FROM_ the CodeLens provider. Now, since the CodeLens provider runs out of process from your extension, that means it also runs out of process from Visual Studio, too, which means we can't access it directly from our provider.
 
 The first thing you'll want to do is add a constructor to your `CodeLevelMetricsProvider` class that we created in Part I of this series, and have it set to be the `ImportingConstructor` for MEF -
 
@@ -92,7 +92,7 @@ namespace CodeLensServices {// Whatever your ACTUAL namespace is can go here :)
 It should be noted that if you want to reuse a service you've already defined -
 
 1. Inject it into the constructor
-1. Call the appropriate method in *THAT* service from a method in *THIS* class
+1. Call the appropriate method in _THAT_ service from a method in _THIS_ class
 
 Alright, we're ready to add the magic to the CodeLens provider! Let's pass our service down to the data point from the `CreateDataPointAsync` method -
 
@@ -114,7 +114,7 @@ public class CodeLensDataPoint : IAsyncCodeLensDataPoint {
         _callbackService = callbackService;
         Descriptor = descriptor;
     }
-  
+
     public Task<CodeLensDataPointDescriptor> GetDataAsync(CodeLensDescriptorContext descriptorContext, CancellationToken token) {
         var vsPid = await _callbackService
             .InvokeAsync<int>(this,
@@ -158,9 +158,9 @@ var vsPid = await _callbackService
 
 1. The initial method call here is really just like any other async method you may call - await it, invoke it, and (optionally) configure it.
 1. `InvokeAsync` is generic and requires you to specify a few things -
-  a. `int` - The return value type (What is `GetVisualStudioPid` returning from our extension service?)
-  a. `this` - We need to specify the 'owner', which in this case is the datapoint itself.
-  a. `nameof(ICodeLevelMetricsCallbackService.GetVisualStudioPid)` - I like using `nameof()` in this case for those scenarios where you may have magic strings show up. This is basically why we created that secondary interface. Technically optional, but then you would need to pass `"GetVisualStudioPid"` in place of `nameof()` here instead. Blah.
+   a. `int` - The return value type (What is `GetVisualStudioPid` returning from our extension service?)
+   a. `this` - We need to specify the 'owner', which in this case is the datapoint itself.
+   a. `nameof(ICodeLevelMetricsCallbackService.GetVisualStudioPid)` - I like using `nameof()` in this case for those scenarios where you may have magic strings show up. This is basically why we created that secondary interface. Technically optional, but then you would need to pass `"GetVisualStudioPid"` in place of `nameof()` here instead. Blah.
 1. Since its async, need a `cancellationToken`
 
 If you run your application, you should see a fancy new CodeLens entry that reports the process ID of Visual Studio!
@@ -175,13 +175,13 @@ Secondly, the "hover" state -
 
 Now, before we go, I do want to note a couple other variations of `InvokeAsync` that you can use if need be.
 
-First - you can *absolutely* pass arguments back up through these `InvokeAsync` calls. That would look something like this -
+First - you can _absolutely_ pass arguments back up through these `InvokeAsync` calls. That would look something like this -
 
 ```csharp
 var returnVal = _callbackService.Value
-    .InvokeAsync<int>(this, 
+    .InvokeAsync<int>(this,
         nameof(ICodeLevelMetricsCallbackService.MeaningOfLife),
-        new[] { 42 },    // arguments here - just an array of objects 
+        new[] { 42 },    // arguments here - just an array of objects
         cancellationToken: token)
     .ConfigureAwait(false);
 ```
@@ -200,7 +200,7 @@ Secondly, is that you can call methods that are just void return types, which wo
 
 ```csharp
 _ = _callbackService.Value
-    .InvokeAsync(this, 
+    .InvokeAsync(this,
         nameof(ICodeLevelMetricsCallbackService.BurnItDown),
         cancellationToken: token)
     .ConfigureAwait(false);
@@ -218,6 +218,6 @@ Of course, you can combine any combination of return types, parameters, etc as y
 
 ---
 
-There you go dear readers! One-way communication from your out-of-process CodeLens provider *BACK* into your extension! Up next will be the final post in this series where we discuss how to setup TWO-WAY communication - useful for forcing your CodeLens to refresh for some reason, like an event that happened in your main extension.
+There you go dear readers! One-way communication from your out-of-process CodeLens provider _BACK_ into your extension! Up next will be the final post in this series where we discuss how to setup TWO-WAY communication - useful for forcing your CodeLens to refresh for some reason, like an event that happened in your main extension.
 
 Stay tuned!
