@@ -1,0 +1,25 @@
+---
+layout: basic
+body_classes: page-basic
+---
+
+{% assign columns = 3 %}
+{% capture columns %}col-lg-{{ 12 | divided_by:columns }}{% endcapture %}
+
+<div class="section bg-base-bg-2">
+  <div class="container">
+    <div class="row">
+      {% for oss in site.data.opensource.projects %}
+      <div
+        class="col-12 col-md-4 {{ columns }}{% if forloop.first %}mt-0{% endif %} {% if forloop.last %}mb-0{% endif %} mb-3 mb-md-6">
+        {% include theme/cards/card-post.html
+        title=oss.name
+        description=oss.description
+        image=oss.cover_image
+        url=oss.url
+        %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
