@@ -1,22 +1,57 @@
 ---
-layout: basic
+layout: default
 body_classes: page-basic
 ---
 
 {% assign columns = 3 %}
 {% capture columns %}col-lg-{{ 12 | divided_by:columns }}{% endcapture %}
 
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-10">
+        {% include framework/blocks/sections/page-title.html
+        title=page.title
+        %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% assign content = content | strip_newlines %}
+{% if content != "" %}
+<div class="section pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-10">
+        <div class="content">{{ content }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+
 <div class="section bg-base-bg-2">
   <div class="container">
     <div class="row">
-      {% for oss in site.data.opensource.projects %}
+
+      {% include framework/blocks/components/grid-header.html
+      heading="Projects"
+      %}
+
+      {% for oss in site.data.opensource.details.projects %}
       <div
         class="col-12 col-md-4 {{ columns }}{% if forloop.first %}mt-0{% endif %} {% if forloop.last %}mb-0{% endif %} mb-3 mb-md-6">
         {% include theme/cards/card-post.html
         title=oss.name
+        path=site.data.opensource.details.root_image_dir
         description=oss.description
         image=oss.cover_image
         url=oss.url
+        categories=oss.categories
+        category_dont_link=true
         %}
       </div>
       {% endfor %}

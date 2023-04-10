@@ -15,41 +15,49 @@
 {% assign image = include.image %}
 {% assign image_alt = include.image_alt %}
 {% assign post_path = include.path | prepend: '/' | prepend: site.source %}
+{% assign dont_link_category = include.category_dont_link %}
 {% capture cover_image_exists %}{% cover_exists {{ post_path }},{{ include.image }} %}{% endcapture %}
 {% capture alt_cover_image_exists %}{% cover_exists {{ post_path }},{{ include.image_alt }} %}{% endcapture %}
+{% capture cover_image_alt_exists %}{% cover_exists {{ path }}/{{ include.image }},{{ include.image }} %}{%
+endcapture %}
 
-<div class="card card-post card-{{ style }} {% if thumbnail %}card-has-thumbnail{% endif %} {% if icon or fa_icon %}card-has-icon{% endif %}">
-    {% if image and cover_image_exists == "true" %}
-       <div class="card-thumbnail {% if thumbnail_size %}card-thumbnail-{{ thumbnail_size }}{% endif %}">
-          <a href="{{ site.url }}{{ url }}"><img alt="{{ title }}" src="{{ site.url }}{{ url }}{{ image }}"/></a>
-       </div>
-    {% elsif image_alt and alt_cover_image_exists == "true" %}
-       <div class="card-thumbnail {% if thumbnail_size %}card-thumbnail-{{ thumbnail_size }}{% endif %}">
-          <a href="{{ site.url }}{{ url }}"><img alt="{{ title }}" src="{{ site.url }}{{ url }}{{ image_alt }}"/></a>
-       </div>
-    {% endif %}
+<div
+  class="card card-post card-{{ style }} {% if thumbnail %}card-has-thumbnail{% endif %} {% if icon or fa_icon %}card-has-icon{% endif %}">
+  {% if image and cover_image_exists == "true" %}
+  <div class="card-thumbnail {% if thumbnail_size %}card-thumbnail-{{ thumbnail_size }}{% endif %}">
+    <a href="{{ site.url }}{{ url }}"><img alt="{{ title }}" src="{{ site.url }}{{ url }}{{ image }}" /></a>
+  </div>
+  {% elsif image and cover_image_alt_exists == "true" %}
+  <div class="card-thumbnail {% if thumbnail_size %}card-thumbnail-{{ thumbnail_size }}{% endif %}">
+    <a href="{{ url }}"><img alt="{{ title }}" src="{{ site.url }}/{{ path }}/{{ image }}" /></a>
+  </div>
+  {% elsif image_alt and alt_cover_image_exists == "true" %}
+  <div class="card-thumbnail {% if thumbnail_size %}card-thumbnail-{{ thumbnail_size }}{% endif %}">
+    <a href="{{ site.url }}{{ url }}"><img alt="{{ title }}" src="{{ site.url }}{{ path }}{{ image_alt }}" /></a>
+  </div>
+  {% endif %}
 
   <div class="card-content">
     {% if authors or date %}
     <div class="card-meta">
 
       {% if authors %}
-        <div class="card-authors">
-          {% for author in authors limit: 1 %}
-          {% assign author_id = author | replace: " ", "_" | downcase %}
-          {% assign author_object = site.data.authors[author_id] %}
-          {% include framework/blocks/components/author.html 
-            name=author_object.name
-            image=author_object.image
-            date=date
-          %}
-          {% endfor %}
-        </div>
+      <div class="card-authors">
+        {% for author in authors limit: 1 %}
+        {% assign author_id = author | replace: " ", "_" | downcase %}
+        {% assign author_object = site.data.authors[author_id] %}
+        {% include framework/blocks/components/author.html
+        name=author_object.name
+        image=author_object.image
+        date=date
+        %}
+        {% endfor %}
+      </div>
       {% elsif date %}
-        <div class="card-date">{{ date | date_to_long_string }}</div>
+      <div class="card-date">{{ date | date_to_long_string }}</div>
       {% endif %}
 
-    </div>  
+    </div>
     {% endif %}
 
     <div class="card-title">
@@ -59,32 +67,33 @@
     </div>
 
     {% if client %}
-      <div class="card-client">
-        {{ client }}
-      </div>
+    <div class="card-client">
+      {{ client }}
+    </div>
     {% endif %}
 
     {% if description %}
-      <div class="card-description">
-        <p>{{ description }}</p>
-      </div>
+    <div class="card-description">
+      <p>{{ description }}</p>
+    </div>
     {% endif %}
 
     {% if categories %}
-      <div class="card-categories mt-auto">
-        {% for category in categories %}
-          <div class="card-category">
-            {% include framework/blocks/components/category-link.html category_name=category show_count=false %}
-          </div>
-        {% endfor %}
+    <div class="card-categories mt-auto">
+      {% for category in categories %}
+      <div class="card-category">
+        {% include framework/blocks/components/category-link.html category_name=category show_count=false
+        dont_link=dont_link_category %}
       </div>
+      {% endfor %}
+    </div>
     {% endif %}
 
     {% if url and show_read_more %}
-      <div class="card-readmore">
-        <a href="{{ site.url }}{{ url }}">Read More<i class="fas fa-long-arrow-alt-right"></i>
-        </a>
-      </div>
+    <div class="card-readmore">
+      <a href="{{ site.url }}{{ url }}">Read More<i class="fas fa-long-arrow-alt-right"></i>
+      </a>
+    </div>
     {% endif %}
 
   </div>

@@ -72,6 +72,7 @@ PLATFORMS
   arm64-darwin-22
   x64-mingw32
   x64-unknown
+  x64-unknown
   x86_64-darwin-20
 
 DEPENDENCIES

@@ -77,7 +77,8 @@
     display: inline-flex;
     font-size: 12px;
     font-family: $font-family-base;
-    a {
+    a,
+    span {
       color: var(--color-primary-text);
       padding: 4px 8px;
       border-radius: 3px;
@@ -101,7 +102,6 @@
     }
   }
   .card-authors {
-
   }
   .card-readmore {
     margin-top: auto;
@@ -204,7 +204,6 @@
     }
   }
   .card-content {
-
   }
   .card-categories {
     margin-top: 20px;
