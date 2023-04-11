@@ -25,3 +25,9 @@ details:
       cover_image: "BreakpointNotifier.png"
       categories: ["vs2022"]
       opened_date: "2023-04-07"
+    - name: "Visual Studio Marketplace Publisher"
+      url: "https://github.com/CalvinAllen/action-vs-marketplace-publish"
+      description: "Github Action to publish your Visual Studio extension to the marketplace!"
+      cover_image: "VSMarketplacePublish.png"
+      categories: ["github action"]
+      opened_date: "2023-03-24"
