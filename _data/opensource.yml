@@ -31,3 +31,15 @@ details:
       cover_image: "VSMarketplacePublish.png"
       categories: ["github action"]
       opened_date: "2023-03-24"
+    - name: "Visual Studio VSIX Versioner"
+      url: "https://github.com/CalvinAllen/action-vs-vsix-versioner"
+      description: "Github Action to update your Visual Studio extension to a version that is based off of the current date and the CI build number."
+      cover_image: "VSVSIXSigner.png"
+      categories: ["github action"]
+      opened_date: "2023-04-01"
+    - name: "Visual Studio VSIX Signer"
+      url: "https://github.com/CalvinAllen/action-vs-vsix-signer"
+      description: "Github Action to sign your Visual Studio extensions before you publish to the marketplace!"
+      cover_image: "VSVSIXSigner.png"
+      categories: ["github action"]
+      opened_date: "2023-04-02"
