@@ -9,6 +9,7 @@
 {% assign authors = include.authors %}
 {% assign categories = include.categories %}
 {% assign style = include.style | default: "column" %}
+{% assign type = include.type | default: "post"}
 {% assign show_read_more = include.show_read_more %}
 {% assign client = include.client %}
 {% assign thumbnail_size = include.thumbnail_size %}
@@ -59,7 +60,12 @@ endcapture %}
         {% endfor %}
       </div>
       {% elsif date %}
-      <div class="card-date">{{ date | date_to_long_string }}</div>
+      <div class="card-date">
+        {% if type == 'project' %}
+        <strong>Open Sourced On:&nbsp;&nbsp;</strong>
+        {% endif %}
+        {{ date | date_to_long_string }}
+      </div>
       {% endif %}
 
     </div>

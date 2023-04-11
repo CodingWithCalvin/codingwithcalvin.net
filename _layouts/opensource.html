@@ -5,6 +5,7 @@ body_classes: page-basic
 
 {% assign columns = 3 %}
 {% capture columns %}col-lg-{{ 12 | divided_by:columns }}{% endcapture %}
+{% assign projects = site.data.opensource.details.projects | sort: 'opened_date' | reverse %}
 
 <div class="section">
   <div class="container">
@@ -41,17 +42,19 @@ body_classes: page-basic
       heading="Projects"
       %}
 
-      {% for oss in site.data.opensource.details.projects %}
+      {% for project in projects %}
       <div
         class="col-12 col-md-4 {{ columns }}{% if forloop.first %}mt-0{% endif %} {% if forloop.last %}mb-0{% endif %} mb-3 mb-md-6">
         {% include theme/cards/card-post.html
-        title=oss.name
+        title=project.name
         path=site.data.opensource.details.root_image_dir
-        description=oss.description
-        image=oss.cover_image
-        url=oss.url
-        categories=oss.categories
+        description=project.description
+        image=project.cover_image
+        url=project.url
+        categories=project.categories
         category_dont_link=true
+        date=project.opened_date
+        type="project"
         %}
       </div>
       {% endfor %}

@@ -6,18 +6,22 @@ details:
       description: "A Visual Studio extension that adds a menu command that lets you open any solution, project, folder or file in Notepad++."
       cover_image: "OpenInNotepadPlusPlus.png"
       categories: ["vs2015", "vs2017", "vs2019", "vs2022"]
+      opened_date: "2017-12-08"
     - name: "Open Bin Folder"
       url: "https://github.com/CalvinAllen/OpenBinFolder"
       description: "A Visual Studio extension that adds a right-click context menu command that allows you to open the project's output directory (i.e, the 'bin' folder) in Windows File Explorer. This uses the currently active solution/project configuration to determin WHICH output folder to navigate to."
       cover_image: "OpenBinFolder.png"
       categories: ["vs2022"]
+      opened_date: "2023-03-24"
     - name: "Super Clean"
       url: "https://github.com/CalvinAllen/vs-super-clean"
       description: "A Visual Studio extension that adds a right-click context menu command to the Solution node, and Project node, that allows you to recursively delete (i.e., clean) the selected project's bin & obj folders, or all projects in the solution."
       cover_image: "VSSuperClean.png"
       categories: ["vs2022"]
+      opened_date: "2023-03-25"
     - name: "Breakpoint Notifier"
       url: "https://github.com/CalvinAllen/BreakpointNotifier"
       description: "A Visual Studio extension to alert you when a breakpoint is hit while you're debugging - useful if you're multitasking waiting for the breakpoint to be hit!"
       cover_image: "BreakpointNotifier.png"
       categories: ["vs2022"]
+      opened_date: "2023-04-07"
