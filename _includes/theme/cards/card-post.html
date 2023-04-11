@@ -33,7 +33,7 @@ endcapture %}
   </div>
   {% elsif image_alt and alt_cover_image_exists == "true" %}
   <div class="card-thumbnail {% if thumbnail_size %}card-thumbnail-{{ thumbnail_size }}{% endif %}">
-    <a href="{{ site.url }}{{ url }}"><img alt="{{ title }}" src="{{ site.url }}{{ path }}{{ image_alt }}" /></a>
+    <a href="{{ site.url }}{{ url }}"><img alt="{{ title }}" src="{{ site.url }}{{ url }}{{ image_alt }}" /></a>
   </div>
   {% endif %}
 
