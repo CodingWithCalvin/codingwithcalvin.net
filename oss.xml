@@ -1,0 +1,58 @@
+---
+layout: none
+---
+
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" {% if site.lang %}xml:lang="{{ site.lang }}"{% endif %}>
+<generator uri="https://jekyllrb.com/" version="{{ jekyll.version }}">Jekyll</generator>
+<link href="{{ site.url }}{{ page.url }}" rel="self" type="application/atom+xml" />
+<link href="{{ site.url }}" rel="alternate" type="text/html" {% if site.lang %}hreflang="{{ site.lang }}" {% endif %}/>
+<updated>{{ site.time | date_to_xmlschema }}</updated>
+<id>{{ site.url | xml_escape }}</id>
+
+  {% if site.title %}
+    <title type="html">{{ site.title | smartify | xml_escape }}</title>
+  {% elsif site.name %}
+<title type="html">{{ site.name | smartify | xml_escape }}</title>
+  {% endif %}
+
+  {% if site.description %}
+<subtitle>{{ site.description | xml_escape }}</subtitle>
+  {% endif %}
+
+  {% if site.author %}
+<author>
+  <name>{{ site.author.name | default: site.author | xml_escape }}</name>
+      {% if site.author.email %}
+  <email>{{ site.author.email | xml_escape }}</email>
+      {% endif %}
+      {% if site.author.uri %}
+  <uri>{{ site.author.uri | xml_escape }}</uri>
+      {% endif %}
+</author>
+  {% endif %}
+
+  {% assign projects = site.data.opensource.details.projects | sort: 'opened_date' | reverse %}
+
+  {% for project in projects %}
+<entry{% if project.lang %}{{" "}}xml:lang="{{ project.lang }}"{% endif %}>
+<title type="html">{{ project.name | smartify | strip_html | normalize_whitespace | xml_escape }}</title>
+<link href="{{ project.url }}" rel="alternate" type="text/html" title="{{ project.name | xml_escape }}" />
+<published>{{ project.opened_date | date_to_xmlschema }}</published>
+<updated>{{ project.opened_date | date_to_xmlschema }}</updated>
+<id>{{ project.url | xml_escape }}</id>
+<content type="html" xml:base="{{ project.url | xml_escape}}">{{ project.description | strip | xml_escape }}</content>
+
+<author>
+  <name>Calvin A. Allen</name>
+</author>
+
+      {% for category in project.categories %}
+<category term="{{ category | xml_escape }}" />
+      {% endfor %}
+
+<summary type="html">{{ project.description | strip_html | normalize_whitespace | xml_escape }}</summary>
+<media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="{{ site.url }}/{{ site.data.opensource.details.root_image_dir }}/{{ project.cover_image}}" />
+</entry>
+  {% endfor %}
+</feed>
