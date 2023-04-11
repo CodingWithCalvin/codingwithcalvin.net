@@ -35,6 +35,11 @@ endcapture %}
   <div class="card-thumbnail {% if thumbnail_size %}card-thumbnail-{{ thumbnail_size }}{% endif %}">
     <a href="{{ site.url }}{{ url }}"><img alt="{{ title }}" src="{{ site.url }}{{ url }}{{ image_alt }}" /></a>
   </div>
+  {% else %}
+  <div class="card-thumbnail {% if thumbnail_size %}card-thumbnail-{{ thumbnail_size }}{% endif %}">
+    <a href="{{ site.url }}{{ url }}"><img alt="{{ title }}"
+        src="{{ site.url }}/assets/images/nocoverimagecoverimage.png" /></a>
+  </div>
   {% endif %}
 
   <div class="card-content">
