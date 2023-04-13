@@ -1,38 +1,16 @@
 ---
-layout: default
-body_classes: page-basic
+title: "Open Source"
+layout: data-carousel
+permalink: "/open-source"
+content_override: "This page is dedicated to listing out various Open-Source projects that I manage / offer. Check back
+here often, because you never know when something new will get added.
+<br /><br />
+Enjoy!"
 ---
 
 {% assign columns = 3 %}
 {% capture columns %}col-lg-{{ 12 | divided_by:columns }}{% endcapture %}
 {% assign projects = site.data.opensource.details.projects | sort: 'opened_date' | reverse %}
-
-<div class="section">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-lg-10">
-        {% include framework/blocks/sections/page-title.html
-        title=page.title
-        %}
-      </div>
-    </div>
-  </div>
-</div>
-
-{% assign content = content | strip_newlines %}
-{% if content != "" %}
-<div class="section pt-0">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-lg-10">
-        <div class="content">{{ content }}</div>
-      </div>
-    </div>
-  </div>
-</div>
-{% endif %}
-
-
 
 <div class="section bg-base-bg-2">
   <div class="container">
@@ -55,9 +33,11 @@ body_classes: page-basic
         category_dont_link=true
         date=project.opened_date
         type="project"
+        show_full_description=true
         %}
       </div>
       {% endfor %}
     </div>
+
   </div>
 </div>

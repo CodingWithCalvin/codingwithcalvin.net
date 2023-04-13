@@ -1,0 +1,46 @@
+---
+title: "Infographics"
+layout: data-carousel
+permalink: "/infographics"
+content_override: "On this page is where I share some of the infographics I have created and previously shared on social
+media platforms. It exists mostly as an archive.
+<br /><br />
+Enjoy!"
+---
+
+{% assign columns = 3 %}
+{% capture columns %}col-lg-{{ 12 | divided_by:columns }}{% endcapture %}
+{% assign infographics = site.data.infographics.details.infographics | sort: 'published_date' | reverse %}
+
+<div class="section bg-base-bg-2">
+    <div class="container">
+        <div class="row">
+
+            {% include framework/blocks/components/grid-header.html
+            heading="Infographic Gallery"
+            %}
+
+            {% for infographic in infographics %}
+
+            {% assign fullImagePath = site.data.infographics.details.root_image_dir | append: '/' | append:
+            infographic.filename %}
+            <div
+                class="col-12 col-md-4 {{ columns }}{% if forloop.first %}mt-0{% endif %} {% if forloop.last %}mb-0{% endif %} mb-3 mb-md-6">
+                {% include theme/cards/card-post.html
+                title=""
+                path=site.data.infographics.details.root_image_dir
+                description=infographic.description
+                image=infographic.filename
+                url=fullImagePath
+                categories=infographic.categories
+                category_dont_link=true
+                date=infographic.published_date
+                type="infographic"
+                show_full_description=true
+                %}
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>

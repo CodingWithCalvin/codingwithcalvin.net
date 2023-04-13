@@ -16,7 +16,8 @@
 {% assign image = include.image %}
 {% assign image_alt = include.image_alt %}
 {% assign post_path = include.path | prepend: '/' | prepend: site.source %}
-{% assign dont_link_category = include.category_dont_link %}
+{% assign dont_link_category = include.category_dont_link | default: false %}
+{% assign show_full_description = include.show_full_description | default: false %}
 {% capture cover_image_exists %}{% cover_exists {{ post_path }},{{ include.image }} %}{% endcapture %}
 {% capture alt_cover_image_exists %}{% cover_exists {{ post_path }},{{ include.image_alt }} %}{% endcapture %}
 {% capture cover_image_alt_exists %}{% cover_exists {{ path }}/{{ include.image }},{{ include.image }} %}{%
@@ -64,6 +65,9 @@ endcapture %}
         {% if type == 'project' %}
         <strong>Open Sourced On:&nbsp;&nbsp;</strong>
         {% endif %}
+        {% if type == 'infographic' %}
+        <strong>Published On:&nbsp;&nbsp;</strong>
+        {% endif %}
         {{ date | date_to_long_string }}
       </div>
       {% endif %}
@@ -84,28 +88,33 @@ endcapture %}
     {% endif %}
 
     {% if description %}
-    <div class="card-description">
-      <p>{{ description }}</p>
-    </div>
-    {% endif %}
+    {% if show_full_description %}
+    <div class="card-description override-card-description">
+      {% else %}
+      <div class="card-description">
+        {% endif %}
 
-    {% if categories %}
-    <div class="card-categories mt-auto">
-      {% for category in categories %}
-      <div class="card-category">
-        {% include framework/blocks/components/category-link.html category_name=category show_count=false
-        dont_link=dont_link_category %}
+        <p>{{ description }}</p>
       </div>
-      {% endfor %}
-    </div>
-    {% endif %}
+      {% endif %}
 
-    {% if url and show_read_more %}
-    <div class="card-readmore">
-      <a href="{{ site.url }}{{ url }}">Read More<i class="fas fa-long-arrow-alt-right"></i>
-      </a>
-    </div>
-    {% endif %}
+      {% if categories %}
+      <div class="card-categories mt-auto">
+        {% for category in categories %}
+        <div class="card-category">
+          {% include framework/blocks/components/category-link.html category_name=category show_count=false
+          dont_link=dont_link_category %}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
 
+      {% if url and show_read_more %}
+      <div class="card-readmore">
+        <a href="{{ site.url }}{{ url }}">Read More<i class="fas fa-long-arrow-alt-right"></i>
+        </a>
+      </div>
+      {% endif %}
+
+    </div>
   </div>
-</div>

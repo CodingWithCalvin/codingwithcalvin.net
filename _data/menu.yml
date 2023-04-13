@@ -5,13 +5,16 @@ main:
   - name: Open Source
     url: /open-source
     weight: 2
+  - name: Infographics
+    url: /infographics
+    weight: 3
   - name: Speaking
     url: /speaking
-    weight: 3
+    weight: 4
   - name: About
     url: /about/
-    weight: 4
+    weight: 5
   - name: Contact
     url: /contact/
-    weight: 5
+    weight: 6
 bottom:

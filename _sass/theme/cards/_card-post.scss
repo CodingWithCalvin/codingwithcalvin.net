@@ -61,6 +61,15 @@
       display: -webkit-box;
     }
   }
+
+  .override-card-description {
+    p {
+      word-break: break-word;
+      overflow-y: unset;
+      display: unset;
+    }
+  }
+
   .card-title + .card-description {
     margin-top: 0;
   }
