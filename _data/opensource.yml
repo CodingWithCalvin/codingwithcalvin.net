@@ -43,9 +43,3 @@ details:
       cover_image: "VSVSIXSigner.png"
       categories: ["github action"]
       opened_date: "2023-04-02"
-    - name: "Encourge (2022 edition)"
-      url: "https://github.com/CalvinAllen/Encourage"
-      description: "A bit of encouragement added to Visual Studio! Original version by Phil Haack."
-      cover_image: "Encourage.png"
-      categories: ["vs2022"]
-      opened_date: "2023-04-13"
