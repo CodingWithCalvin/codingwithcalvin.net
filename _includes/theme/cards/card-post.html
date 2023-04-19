@@ -77,7 +77,11 @@ endcapture %}
 
     <div class="card-title">
       <h3>
+        {% if type == 'project' %}
+        <a href="{{ url }}">{{ title }}</a>
+        {% else %}
         <a href="{{ site.url }}{{ url }}">{{ title }}</a>
+        {% endif %}
       </h3>
     </div>
 
