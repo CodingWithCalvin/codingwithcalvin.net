@@ -2,7 +2,7 @@
 layout: home
 permalink: "/"
 override_title: "Who am I?"
-description: "Calvin is a C# / .NET Engineer at <a href='https://newrelic.com/' target='_blank'>New Relic, Inc.</a> (where he works on <a href='https://codestream.com/' target='_blank'>CodeStream</a>!), a <a href='https://mvp.microsoft.com/en-us/PublicProfile/5003520' target='_blank'>Microsoft MVP in Developer Technologies</a>, and host of the <a href='https://www.dotnetbytes.io/' target='_blank'>.NET Bytes podcast (on hiatus)</a>."
+description: "Calvin is a C# / .NET Engineer at <a href='https://newrelic.com/' target='_blank'>New Relic, Inc.</a> (where he works on <a href='https://codestream.com/' target='_blank'>CodeStream</a>!), a <a href='https://mvp.microsoft.com/en-us/PublicProfile/5003520' target='_blank'>Microsoft MVP in Developer Technologies</a>, and host of the <a href='https://www.dotnetbytes.io/' target='_blank'>.NET Bytes podcast (on hiatus)</a>.<br/><br/>If you like what I do and want to support me, <a href='https://www.buymeacoffee.com/calvinallen' target='_blank'>Buy Me a Coffee!</a>"
 image: "assets/images/homepage.png"
 
 meta_title: Coding with Calvin
