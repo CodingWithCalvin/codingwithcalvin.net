@@ -1,7 +1,7 @@
 ---
 title: "My Video Recording / Live Streaming Setup"
 date: "2023-06-01T11:29:24-04:00"
-categories: [meta,content]
+categories: [meta, content]
 description: "Definitely a meta-post, but I've had a few questions about the hardware I started using to produce videos / live-stream"
 ---
 
@@ -11,7 +11,7 @@ Since I started, I've gotten a couple questions about what hardware and software
 
 Having said that, I way overbuilt this setup and spent more than I really needed to. I'll give you a list of everything I bought and setup, but then I'll provide ANOTHER list of, "spend less by using this list and get the same results".
 
-Let's start with the software, because honestly, that's the *easiest* part of all of this - and the cheapest!
+Let's start with the software, because honestly, that's the _easiest_ part of all of this - and the cheapest!
 
 ## Software
 
@@ -39,27 +39,29 @@ I also added some Elgato LED strips behind me in a closet opening that I never p
 
 The good thing about the Elgato stuff, that I do really love, is that the Key Lights and the LED strips can be added to your network and controlled from a PC - color temperature, brightness, and in the case of the LED, the actual color.
 
-> [Elgato Key Light](https://www.elgato.com/us/en/p/key-light)
+> [Elgato Key Light](htts://www.elgato.com/us/en/p/key-light)
+>
 > [Diffuser](https://www.amazon.com/gp/product/B08PTCGTX9)
+>
 > [Elgato LED Strip](https://www.elgato.com/us/en/p/light-strip)
 
 That's all for lighting. Its a whole process in an of itself, and I can't teach you that (still learning myself), but check out the 3-point method for lighting and try to mimic it as best you can. Oh, and I keep the actual light in the room I'm in, completely off. The lights mentioned above are enough / plenty, especially when you get them dialed in.
 
 ### Video / Audio Recording
 
-Oh boy, this is the big one that I WAY overspent on.  Here we go...
+Oh boy, this is the big one that I WAY overspent on. Here we go...
 
 Let me lay out what I bought and link them, and then we'll go into details -
 
 1. [Panasonic GH5 (body only, used, discontinued)](https://www.bhphotovideo.com/c/product/1639337-REG/panasonic_dc_gh5m2body_lumix_gh5_ii_mirrorless.html)
-   * [Dummy Battery](https://www.bhphotovideo.com/c/product/1551216-REG/gyrovu_gv_usb_gh4_usb_to_panasonic_gh3_gh4.html)
-   * [USB Power Adapter](https://www.amazon.com/dp/B09GJXVHVK)
-   * [HDMI Cable](https://www.amazon.com/gp/product/B08M9HND4F)
-1. [Sigma 16mm f1.4 lense](https://www.bhphotovideo.com/c/product/1369133-REG/sigma_402963_16mm_f_1_4_dc_dn.html)
-1. [Sigma 30mm f1.4 lense](https://www.bhphotovideo.com/c/product/1234026-REG/sigma_302963_30mm_f_1_4_dc_dn.html)
+   - [Dummy Battery](https://www.bhphotovideo.com/c/product/1551216-REG/gyrovu_gv_usb_gh4_usb_to_panasonic_gh3_gh4.html)
+   - [USB Power Adapter](https://www.amazon.com/dp/B09GJXVHVK)
+   - [HDMI Cable](https://www.amazon.com/gp/product/B08M9HND4F)
+1. [Sigma 16mm f1.4 lens](https://www.bhphotovideo.com/c/product/1369133-REG/sigma_402963_16mm_f_1_4_dc_dn.html)
+1. [Sigma 30mm f1.4 lens](https://www.bhphotovideo.com/c/product/1234026-REG/sigma_302963_30mm_f_1_4_dc_dn.html)
 1. [Audio Technica AT875R Shotgun Condenser Microphone](https://www.amazon.com/gp/product/B000BQ79W0)
-   * [XLR Cable](https://www.amazon.com/gp/product/B01JNLUA5G)
-   * [Shock Mount](https://www.amazon.com/gp/product/B00KXQIU5S)
+   - [XLR Cable](https://www.amazon.com/gp/product/B01JNLUA5G)
+   - [Shock Mount](https://www.amazon.com/gp/product/B00KXQIU5S)
 1. [Elgato 4k60 Pro Capture Card](https://www.elgato.com/us/en/p/game-capture-4k60-pro)
 1. [Elgato Stream Deck XL](https://www.elgato.com/us/en/p/stream-deck-xl)
 1. [Focusrite Scarlett 2i2 3rd Gen Audio Interface](https://www.amazon.com/gp/product/B07QR73T66)
@@ -75,15 +77,15 @@ If you want to shoot HIGH QUALITY videos for coding - go no higher than 1080p/60
 
 So here's what I recommend -
 
-Get a good camera that can do "clean HDMI output", and if you just want to get started on the cheap, just use a 1080p+ webcam. If you do that, you don't need the capture devices. Note, that I have TWO capture devices, though - the ATEM Mini Pro and the Elgato 4k60 capture card (installed in the PC directly). Why? Because I'm dumb and you don't have to be. Back when I thought I could squeeze 4k60fps out of everything, I kept trying to get there only to realize it was pointless. The ATEM Mini is overkill because it accepts multiple HDMI inputs (I only need 1 anyway, you probably only do, too). The Elgato 4k60 is overkill because the 4k doesn't matter anyway. If you use a webcam, you can skip ALL of this. If you still want a DSLR, then you'll need *something*, but don't try to get the 4k quality IMO. Stick with something that will get you 1080p.
+Get a good camera that can do "clean HDMI output", and if you just want to get started on the cheap, just use a 1080p+ webcam. If you do that, you don't need the capture devices. Note, that I have TWO capture devices, though - the ATEM Mini Pro and the Elgato 4k60 capture card (installed in the PC directly). Why? Because I'm dumb and you don't have to be. Back when I thought I could squeeze 4k60fps out of everything, I kept trying to get there only to realize it was pointless. The ATEM Mini is overkill because it accepts multiple HDMI inputs (I only need 1 anyway, you probably only do, too). The Elgato 4k60 is overkill because the 4k doesn't matter anyway. If you use a webcam, you can skip ALL of this. If you still want a DSLR, then you'll need _something_, but don't try to get the 4k quality IMO. Stick with something that will get you 1080p.
 
 If you do go through with a DSLR, then you simply plug the HDMI cable into the output from the camera, into the capture card. In the case of the ATEM Mini Pro, it then uses a USB cable on into the PC itself. The "Dummy Battery" setup is so the camera always has power and doesn't run off of actual batteries - its a passthrough to USB supplied power.
 
-The lenses. Two of them. Yeah, I'm still playing with this, but I like these lenses because they give me the "blurry background effect" of everything behind me in the video. If that's something you want, then you'll want a DSLR (back to the conversation above) and a quality lense. Lense choice is a whole thing, too, and I'm not going to try and teach that here either (again, I'm still learning!).
+The lenses. Two of them. Yeah, I'm still playing with this, but I like these lenses because they give me the "blurry background effect" of everything behind me in the video. If that's something you want, then you'll want a DSLR (back to the conversation above) and a quality lens. Lens choice is a whole thing, too, and I'm not going to try and teach that here either (again, I'm still learning!).
 
 Mounted with the camera is the teleprompter and Samsung tablet. I'm really going for that, "even while he's speaking, he's looking at the camera", which is where the teleprompter comes in. This teleprompter has a mount for a small tablet, and just reflects the contents scrolling across its screen. The camera is behind it, so while reading the scrolling text, you're automatically looking at the camera (two way mirror). If you want this kind of look and feel, you'll want to get a DSLR of some sort, because all of the teleprompters I've seen require that style of camera to fit behind it.
 
-Audio. Audio is honestly probably more important than the video. While nobody is going to mind 1080p (or probably even 760p for coding stuff), if the audio is terrible, people will bounce quickly. For my setup, I have a shotgun microphone, which is mounted on the top of my camera in the "cold shoe". The microphone uses an XLR cable to plug into the Scarlett interface, and on into the PC via USB.
+Audio. Audio is honestly probably more important than the video. While nobody is going to mind 1080p (or probably even 720p for coding stuff), if the audio is terrible, people will bounce quickly. For my setup, I have a shotgun microphone, which is mounted on the top of my camera in the "cold shoe". The microphone uses an XLR cable to plug into the Scarlett interface, and on into the PC via USB.
 
 I added on the StreamDeck because it does give some powerful automation options. For instance, with the Elgato lights, I can add a button to the StreamDeck to turn them on / off. This allows me to quickly shift into "recording mode" in my office.
 
