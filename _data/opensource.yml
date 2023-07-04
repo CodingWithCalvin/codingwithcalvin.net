@@ -49,3 +49,9 @@ details:
       cover_image: "VS4Mac-SuperClean.png"
       categories: ["vs4mac2022"]
       opened_date: "2023-04-19"
+    - name: "Open Bin Folder"
+      url: "https://github.com/CodingWithCalvin/vs4mac-openbinfolder"
+      description: A Visual Studio for Mac extension that adds a right-click context menu command that allows you to open the project's output directory (i.e, the 'bin' folder) in Finder. This uses the currently active solution/project configuration to determin WHICH output folder to navigate to."
+      cover_image: "VS4Mac-OpenBinFolder.png"
+      categories: ["vs4mac2022"]
+      opened_date: "2023-07-03"
