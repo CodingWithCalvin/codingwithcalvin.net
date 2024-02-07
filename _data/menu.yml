@@ -8,13 +8,10 @@ main:
   - name: Infographics
     url: /infographics
     weight: 3
-  - name: Speaking
-    url: /speaking
-    weight: 4
   - name: About
     url: /about/
-    weight: 5
+    weight: 4
   - name: Contact
     url: /contact/
-    weight: 6
+    weight: 5
 bottom:
