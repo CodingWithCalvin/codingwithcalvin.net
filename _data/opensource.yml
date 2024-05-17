@@ -10,7 +10,7 @@ details:
     - name: "Project Renamifier"
       url: "https://github.com/CodingWithCalvin/VS-ProjectRenamifier"
       description: "A Visual Studio extension that allows you to safely - and COMPLETELY - rename a Project from within Visual Studio! This includes the filename, parent folder name (if it matches), and the namespace (includes changing the namespace in files that use it), plus fixing the path/filename of the project in the Solution file and all referencing projects."
-      cover_image: ""
+      cover_image: "vs-projectrenamifier.png"
       categories: ["vs2022"]
       opened_date: "2024-05-17"
     - name: "Webcam Studio"
