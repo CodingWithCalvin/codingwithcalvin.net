@@ -5,9 +5,6 @@ main:
   - name: Open Source
     url: /open-source
     weight: 2
-  - name: Infographics
-    url: /infographics
-    weight: 3
   - name: About
     url: /about/
     weight: 4
