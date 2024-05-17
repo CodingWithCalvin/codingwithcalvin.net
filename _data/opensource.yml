@@ -12,7 +12,7 @@ details:
       description: "A Visual Studio extension that allows you to safely - and COMPLETELY - rename a Project from within Visual Studio!"
       cover_image: ""
       categories: ["vs2022"]
-      opened_date: "2024-05-15"
+      opened_date: "2024-05-17"
     - name: "Webcam Studio"
       url: "https://github.com/CodingWithCalvin/VS-WebcamStudio"
       description: "A Visual Studio extension that embeds a Webcam into a Visual Studio tool window!"
