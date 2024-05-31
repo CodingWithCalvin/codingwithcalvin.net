@@ -90,7 +90,7 @@
   }
   .title-cols {
     display: flex;
-    gap: $grid-gutter-width / 2;
+    gap: calc($grid-gutter-width / 2);
     flex-direction: column;
     @include media-breakpoint-up(md) {
       gap: $grid-gutter-width;
