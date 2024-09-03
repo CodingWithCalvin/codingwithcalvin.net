@@ -11,7 +11,7 @@ This is my success story.
 
 You have a .NET Framework (let's go with 4.7+ at this point) application, maybe with pre-existing tests, maybe not. And, on top of that, you now want to get code coverage metrics.
 
-After struggling with this on the [Visual Studio side of CodeStream recently](https://github.com/TeamCodeStream/codestream/commit/3a2eb2cdf6917193a5055c32b4c774d32aed42f5), I finally managed to get it working.  At a high level, let me outline what I had to do -
+After struggling with this on the Visual Studio side of CodeStream recently, I finally managed to get it working.  At a high level, let me outline what I had to do -
 
 * Because I struggled with the initial tests written using [MSTest](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest), I converted all the tests to [xUnit](https://xunit.net/) - some of this was out of sheer comfort with xUnit over MSTest, but also because its OSS product under the .NET Foundation - and I like supporting those
 * Reference a couple NuGet packages for executing tests at a command prompt
