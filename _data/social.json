@@ -17,6 +17,11 @@
   {
     "title": "YouTube",
     "fa_icon": "fab fa-youtube",
-    "url": "https://www.youtube.com/@CodingWithCalvin"
+    "url": "https://www.youtube.com/@CodingWithCalvin1"
+  },
+  {
+    "title": "Mastodon",
+    "fa_icon": "fab fa-mastodon",
+    "url": "https://hachyderm.io/@calvinallen"
   }
 ]
