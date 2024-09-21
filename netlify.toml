@@ -9,3 +9,8 @@
   from = "/introduction-the-visual-studoi-vsix-signer-github-action"
   to = "/introducing-the-visual-studio-vsix-signer-github-action"
   status = 301
+
+[[redirects]]
+  from = "/introduction-the-breakpoint-notifier-visual-studio-extension"
+  to = "/introducing-the-breakpoint-notifier-visual-studio-extension"
+  status = 301
