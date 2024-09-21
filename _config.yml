@@ -65,7 +65,7 @@ exclude:
 # -------------------
 # Theme Config
 # --------------------
-title: "Coding with Calvin"
+title: "Coding With Calvin"
 
 category_dir: 'category'
 
@@ -102,7 +102,7 @@ fonts:
   logo: "Open Sans"
 
 logo:
-  logo_text: "Coding with Calvin"
+  logo_text: "Coding With Calvin"
   logo_image: assets/images/logo/logo.png
   logo_image_mobile: assets/images/logo/logo-mobile.png
   logo_image_invert: assets/images/logo/logo-invert.png
@@ -125,7 +125,7 @@ header:
 
 footer:
   enable_footer: true # show/hide the entire footer
-  footer_title: "Coding with Calvin"
+  footer_title: "Coding With Calvin"
   footer_description: "Inside my digital mind"
   enable_social_media_icons: false
   enable_menu_footer_primary: false
@@ -138,6 +138,6 @@ footer:
 bottom:
   enable_bottom: false # show/hide the entire bottom (below the footer)
   enable_bottom_menu: false # if enabled, the bottom menu can be edited in `_data/menu.yml`
-  copyright_text: "© 2022 Coding with Calvin"
+  copyright_text: "© 2022 Coding With Calvin"
 
 
