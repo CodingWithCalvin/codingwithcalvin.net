@@ -11,7 +11,7 @@ Imagine you have a workflow in GitHub that builds your extension and posts the r
 
 ```yaml
 - name: Visual Studio Marketplace Publisher
-    uses: CalvinAllen/action-vs-marketplace-publish@v1
+    uses: CodingWithCalvin/GHA-VSMarketplacePublisher@v1
     with:
     # REQUIRED
     marketplace-pat: ${{ secrets.vs_pat }}
@@ -21,4 +21,4 @@ Imagine you have a workflow in GitHub that builds your extension and posts the r
 
 Provide your secret PAT, your deployment manifest, and where the extension output file is - then sit back and relax while all the magic happens for you. Note there are a couple other optional parameters to control which version of the Visual Studio SDK tooling gets used under the hood, but by default, you'll utilize the latest version available on the images. For real world examples of its usage, I utilize it in 4 separate Visual Studio extension workflows on GitHub, so check out my repos there for more help!
 
-Of course, [its open source](https://github.com/CalvinAllen/action-vs-marketplace-publish), so feel free to peruse the source code, create issues, and have discussions on ways we can make this tool even better!
+Of course, [its open source](https://github.com/CodingWithCalvin/GHA-VSMarketplacePublisher), so feel free to peruse the source code, create issues, and have discussions on ways we can make this tool even better!

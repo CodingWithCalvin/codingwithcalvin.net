@@ -13,4 +13,4 @@ Now, let's talk about this extensions giant downfall. No configuration, no "form
 
 Thanks for reading! Please check it out, and let me know if you have any suggestions for it - I think somebody should have some at least!
 
-And, of course, [it's open source](https://github.com/CalvinAllen/BreakpointNotifier) and issues / PRs are happily accepted, too, if you're into that sort of thing 😉.
+And, of course, [it's open source](https://github.com/CodingWithCalvin/VS-BreakpointNotifier) and issues / PRs are happily accepted, too, if you're into that sort of thing 😉.

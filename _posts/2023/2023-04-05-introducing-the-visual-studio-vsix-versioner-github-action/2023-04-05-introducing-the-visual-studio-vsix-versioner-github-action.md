@@ -38,7 +38,7 @@ Now, when we want to uptick our version number during a release, we only have to
 ```yaml
 steps:
   - name: Visual Studio VSIX Versioner
-    uses: CalvinAllen/action-vs-vsix-versioner@v1
+    uses: CodingWithCalvin/GHA-VSVsixVersioner@v1
     with:
       extension-manifest-file: "./src/CodingWithCalvin.OpenBinFolder.Vsix/source.extension.vsixmanifest"
       extension-source-file: "./src/CodingWithCalvin.OpenBinFolder.Vsix/source.extension.cs"
@@ -48,4 +48,4 @@ Remember we talked about "the Calvin way"? Well, the action creates a new versio
 
 For example, if my workflow has ran 75 times already and today is 2023-04-05, then when we run this action, we'll get a version number of `2023.04.05.76`. I know date versioning isn't everybodys' cup of tea, but it works for me for the few extensions I have. One thing to note, is the Date is calculated at UTC, so it may end up being "slightly off" on the specific day if you're in a different timezone.
 
-Thanks for reading, and if you're wondering....of course, [its open source](https://github.com/CalvinAllen/action-vs-vsix-versioner)! Feel free to peruse the source code, create issues, and have discussions on ways we can make this tool even better - including other versioning schemes!
+Thanks for reading, and if you're wondering....of course, [its open source](https://github.com/CodingWithCalvin/GHA-VSVsixVersioner)! Feel free to peruse the source code, create issues, and have discussions on ways we can make this tool even better - including other versioning schemes!

@@ -12,7 +12,7 @@ Imagine you have a workflow in GitHub that builds your extension and posts the r
 ```yaml
 steps:
   - name: Visual Studio VSIX Signer
-    uses: CalvinAllen/action-vs-vsix-signer@v1
+    uses: CodingWithCalvin/GHA-VSVsixSigner@v1
     with:
       # REQUIRED
       sign-certificate-path: ./src/SigningCert.snk
@@ -26,4 +26,4 @@ steps:
 
 Provide the path to your certificate, the path to the VSIX, and your signing password and violá - sit back and relax while all the magic happens for you. Note there are a couple other optional parameters to control which version of the Visual Studio SDK tooling gets used under the hood, but by default, you'll utilize the latest version available on the images. I could use some additional help testing this, though, as I don't sign any of my own extensions (maybe I'll start now!).
 
-Of course, [its open source](https://github.com/CalvinAllen/action-vs-vsix-signer), so feel free to peruse the source code, create issues, and have discussions on ways we can make this tool even better!
+Of course, [its open source](https://github.com/CodingWithCalvin/GHA-VSVsixSigner), so feel free to peruse the source code, create issues, and have discussions on ways we can make this tool even better!
