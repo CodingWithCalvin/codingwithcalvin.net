@@ -2,13 +2,4 @@ main:
   - name: Home
     url: /
     weight: 1
-  - name: Open Source
-    url: /open-source
-    weight: 2
-  - name: About
-    url: /about/
-    weight: 4
-  - name: Contact
-    url: /contact/
-    weight: 5
 bottom:

@@ -8,22 +8,22 @@ body_classes: page-post page-post-1
 
     <div class="row justify-content-center">
       <div class="col-12 col-lg-8">
-          {% if page.date %}
-            <div class="post-date">{{ page.date | date_to_long_string }}</div>
-          {% endif %}
-          {% if page.categories %}
-          <div class="post-categories">
-          {% include framework/blocks/components/categories-badges.html 
-              categories=page.categories
+        {% if page.date %}
+        <div class="post-date">{{ page.date | date_to_long_string }}</div>
+        {% endif %}
+        {% if page.categories %}
+        <div class="post-categories">
+          {% include framework/blocks/components/categories-badges.html
+          categories=page.categories
           %}
           {% endif %}
-          </div>
-          <div class="post-title">
-            <h1>{{ page.title }}</h1>
-          </div>
+        </div>
+        <div class="post-title">
+          <h1>{{ page.title }}</h1>
+        </div>
       </div>
     </div>
-          
+
     <div class="row justify-content-center" style="text-align: center">
       <div class="col-12 col-lg-8">
         {% assign post_path = page.path | prepend: '/' | prepend: site.source %}
@@ -31,22 +31,17 @@ body_classes: page-post page-post-1
         {% capture alt_cover_image_exists %}{% cover_exists {{ post_path }},{{ page.image_alt }} %}{% endcapture %}
 
         {% if page.youtube != null %}
-          <iframe
-            width="710"
-            height="399"
-            src="{{ page.youtube }}"
-            frameborder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen 
-            loading="lazy"></iframe>
+        <iframe width="710" height="399" src="{{ page.youtube }}" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+          loading="lazy"></iframe>
         {% elsif page.image and cover_image_exists == "true" %}
-          <div class="post-image">
-            <img src="{{ page.image }}" alt="{{ page.title }}" />
-          </div>    
+        <div class="post-image">
+          <img src="{{ page.image }}" alt="{{ page.title }}" />
+        </div>
         {% elsif page.image_alt and alt_cover_image_exists == "true" %}
-          <div class="post-image">
-            <img src="{{ page.image_alt }}" alt="{{ page.title }}" />
-          </div>
+        <div class="post-image">
+          <img src="{{ page.image_alt }}" alt="{{ page.title }}" />
+        </div>
 
         {% endif %}
       </div>
@@ -61,22 +56,23 @@ body_classes: page-post page-post-1
 
       <div class="col-12 col-lg-8">
         <div class="content">
-            {{ content }}
+          {{ content }}
 
-            <hr />
+          <hr />
 
-            <blockquote>
-                This post, "<strong>{{ page.title }}</strong>", first appeared on <a href="{{ site.url }}{{ page.url }}">{{ site.url }}{{ page.url }}</a>
-            </blockquote>
+          <blockquote>
+            This post, "<strong>{{ page.title }}</strong>", first appeared on <a href="{{ site.url }}{{ page.url }}">{{
+              site.url }}{{ page.url }}</a>
+          </blockquote>
         </div>
-        
-        {% if site.disqus.shortname %}
+
+        <!-- {% if site.disqus.shortname %}
         {% if page.comments != false %}
           <div class="comments mt-3">
             {% include framework/global/integrations/disqus.html %}
           </div>
         {% endif %}
-        {% endif %}
+        {% endif %} -->
       </div>
 
     </div>
