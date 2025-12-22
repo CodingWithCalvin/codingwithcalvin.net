@@ -1,0 +1,32 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import PostLayout from '../layouts/PostLayout.astro';
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection('blog');
+  return posts.map(post => {
+    // Extract just the slug from the path (e.g., "2024/slug-name" -> "slug-name")
+    const slug = post.id.split('/').pop() || post.id;
+    return {
+      params: { slug },
+      props: { post, slug },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { post, slug } = Astro.props;
+const { Content } = await render(post);
+---
+
+<PostLayout
+  title={post.data.title}
+  slug={slug}
+  date={post.data.date}
+  categories={post.data.categories}
+  description={post.data.description}
+  image={post.data.image}
+  youtube={post.data.youtube}
+>
+  <Content />
+</PostLayout>

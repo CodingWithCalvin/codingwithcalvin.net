@@ -1,0 +1,48 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import Pagination from '../../components/Pagination.astro';
+import { getCollection } from 'astro:content';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const allPosts = await getCollection('blog');
+  const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  return paginate(sortedPosts, { pageSize: 9 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+
+// Helper to get just the slug from the full path
+const getSlug = (id: string) => id.split('/').pop() || id;
+---
+
+<BaseLayout title="Blog" description="All blog posts from Coding With Calvin">
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl font-heading mb-8">Blog</h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {page.data.map(post => (
+          <PostCard
+            title={post.data.title}
+            slug={getSlug(post.id)}
+            date={post.data.date}
+            description={post.data.description}
+            categories={post.data.categories}
+            image={post.data.image}
+          />
+        ))}
+      </div>
+
+      {page.lastPage > 1 && (
+        <Pagination
+          currentPage={page.currentPage}
+          totalPages={page.lastPage}
+          baseUrl="/blog/"
+        />
+      )}
+    </div>
+  </section>
+</BaseLayout>

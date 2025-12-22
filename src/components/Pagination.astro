@@ -1,0 +1,44 @@
+---
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  baseUrl: string;
+}
+
+const { currentPage, totalPages, baseUrl } = Astro.props;
+
+const prevUrl = currentPage > 1 ? `${baseUrl}${currentPage === 2 ? '' : currentPage - 1}` : null;
+const nextUrl = currentPage < totalPages ? `${baseUrl}${currentPage + 1}` : null;
+---
+
+<nav class="flex items-center justify-center gap-4 mt-8" aria-label="Pagination">
+  {prevUrl ? (
+    <a
+      href={prevUrl}
+      class="px-4 py-2 bg-background-2 rounded hover:bg-background-3 text-text no-underline"
+    >
+      &larr; Previous
+    </a>
+  ) : (
+    <span class="px-4 py-2 bg-background-2 rounded text-text-muted cursor-not-allowed">
+      &larr; Previous
+    </span>
+  )}
+
+  <span class="text-text-muted">
+    Page {currentPage} of {totalPages}
+  </span>
+
+  {nextUrl ? (
+    <a
+      href={nextUrl}
+      class="px-4 py-2 bg-background-2 rounded hover:bg-background-3 text-text no-underline"
+    >
+      Next &rarr;
+    </a>
+  ) : (
+    <span class="px-4 py-2 bg-background-2 rounded text-text-muted cursor-not-allowed">
+      Next &rarr;
+    </span>
+  )}
+</nav>

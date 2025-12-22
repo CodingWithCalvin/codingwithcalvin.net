@@ -1,0 +1,70 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import BaseLayout from './BaseLayout.astro';
+import CategoryBadges from '../components/CategoryBadges.astro';
+import YouTubeEmbed from '../components/YouTubeEmbed.astro';
+
+interface Props {
+  title: string;
+  slug: string;
+  date: Date;
+  categories: string[];
+  description?: string;
+  image?: ImageMetadata;
+  youtube?: string;
+}
+
+const { title, slug, date, categories, description, image, youtube } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+const postUrl = `https://www.codingwithcalvin.net/${slug}/`;
+
+// Get the image URL for OG tags - use the src property from ImageMetadata
+const ogImageUrl = image?.src;
+---
+
+<BaseLayout title={title} description={description} image={ogImageUrl} type="article">
+  <article class="py-12">
+    <div class="container mx-auto px-4 max-w-3xl relative md:pl-8">
+      <div class="absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-b from-primary via-primary/50 to-transparent rounded-full hidden md:block"></div>
+      <header class="mb-8">
+        <time class="text-text-muted text-sm">{formattedDate}</time>
+        <h1 class="text-4xl font-heading mt-2 mb-4">{title}</h1>
+        <CategoryBadges categories={categories} />
+      </header>
+
+      {youtube && (
+        <div class="mb-8">
+          <YouTubeEmbed url={youtube} title={title} />
+        </div>
+      )}
+
+      {!youtube && image && (
+        <div class="mb-8 rounded-lg overflow-hidden">
+          <Image
+            src={image}
+            alt={title}
+            class="w-full"
+          />
+        </div>
+      )}
+
+      <div class="prose prose-lg max-w-none">
+        <slot />
+      </div>
+
+      <blockquote class="mt-12 border-l-4 border-primary bg-background-2 rounded-r-lg p-6 text-center">
+        <p class="text-text-muted italic">
+          This post, "{title}", first appeared on<br />
+          <a href={postUrl} class="text-primary hover:underline">{postUrl}</a>
+        </p>
+      </blockquote>
+    </div>
+  </article>
+</BaseLayout>

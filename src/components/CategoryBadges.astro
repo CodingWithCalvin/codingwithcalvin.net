@@ -1,0 +1,18 @@
+---
+interface Props {
+  categories: string[];
+}
+
+const { categories } = Astro.props;
+---
+
+<div class="flex flex-wrap gap-2">
+  {categories.map(category => (
+    <a
+      href={`/category/${category.toLowerCase()}/`}
+      class="text-sm bg-primary/20 text-primary px-3 py-1 rounded-full no-underline hover:bg-primary/30 transition-colors"
+    >
+      {category}
+    </a>
+  ))}
+</div>

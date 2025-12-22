@@ -1,0 +1,75 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PostCard from '../../../components/PostCard.astro';
+import Pagination from '../../../components/Pagination.astro';
+import { getCollection } from 'astro:content';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const allPosts = await getCollection('blog');
+
+  // Get all unique categories
+  const categories = new Set<string>();
+  allPosts.forEach(post => {
+    post.data.categories.forEach(category => {
+      categories.add(category.toLowerCase());
+    });
+  });
+
+  // Create paginated paths for each category
+  return Array.from(categories).flatMap(category => {
+    const filteredPosts = allPosts
+      .filter(post =>
+        post.data.categories.some(c => c.toLowerCase() === category)
+      )
+      .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+    return paginate(filteredPosts, {
+      params: { category },
+      pageSize: 9,
+    });
+  });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const { category } = Astro.params;
+
+// Capitalize first letter of category for display
+const displayCategory = category.charAt(0).toUpperCase() + category.slice(1);
+
+// Helper to get just the slug from the full path
+const getSlug = (id: string) => id.split('/').pop() || id;
+---
+
+<BaseLayout title={displayCategory + " Posts"} description={"All posts in the " + displayCategory + " category"}>
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+      <div class="mb-8">
+        <a href="/categories" class="text-primary hover:underline text-sm">&larr; All Categories</a>
+        <h1 class="text-4xl font-heading mt-2">{displayCategory}</h1>
+        <p class="text-text-muted mt-2">{page.total} post{page.total !== 1 ? 's' : ''}</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {page.data.map(post => (
+          <PostCard
+            title={post.data.title}
+            slug={getSlug(post.id)}
+            date={post.data.date}
+            description={post.data.description}
+            categories={post.data.categories}
+            image={post.data.image}
+          />
+        ))}
+      </div>
+
+      {page.lastPage > 1 && (
+        <Pagination
+          currentPage={page.currentPage}
+          totalPages={page.lastPage}
+          baseUrl={"/category/" + category + "/"}
+        />
+      )}
+    </div>
+  </section>
+</BaseLayout>
