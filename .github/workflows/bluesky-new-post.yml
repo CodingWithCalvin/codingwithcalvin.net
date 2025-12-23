@@ -1,0 +1,39 @@
+name: Post New Blog to Bluesky
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/content/blog/**'
+  schedule:
+    # 8 AM Eastern: 13:00 UTC (EST) / 12:00 UTC (EDT)
+    # Using 13:00 UTC = 8 AM EST, 9 AM EDT
+    - cron: '0 13 * * *'
+  workflow_dispatch:
+
+jobs:
+  detect:
+    uses: CodingWithCalvin/.github/.github/workflows/detect-new-blog-post.yml@main
+    with:
+      content_path: 'src/content/blog'
+      post_filename: 'index.md'
+      site_url: 'https://www.codingwithcalvin.net'
+      url_prefix: '/blog'
+      event_name: ${{ github.event_name }}
+      categories_field: 'categories'
+
+  notify:
+    needs: detect
+    if: needs.detect.outputs.has_new_post == 'true'
+    uses: CodingWithCalvin/.github/.github/workflows/bluesky-post.yml@main
+    with:
+      post_text: |
+        📝 New Blog Post!
+
+        [${{ needs.detect.outputs.post_title }}](${{ needs.detect.outputs.post_url }})
+
+        ${{ needs.detect.outputs.post_hashtags }}
+    secrets:
+      BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
+      BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
