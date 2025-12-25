@@ -19,13 +19,23 @@ jobs:
       content_path: 'src/content/blog'
       post_filename: 'index.md'
       site_url: 'https://www.codingwithcalvin.net'
-      url_prefix: '/blog'
+      url_prefix: ''
       event_name: ${{ github.event_name }}
       categories_field: 'categories'
 
-  notify:
+  wait-for-deploy:
     needs: detect
-    if: needs.detect.outputs.has_new_post == 'true'
+    if: needs.detect.outputs.has_new_post == 'true' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Cloudflare deployment
+        run: |
+          echo "Waiting 5 minutes for Cloudflare to deploy..."
+          sleep 300
+
+  notify:
+    needs: [detect, wait-for-deploy]
+    if: always() && needs.detect.outputs.has_new_post == 'true' && needs.detect.result == 'success'
     uses: CodingWithCalvin/.github/.github/workflows/bluesky-post.yml@main
     with:
       post_text: |
@@ -34,6 +44,7 @@ jobs:
         [${{ needs.detect.outputs.post_title }}](${{ needs.detect.outputs.post_url }})
 
         ${{ needs.detect.outputs.post_hashtags }}
+      embed_url: ${{ needs.detect.outputs.post_url }}
     secrets:
       BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
       BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
