@@ -20,7 +20,8 @@ const { title, slug, date, categories, description, image, youtube } = Astro.pro
 const formattedDate = date.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
-  day: 'numeric'
+  day: 'numeric',
+  timeZone: 'America/New_York'
 });
 
 const postUrl = `https://www.codingwithcalvin.net/${slug}/`;

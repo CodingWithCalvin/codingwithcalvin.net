@@ -1,0 +1,80 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Critical Rules
+
+**These rules override all other instructions:**
+
+1. **NEVER commit directly to main** - Always create a feature branch and submit a pull request
+2. **Conventional commits** - Format: `type(scope): description`
+3. **GitHub Issues for TODOs** - Use `gh` CLI to manage issues, no local TODO files. Use conventional commit format for issue titles
+4. **Pull Request titles** - Use conventional commit format (same as commits)
+5. **Branch naming** - Use format: `type/scope/short-description` (e.g., `feat/blog/new-post-script`)
+6. **Working an issue** - Always create a new branch from an updated main branch
+7. **Check branch status before pushing** - Verify the remote tracking branch still exists. If a PR was merged/deleted, create a new branch from main instead
+
+### Conventional Commit Types
+
+| Type | Description |
+|------|-------------|
+| `feat` | New feature |
+| `fix` | Bug fix |
+| `docs` | Documentation only |
+| `refactor` | Code change that neither fixes a bug nor adds a feature |
+| `test` | Adding or updating tests |
+| `chore` | Maintenance tasks |
+
+### GitHub CLI Commands
+
+```bash
+gh issue list                    # List open issues
+gh issue view <number>           # View details
+gh issue create --title "type(scope): description" --body "..."
+gh issue close <number>
+```
+
+## Commands
+
+```bash
+npm run dev       # Start dev server at localhost:4321
+npm run build     # Build production site to ./dist/
+npm run preview   # Preview production build locally
+npm run new       # Create a new blog post (interactive prompts)
+```
+
+## Architecture
+
+This is an Astro static site for Calvin Allen's personal blog, deployed to Cloudflare Pages.
+
+### Content System
+
+- Blog posts are markdown files in `src/content/blog/{year}/{slug}/index.md`
+- Each post lives in its own directory to colocate images (e.g., `cover.png`)
+- Schema defined in `src/content/config.ts` with Zod validation:
+  - Required: `title`, `date`, `categories` (array)
+  - Optional: `description`, `image`, `youtube`
+
+### Post Frontmatter Example
+
+```yaml
+---
+title: "Post Title"
+date: "2025-12-25T21:58:58-05:00"
+categories: [dotnet, csharp]
+description: "Optional description"
+image: ./cover.png
+---
+```
+
+### Date Handling
+
+Dates include timezone offset in frontmatter. Display formatting uses `timeZone: 'America/New_York'` to ensure dates render correctly regardless of build server timezone.
+
+### Key Files
+
+- `src/pages/[...slug].astro` - Dynamic post routes
+- `src/pages/rss.xml.ts` - RSS feed generation
+- `src/layouts/PostLayout.astro` - Individual post layout
+- `src/components/PostCard.astro` - Blog listing card component
+- `scripts/new-post.js` - Interactive post creation script
