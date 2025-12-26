@@ -11,6 +11,11 @@ on:
     # Using 13:00 UTC = 8 AM EST, 9 AM EDT
     - cron: '0 13 * * *'
   workflow_dispatch:
+    inputs:
+      target_date:
+        description: 'Date to look for posts (YYYY-MM-DD). Defaults to current date.'
+        required: false
+        type: string
 
 jobs:
   detect:
@@ -22,6 +27,7 @@ jobs:
       url_prefix: ''
       event_name: ${{ github.event_name }}
       categories_field: 'categories'
+      target_date: ${{ inputs.target_date }}
 
   wait-for-deploy:
     needs: detect
