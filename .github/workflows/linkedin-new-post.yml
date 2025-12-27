@@ -44,7 +44,7 @@ jobs:
     uses: CodingWithCalvin/.github/.github/workflows/linkedin-post.yml@main
     with:
       post_text: |
-        New Blog Post!
+        📝 New Blog Post!
 
         ${{ needs.detect.outputs.post_title }}
 
