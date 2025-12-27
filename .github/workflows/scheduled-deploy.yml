@@ -1,6 +1,11 @@
 name: Scheduled Deploy
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/content/blog/**'
   schedule:
     # Run at 7:50 AM Eastern (12:50 UTC) - 10 min before Bluesky post
     - cron: '50 12 * * *'
