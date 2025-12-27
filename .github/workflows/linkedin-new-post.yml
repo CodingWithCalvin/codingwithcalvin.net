@@ -1,0 +1,57 @@
+name: Post New Blog to LinkedIn
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/content/blog/**'
+  schedule:
+    # 8:15 AM Eastern (15 min after Bluesky to stagger)
+    - cron: '15 13 * * *'
+  workflow_dispatch:
+    inputs:
+      target_date:
+        description: 'Date to look for posts (YYYY-MM-DD). Defaults to current date.'
+        required: false
+        type: string
+
+jobs:
+  detect:
+    uses: CodingWithCalvin/.github/.github/workflows/detect-new-blog-post.yml@main
+    with:
+      content_path: 'src/content/blog'
+      post_filename: 'index.md'
+      site_url: 'https://www.codingwithcalvin.net'
+      url_prefix: ''
+      event_name: ${{ github.event_name }}
+      categories_field: 'categories'
+      target_date: ${{ inputs.target_date }}
+
+  wait-for-deploy:
+    needs: detect
+    if: needs.detect.outputs.has_new_post == 'true' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Cloudflare deployment
+        run: |
+          echo "Waiting 5 minutes for Cloudflare to deploy..."
+          sleep 300
+
+  notify:
+    needs: [detect, wait-for-deploy]
+    if: always() && needs.detect.outputs.has_new_post == 'true' && needs.detect.result == 'success'
+    uses: CodingWithCalvin/.github/.github/workflows/linkedin-post.yml@main
+    with:
+      post_text: |
+        New Blog Post!
+
+        ${{ needs.detect.outputs.post_title }}
+
+        ${{ needs.detect.outputs.post_hashtags }}
+      article_url: ${{ needs.detect.outputs.post_url }}
+      article_title: ${{ needs.detect.outputs.post_title }}
+      article_description: ${{ needs.detect.outputs.post_description }}
+    secrets:
+      LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+      LINKEDIN_CLIENT_ID: ${{ secrets.LINKEDIN_CLIENT_ID }}
