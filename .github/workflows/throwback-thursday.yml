@@ -1,0 +1,57 @@
+name: Throwback Thursday
+
+on:
+  schedule:
+    # 10 AM Eastern on Thursdays: 15:00 UTC (EST) / 14:00 UTC (EDT)
+    # Using 15:00 UTC = 10 AM EST, 11 AM EDT
+    - cron: '0 15 * * 4'
+  workflow_dispatch:
+    inputs:
+      exclude_days:
+        description: 'Exclude posts newer than this many days (default: 30)'
+        required: false
+        type: number
+        default: 30
+
+jobs:
+  select:
+    uses: CodingWithCalvin/.github/.github/workflows/random-blog-post-from-rss.yml@main
+    with:
+      rss_url: 'https://www.codingwithcalvin.net/rss.xml'
+      exclude_days: ${{ inputs.exclude_days || 30 }}
+
+  post-bluesky:
+    needs: select
+    if: needs.select.outputs.has_post == 'true'
+    uses: CodingWithCalvin/.github/.github/workflows/bluesky-post.yml@main
+    with:
+      post_text: |
+        Throwback! Originally posted ${{ needs.select.outputs.post_date }}
+
+        [${{ needs.select.outputs.post_title }}](${{ needs.select.outputs.post_url }})
+
+        ${{ needs.select.outputs.post_hashtags }} #ThrowbackThursday
+      embed_url: ${{ needs.select.outputs.post_url }}
+      embed_title: ${{ needs.select.outputs.post_title }}
+      embed_description: ${{ needs.select.outputs.post_description }}
+    secrets:
+      BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
+      BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+
+  post-linkedin:
+    needs: select
+    if: needs.select.outputs.has_post == 'true'
+    uses: CodingWithCalvin/.github/.github/workflows/linkedin-post.yml@main
+    with:
+      post_text: |
+        Throwback! Originally posted ${{ needs.select.outputs.post_date }}
+
+        ${{ needs.select.outputs.post_title }}
+
+        ${{ needs.select.outputs.post_hashtags }} #ThrowbackThursday
+      article_url: ${{ needs.select.outputs.post_url }}
+      article_title: ${{ needs.select.outputs.post_title }}
+      article_description: ${{ needs.select.outputs.post_description }}
+    secrets:
+      LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+      LINKEDIN_CLIENT_ID: ${{ secrets.LINKEDIN_CLIENT_ID }}
