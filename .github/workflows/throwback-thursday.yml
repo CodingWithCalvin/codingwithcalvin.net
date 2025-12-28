@@ -18,7 +18,6 @@ jobs:
     uses: CodingWithCalvin/.github/.github/workflows/random-blog-post-from-rss.yml@main
     with:
       rss_url: 'https://www.codingwithcalvin.net/rss.xml'
-      exclude_days: ${{ inputs.exclude_days || 30 }}
 
   post-bluesky:
     needs: select
