@@ -6,12 +6,6 @@ on:
     # Using 15:00 UTC = 10 AM EST, 11 AM EDT
     - cron: '0 15 * * 4'
   workflow_dispatch:
-    inputs:
-      exclude_days:
-        description: 'Exclude posts newer than this many days (default: 30)'
-        required: false
-        type: number
-        default: 30
 
 jobs:
   select:
