@@ -37,6 +37,10 @@ I went deep on improving the VS extension development experience:
 
 If you're building VS extensions, I hope these make your life a little easier.
 
+### dtvem
+
+I also built **dtvem** - a cross-platform CLI tool for managing multiple programming language runtimes (Python, Node.js, Ruby, with more on the way). Think of it as one version manager to rule them all. It uses shims instead of shell configuration files, so there's no messing with `.bashrc` or `.zshrc`. And unlike most tools in this space, it was designed with first-class Windows support from day one. ([Website](https://dtvem.io/) | [GitHub](https://github.com/dtvem/dtvem))
+
 ### Visual Studio Toolbox
 
 I've also been working on something new - a Windows application called Visual Studio Toolbox. It's not an extension or a NuGet package, but a standalone app. Still in the works, but I'm excited about where it's heading. ([GitHub](https://github.com/CodingWithCalvin/VSToolbox))
