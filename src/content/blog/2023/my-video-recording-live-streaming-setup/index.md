@@ -3,7 +3,6 @@ title: "My Video Recording / Live Streaming Setup"
 date: "2023-06-01T11:29:24-04:00"
 categories: [meta, content]
 description: "Definitely a meta-post, but I've had a few questions about the hardware I started using to produce videos / live-stream"
-image: ./cover.png
 ---
 
 I've recently been outfitting my office with a new barrage of hardware so that I can produce (hopefully) high-quality videos for YouTube, as well as live-stream (at some point).

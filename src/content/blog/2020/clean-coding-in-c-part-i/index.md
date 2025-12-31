@@ -3,7 +3,6 @@ title: "Clean Coding in C# - Part I"
 date: "2020-04-30T09:13:31-04:00"
 categories: [csharp,dotnet]
 description: "The first post in a new series about what I consider to be 'clean code' (using C#, of course). In this one, let's take a look at conditionals (if/else statements)"
-image: ./cover.png
 ---
 
 One thing I've learned over the years is that being clever with your code is a waste of time and energy.  The simpler, the better.  Part of being "simpler", to me, falls into the paradigm of "clean code".  But - what does "clean code" actually mean?  In this post, we'll look at what I consider to be a "clean(er)" conditional statement that reduces cognitive complexity/overhead.

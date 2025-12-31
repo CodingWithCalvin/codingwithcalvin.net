@@ -3,7 +3,6 @@ title: "Generating Code Coverage Metrics for .NET Framework Applications"
 date: "2022-08-18T12:21:26-05:00"
 categories: [dotnet,csharp,testing]
 description: "Many have tried generating Code Coverage metrics for .NET Framework applications, yet only few have succeeded. Even fewer choose to tell their story This is my success story."
-image: ./cover.png
 ---
 
 Many have tried generating Code Coverage metrics for .NET Framework applications, yet only few have succeeded. Even fewer choose to tell their story.

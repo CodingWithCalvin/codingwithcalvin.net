@@ -3,7 +3,6 @@ title: "The Software Developers' Dictionary - Debounce"
 categories: [sdd,dictionary]
 description: "Let's take a look at the definition of 'debounce', a term used in software development, that doesn't exist in modern language dictionaries."
 date: "2020-01-18T12:00:00-05:00"
-image: ./cover.png
 ---
 
 In the software development world, we sometimes have a need to "debounce" an input field.

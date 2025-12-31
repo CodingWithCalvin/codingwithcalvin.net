@@ -3,7 +3,6 @@ title: "Building .NET Framework Applications with Github Actions"
 categories: [github,azure,dotnet]
 description: "After spending way too much time figuring it all out, I now have a Github Action that can build my .NET Framework web application - and deploy it to Azure!"
 date: "2020-04-21T12:00:00-05:00"
-image: ./cover.png
 ---
 
 In this post, I'm going to show you how I finally managed to configure a Github action to build my .NET Framework web application and then deploy it to Azure.  It took way too long, so I hope this helps somebody else out there save some time.

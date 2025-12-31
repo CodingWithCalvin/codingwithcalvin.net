@@ -4,7 +4,6 @@ categories: [csharp,dotnet]
 description: "Switch 'expressions' are a more concise version of a switch 'statement' that was released in C# 8.0.  Let's take a look!"
 youtube: "https://www.youtube.com/embed/yLJl4bJtoMQ"
 date: "2020-02-01T12:00:00-05:00"
-image: ./cover.png
 ---
 
 In C# 8.0, a new form of "switch" was introduced.  While similar, you'll find that this new "switch expression" is more concise than it's "switch statement" counterpart as it does not require all the various keywords (`case`, `break`, `default`, etc.).

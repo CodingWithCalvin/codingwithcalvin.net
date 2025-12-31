@@ -3,7 +3,6 @@ title: "Getting Started with Xamarin.Forms, Prism, and Unity"
 categories: [dotnet,csharp,xamarin]
 description: "Let's go over what I just went through recently to get a new Xamarin.Forms project stood up with Prism and and Unity (for IoC/DI)."
 date: "2019-12-29T12:00:00-05:00"
-image: ./cover.png
 ---
 
 As soon as I received my Macbook at the new job, it was go time.

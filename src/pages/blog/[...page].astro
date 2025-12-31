@@ -3,19 +3,16 @@ import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import Pagination from '../../components/Pagination.astro';
-import { getCollection } from 'astro:content';
+import { getPostsWithImages, getSlug } from '../../lib/posts';
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const allPosts = await getCollection('blog');
+  const allPosts = await getPostsWithImages();
   const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   return paginate(sortedPosts, { pageSize: 9 });
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
-
-// Helper to get just the slug from the full path
-const getSlug = (id: string) => id.split('/').pop() || id;
 ---
 
 <BaseLayout title="Blog" description="All blog posts from Coding With Calvin">
@@ -31,7 +28,7 @@ const getSlug = (id: string) => id.split('/').pop() || id;
             date={post.data.date}
             description={post.data.description}
             categories={post.data.categories}
-            image={post.data.image}
+            image={post.resolvedImage}
           />
         ))}
       </div>

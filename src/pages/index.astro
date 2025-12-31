@@ -1,15 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
-import { getCollection } from 'astro:content';
+import { getPostsWithImages, getSlug } from '../lib/posts';
 
-const allPosts = await getCollection('blog');
+const allPosts = await getPostsWithImages();
 const latestPosts = allPosts
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 6);
-
-// Helper to get just the slug from the full path
-const getSlug = (id: string) => id.split('/').pop() || id;
 ---
 
 <BaseLayout title="Who am I?" description="Software development blog by Calvin Allen">
@@ -53,7 +50,7 @@ const getSlug = (id: string) => id.split('/').pop() || id;
               date={post.data.date}
               description={post.data.description}
               categories={post.data.categories}
-              image={post.data.image}
+              image={post.resolvedImage}
             />
           ))}
         </div>
