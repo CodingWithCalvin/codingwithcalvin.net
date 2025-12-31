@@ -3,7 +3,6 @@ title: "My Blogging Process - Part 2"
 categories: [meta,blogging,writing]
 description: "Another 'meta' post about blogging, but in this article, we'll take a look at the automation I've built around my blog for spreading the word on the social medias"
 date: "2020-01-24T12:00:00-05:00"
-image: ./cover.png
 ---
 
 A continuation of my previous blog post about "how I blog".  In this post we'll take a look at the final four parts of my ~~7~~ 8 step process, which I'll reiterate here:

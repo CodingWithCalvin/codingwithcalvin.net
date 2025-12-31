@@ -3,7 +3,6 @@ title: "Introducing the 'Super Clean' Visual Studio - for Mac - extension!"
 date: "2023-04-19T16:57:55-04:00"
 categories: [dotnet, csharp, extensibility, vsmac]
 description: "Visual Studio for Mac gets left out of the loop sometimes when we talk about extensibility, unfortunately. I decided to learn how, and this is my story!"
-image: ./cover.png
 ---
 
 You don't hear a lot about Visual Studio for Mac in the extensibility space. One, because extensibility was shelved for a while in the product, and two - its hard! Harder than Visual Studio? Maybe - the documentation is lacking even more than Visual Studio extensibility and sample projects are hard to come by.

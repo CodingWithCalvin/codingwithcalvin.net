@@ -4,7 +4,6 @@ date: "2020-05-29T21:55:11-04:00"
 categories: [gitkraken,git]
 description: "In this post, we're going to look at how you add new files - and remove them - to be committed in the GitKraken Git GUI."
 youtube: https://www.youtube.com/embed/9r6Fp0EeMNI
-image: ./cover.png
 ---
 
 In my previous post, "[GitKraken Git GUI How-To: Cloning a Repository](https://www.codingwithcalvin.net/gitkraken-git-gui-how-to-cloning-a-repository/)", we went over how to do just that. Now that we have a repository to work with, we need to make some changes! Maybe that involves changing existing files, or adding new ones. However, just editing or creating files in the repository doesn't necessarily mean they'll be committed, pushed (future topics, I promise), and available for other folks to work with.

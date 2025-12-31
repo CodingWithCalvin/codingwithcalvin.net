@@ -3,7 +3,6 @@ title: "Introducing the 'Super Clean' Visual Studio extension!"
 date: "2023-04-03T09:54:52-04:00"
 categories: [dotnet, csharp, extensibility, visualstudio]
 description: "I released another new extension for Visual Studio, and I want you to know about it!"
-image: ./cover.png
 ---
 
 Introducing "[Super Clean](https://marketplace.visualstudio.com/items?itemName=coding-with-calvin.super-clean)", an extension for Visual Studio 2022 and up that actually removes those pesky `bin` and `obj` folders!

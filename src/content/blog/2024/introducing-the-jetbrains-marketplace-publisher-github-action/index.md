@@ -3,7 +3,6 @@ title: 'Introducing the "JetBrains Marketplace Publisher" GitHub Action'
 date: "2024-09-24T12:00:00-04:00"
 categories: [jetbrains, extensibility, devops]
 description: "You've got your own JetBrains extension, open source on GitHub, but you need to figure out HOW to publish it to the JetBrains marketplace - this new GitHub Action can help!"
-image: ./cover.png
 ---
 
 Introducing "[JetBrains Marketplace Publisher](https://github.com/marketplace/actions/visual-studio-marketplace-publisher)", a GitHub Action that assists you in publishing your Visual Studio extensions to the marketplace through a workflow on GitHub!

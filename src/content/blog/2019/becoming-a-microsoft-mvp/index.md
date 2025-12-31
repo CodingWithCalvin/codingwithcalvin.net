@@ -3,7 +3,6 @@ title: "Becoming a Microsoft MVP"
 categories: [dotnet,mvp,csharp]
 description: "I was awarded MVP status by Microsoft in Developer Technologies on November 1, 2019!  This is my story...."
 date: "2019-11-11T12:00:00-05:00"
-image: ./cover.png
 ---
 
 On November 1, 2019, I received an email stating that I had been awarded Microsoft MVP in Developer Technologies for my community contributions.  

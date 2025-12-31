@@ -3,7 +3,6 @@ title: "Docker Containers and my Adventures in Versioning and Tagging - Part II"
 categories: [csharp,dotnet,devops,docker]
 description: "What's the best way to version, and tag, your code and containers so you know which commits actually make it to production?"
 date: "2020-04-11T12:00:00-05:00"
-image: ./cover.png
 ---
 
 Part II of II

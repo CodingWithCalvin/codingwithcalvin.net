@@ -3,7 +3,6 @@ title: "Introducing the 'Open Bin Folder' Visual Studio - for Mac - extension!"
 date: "2023-07-03T20:02:48-04:00"
 categories: [dotnet, csharp, extensibility, vsmac]
 description: "I decided to port another of my Visual Studio (for Windows) extensions over to Visual Studio for Mac!"
-image: ./cover.png
 ---
 
 Introducing the "Open Bin Folder" extension for Visual Studio for Mac! This one works exactly the same as its Visual Studio (for Windows) counter-part.
