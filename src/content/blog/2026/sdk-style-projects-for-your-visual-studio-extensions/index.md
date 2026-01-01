@@ -5,7 +5,7 @@ categories: [dotnet, csharp, vsix]
 description: "Remember that MSBuild SDK post from last week? Well, I actually built something with it - an SDK that brings modern project files to Visual Studio extension development."
 ---
 
-Remember [that post I wrote last week](/2025/creating-your-own-msbuild-sdk-it-s-easier-than-you-think) about creating MSBuild SDKs? Well, I wasn't just writing that for fun - I was actually building something with all that knowledge.
+Remember [that post I wrote last week](https://www.codingwithcalvin.net/creating-your-own-msbuild-sdk-it-s-easier-than-you-think) about creating MSBuild SDKs? Well, I wasn't just writing that for fun - I was actually building something with all that knowledge.
 
 I've released [CodingWithCalvin.VsixSdk](https://www.nuget.org/packages/CodingWithCalvin.VsixSdk/), an MSBuild SDK that brings modern SDK-style `.csproj` files to Visual Studio extension development. No more XML soup!
 
@@ -33,7 +33,6 @@ With my new SDK, your VSIX project can look like this:
 
 ```xml
 <Project Sdk="CodingWithCalvin.VsixSdk/0.3.0">
-
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <RootNamespace>MyAwesomeExtension</RootNamespace>
@@ -43,7 +42,6 @@ With my new SDK, your VSIX project can look like this:
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.*" />
   </ItemGroup>
-
 </Project>
 ```
 
@@ -79,11 +77,11 @@ The SDK automatically generates a `VsixInfo` class from your manifest:
 // Auto-generated - use these anywhere in your code
 public static class VsixInfo
 {
-    public const string Id = "MyExtension.a1b2c3d4-...";
-    public const string Version = "1.0.0";
-    public const string Publisher = "Your Name";
-    public const string DisplayName = "My Extension";
-    // ... and more
+  public const string Id = "MyExtension.a1b2c3d4-...";
+  public const string Version = "1.0.0";
+  public const string Publisher = "Your Name";
+  public const string DisplayName = "My Extension";
+  // ... and more
 }
 ```
 
@@ -120,7 +118,6 @@ I've already migrated my [Open in Notepad++](https://github.com/CodingWithCalvin
 
 ```xml
 <Project Sdk="CodingWithCalvin.VsixSdk/0.3.0">
-
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <RootNamespace>CodingWithCalvin.OpenInNotepadPlusPlus</RootNamespace>
@@ -144,7 +141,6 @@ I've already migrated my [Open in Notepad++](https://github.com/CodingWithCalvin
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
   </ItemGroup>
-
 </Project>
 ```
 
