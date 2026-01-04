@@ -1,5 +1,7 @@
 # 👨‍💻 Coding With Calvin
 
+[![License](https://img.shields.io/github/license/CodingWithCalvin/codingwithcalvin.net?style=for-the-badge)](LICENSE)
+
 Personal blog of Calvin Allen — software development thoughts, tutorials, and experiences.
 
 🌐 **Live at:** [codingwithcalvin.net](https://www.codingwithcalvin.net)
