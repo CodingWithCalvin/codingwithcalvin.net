@@ -129,17 +129,9 @@ const handle = "codingwithcalvin.net";
         if (likesLabel) likesLabel.textContent = likes === 1 ? 'like from' : 'likes from';
         if (repostsLabel) repostsLabel.textContent = reposts === 1 ? 'repost from' : 'reposts from';
 
-        // Hide likers section if no likes
-        const likersSection = container.querySelector('.likers-section');
-        if (likes === 0 && likersSection) {
-          likersSection.classList.add('hidden');
-        }
-
-        // Hide reposters section if no reposts
-        const repostersSection = container.querySelector('.reposters-section');
-        if (reposts === 0 && repostersSection) {
-          repostersSection.classList.add('hidden');
-        }
+        // Note: We always show the sections even with 0 counts
+        // The count displays "0 likes from" / "0 reposts from"
+        // Avatars area remains empty when there are no likers/reposters
 
         // Update Bluesky link
         if (blueskyLink) {
