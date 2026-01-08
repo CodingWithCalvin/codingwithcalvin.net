@@ -3,6 +3,7 @@ title: "Introducing vscwhere!"
 date: "2026-01-08T12:00:00-05:00"
 categories: [rust, cli, vscode]
 description: "A CLI tool for locating Visual Studio Code installations on Windows, inspired by Microsoft's vswhere"
+blueskyPostId: 3mbwhet7cbl24
 ---
 
 If you've ever used Microsoft's [vswhere](https://github.com/microsoft/vswhere), you know how handy it is. Need to find where Visual Studio is installed? Run `vswhere`. Need the path for a CI/CD script? `vswhere -latest -property installationPath`. It just works.

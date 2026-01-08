@@ -10,6 +10,7 @@ const blog = defineCollection({
     description: z.string().optional(),
     image: image().optional(),
     youtube: z.string().optional(),
+    blueskyPostId: z.string().optional(),
   }),
 });
 
