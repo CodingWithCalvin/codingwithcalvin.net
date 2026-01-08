@@ -50,8 +50,16 @@ export async function GET(context: APIContext) {
         };
       }
 
+      // Add custom data for bluesky post ID if present
+      if (post.data.blueskyPostId) {
+        item.customData = `<bluesky:postId>${post.data.blueskyPostId}</bluesky:postId>`;
+      }
+
       return item;
     }),
+    xmlns: {
+      bluesky: 'https://bsky.app/ns',
+    },
     customData: `<language>en-us</language>`,
   });
 }
