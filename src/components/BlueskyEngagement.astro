@@ -129,16 +129,23 @@ const handle = "codingwithcalvin.net";
         if (likesLabel) likesLabel.textContent = likes === 1 ? 'like from' : 'likes from';
         if (repostsLabel) repostsLabel.textContent = reposts === 1 ? 'repost from' : 'reposts from';
 
-        // Hide likers section if no likes
-        const likersSection = container.querySelector('.likers-section');
-        if (likes === 0 && likersSection) {
-          likersSection.classList.add('hidden');
+        // Show sad face when no engagement
+        const sadFaceHtml = `<div class="flex items-center justify-center w-12 h-12 text-text-muted">
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke-width="1.5"/>
+            <circle cx="9" cy="9" r="1" fill="currentColor"/>
+            <circle cx="15" cy="9" r="1" fill="currentColor"/>
+            <path stroke-linecap="round" stroke-width="1.5" d="M8 16c1.333-1 2.667-1.5 4-1.5s2.667.5 4 1.5"/>
+          </svg>
+        </div>`;
+
+        if (likes === 0 && likersAvatars) {
+          likersAvatars.innerHTML = sadFaceHtml;
         }
 
-        // Hide reposters section if no reposts
-        const repostersSection = container.querySelector('.reposters-section');
-        if (reposts === 0 && repostersSection) {
-          repostersSection.classList.add('hidden');
+        const repostersAvatars = container.querySelector('.reposters-avatars');
+        if (reposts === 0 && repostersAvatars) {
+          repostersAvatars.innerHTML = sadFaceHtml;
         }
 
         // Update Bluesky link
@@ -187,7 +194,6 @@ const handle = "codingwithcalvin.net";
         }
 
         // Fetch reposters for avatars (limit to 50)
-        const repostersAvatars = container.querySelector('.reposters-avatars');
         if (reposts > 0 && repostersAvatars) {
           const repostsRes = await fetch(
             `https://public.api.bsky.app/xrpc/app.bsky.feed.getRepostedBy?uri=${encodeURIComponent(atUri)}&limit=50`
