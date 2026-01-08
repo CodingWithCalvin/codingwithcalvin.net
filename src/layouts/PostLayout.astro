@@ -4,6 +4,7 @@ import type { ImageMetadata } from 'astro';
 import BaseLayout from './BaseLayout.astro';
 import CategoryBadges from '../components/CategoryBadges.astro';
 import YouTubeEmbed from '../components/YouTubeEmbed.astro';
+import BlueskyEngagement from '../components/BlueskyEngagement.astro';
 
 interface Props {
   title: string;
@@ -13,9 +14,10 @@ interface Props {
   description?: string;
   image?: ImageMetadata;
   youtube?: string;
+  blueskyPostId?: string;
 }
 
-const { title, slug, date, categories, description, image, youtube } = Astro.props;
+const { title, slug, date, categories, description, image, youtube, blueskyPostId } = Astro.props;
 
 const formattedDate = date.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -69,8 +71,15 @@ const ogImageUrl = image?.src;
 
       <hr class="mt-12 border-t border-text-muted/30" />
 
+      {blueskyPostId && (
+        <>
+          <BlueskyEngagement postId={blueskyPostId} />
+          <hr class="mt-12 border-t border-text-muted/30" />
+        </>
+      )}
+
       <section class="mt-8">
-        <h2 class="text-2xl font-heading mb-6">Comments</h2>
+        <h2 class="text-2xl font-heading mb-6">Comments <span id="comment-count" class="text-text-muted text-lg font-normal"></span></h2>
         <script
           src="https://giscus.app/client.js"
           data-repo="CodingWithCalvin/codingwithcalvin.net"
@@ -79,15 +88,34 @@ const ogImageUrl = image?.src;
           data-category-id="DIC_kwDOIdGZX84C0RR6"
           data-mapping="og:title"
           data-strict="1"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
+          data-reactions-enabled="0"
+          data-emit-metadata="1"
           data-input-position="top"
-          data-theme="dark"
+          data-theme="https://www.codingwithcalvin.net/giscus-theme.css"
           data-lang="en"
           data-loading="lazy"
           crossorigin="anonymous"
           async
         ></script>
+        <script>
+          function handleGiscusMessage(event) {
+            if (!(typeof event.data === 'object' && event.data.giscus)) return;
+
+            const giscusData = event.data.giscus;
+            const countEl = document.getElementById('comment-count');
+
+            if (giscusData.discussion) {
+              const count = giscusData.discussion.totalCommentCount;
+              if (countEl && count !== undefined) {
+                countEl.textContent = `(${count})`;
+              }
+            } else if (countEl) {
+              // No discussion yet = 0 comments
+              countEl.textContent = '(0)';
+            }
+          }
+          window.addEventListener('message', handleGiscusMessage);
+        </script>
       </section>
     </div>
   </article>

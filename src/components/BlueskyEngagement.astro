@@ -1,0 +1,243 @@
+---
+interface Props {
+  postId: string;
+}
+
+const { postId } = Astro.props;
+const handle = "codingwithcalvin.net";
+---
+
+<div
+  class="bluesky-engagement mt-8 p-6 bg-background-2 rounded-lg"
+  data-post-id={postId}
+  data-handle={handle}
+>
+  <div class="flex items-center justify-between mb-4">
+    <div class="flex items-center gap-2">
+      <svg class="w-5 h-5 text-[#0085ff]" viewBox="0 0 568 501" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M123.121 33.6637C188.241 82.5526 258.281 181.681 284 234.873C309.719 181.681 379.759 82.5526 444.879 33.6637C491.866 -1.61183 568 -28.9064 568 57.9464C568 75.2916 558.055 189.086 552.071 210.685C534.135 274.363 494.427 288.674 458.331 284.323C347.591 270.773 378.291 346.014 455.423 366.672C543.113 390.192 558.377 455.107 454.018 464.097C375.969 470.64 336.053 439.194 307.553 411.717C290.099 394.915 283.99 394.875 284 394.915C284.008 394.875 277.896 394.915 260.447 411.717C231.944 439.194 192.031 470.64 113.982 464.097C9.61951 455.107 24.8869 390.192 112.577 366.672C189.709 346.014 220.409 270.773 109.669 284.323C73.5731 288.674 33.8647 274.363 15.9289 210.685C9.94525 189.086 0 75.2916 0 57.9464C0 -28.9064 76.1339 -1.61183 123.121 33.6637Z"/>
+      </svg>
+      <span class="text-text-muted text-sm">Engagement on Bluesky</span>
+    </div>
+    <a
+      class="bluesky-link inline-flex items-center gap-2 text-[#0085ff] hover:underline text-sm"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Join the conversation
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="engagement-content hidden">
+    <div class="flex gap-4">
+      <div class="likers-section w-1/2">
+        <div class="flex items-center gap-2 mb-2">
+          <svg class="w-5 h-5 text-red-400" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+          <span class="likes-count font-medium">0</span>
+          <span class="likes-label text-text-muted text-sm">likes from</span>
+        </div>
+        <div class="likers-avatars flex flex-wrap gap-1">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <div class="reposters-section w-1/2">
+        <div class="flex items-center gap-2 mb-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+          </svg>
+          <span class="reposts-count font-medium">0</span>
+          <span class="reposts-label text-text-muted text-sm">reposts from</span>
+        </div>
+        <div class="reposters-avatars flex flex-wrap gap-1">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="engagement-loading text-text-muted text-sm">
+    Loading engagement data...
+  </div>
+
+  <div class="engagement-error hidden text-text-muted text-sm">
+    <!-- Hidden on error - component just disappears gracefully -->
+  </div>
+</div>
+
+<script>
+  async function loadBlueskyEngagement() {
+    const containers = document.querySelectorAll('.bluesky-engagement');
+
+    for (const container of containers) {
+      const postId = container.dataset.postId;
+      const handle = container.dataset.handle;
+
+      if (!postId || !handle) {
+        container.classList.add('hidden');
+        continue;
+      }
+
+      const content = container.querySelector('.engagement-content');
+      const loading = container.querySelector('.engagement-loading');
+      const errorEl = container.querySelector('.engagement-error');
+      const likesCount = container.querySelector('.likes-count');
+      const repostsCount = container.querySelector('.reposts-count');
+      const likersAvatars = container.querySelector('.likers-avatars');
+      const blueskyLink = container.querySelector('.bluesky-link');
+
+      try {
+        // Resolve handle to DID
+        const resolveRes = await fetch(
+          `https://public.api.bsky.app/xrpc/com.atproto.identity.resolveHandle?handle=${encodeURIComponent(handle)}`
+        );
+
+        if (!resolveRes.ok) throw new Error('Failed to resolve handle');
+
+        const { did } = await resolveRes.json();
+        const atUri = `at://${did}/app.bsky.feed.post/${postId}`;
+
+        // Get post details (includes like/repost counts)
+        const postRes = await fetch(
+          `https://public.api.bsky.app/xrpc/app.bsky.feed.getPosts?uris=${encodeURIComponent(atUri)}`
+        );
+
+        if (!postRes.ok) throw new Error('Failed to fetch post');
+
+        const postData = await postRes.json();
+
+        if (!postData.posts || postData.posts.length === 0) {
+          throw new Error('Post not found');
+        }
+
+        const post = postData.posts[0];
+        const likes = post.likeCount || 0;
+        const reposts = post.repostCount || 0;
+
+        // Update counts and labels with proper pluralization
+        if (likesCount) likesCount.textContent = likes.toString();
+        if (repostsCount) repostsCount.textContent = reposts.toString();
+
+        const likesLabel = container.querySelector('.likes-label');
+        const repostsLabel = container.querySelector('.reposts-label');
+        if (likesLabel) likesLabel.textContent = likes === 1 ? 'like from' : 'likes from';
+        if (repostsLabel) repostsLabel.textContent = reposts === 1 ? 'repost from' : 'reposts from';
+
+        // Hide likers section if no likes
+        const likersSection = container.querySelector('.likers-section');
+        if (likes === 0 && likersSection) {
+          likersSection.classList.add('hidden');
+        }
+
+        // Hide reposters section if no reposts
+        const repostersSection = container.querySelector('.reposters-section');
+        if (reposts === 0 && repostersSection) {
+          repostersSection.classList.add('hidden');
+        }
+
+        // Update Bluesky link
+        if (blueskyLink) {
+          blueskyLink.setAttribute(
+            'href',
+            `https://bsky.app/profile/${handle}/post/${postId}`
+          );
+        }
+
+        // Fetch likers for avatars (limit to 50)
+        if (likes > 0 && likersAvatars) {
+          const likesRes = await fetch(
+            `https://public.api.bsky.app/xrpc/app.bsky.feed.getLikes?uri=${encodeURIComponent(atUri)}&limit=50`
+          );
+
+          if (likesRes.ok) {
+            const likesData = await likesRes.json();
+
+            if (likesData.likes && likesData.likes.length > 0) {
+              likersAvatars.innerHTML = likesData.likes
+                .map((like: { actor: { avatar?: string; displayName?: string; handle: string } }) => {
+                  const avatar = like.actor.avatar;
+                  const name = like.actor.displayName || like.actor.handle;
+
+                  if (avatar) {
+                    // Use thumbnail size for performance
+                    const thumbUrl = avatar.replace('/img/avatar/', '/img/avatar_thumbnail/');
+                    return `<img
+                      src="${thumbUrl}"
+                      alt="${name}"
+                      title="${name}"
+                      class="w-8 h-8 rounded-full border-2 border-background"
+                      loading="lazy"
+                    />`;
+                  }
+                  // Default avatar for users without one
+                  return `<div
+                    class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-xs font-medium"
+                    title="${name}"
+                  >${name.charAt(0).toUpperCase()}</div>`;
+                })
+                .join('');
+            }
+          }
+        }
+
+        // Fetch reposters for avatars (limit to 50)
+        const repostersAvatars = container.querySelector('.reposters-avatars');
+        if (reposts > 0 && repostersAvatars) {
+          const repostsRes = await fetch(
+            `https://public.api.bsky.app/xrpc/app.bsky.feed.getRepostedBy?uri=${encodeURIComponent(atUri)}&limit=50`
+          );
+
+          if (repostsRes.ok) {
+            const repostsData = await repostsRes.json();
+
+            if (repostsData.repostedBy && repostsData.repostedBy.length > 0) {
+              repostersAvatars.innerHTML = repostsData.repostedBy
+                .map((user: { avatar?: string; displayName?: string; handle: string }) => {
+                  const avatar = user.avatar;
+                  const name = user.displayName || user.handle;
+
+                  if (avatar) {
+                    // Use thumbnail size for performance
+                    const thumbUrl = avatar.replace('/img/avatar/', '/img/avatar_thumbnail/');
+                    return `<img
+                      src="${thumbUrl}"
+                      alt="${name}"
+                      title="${name}"
+                      class="w-8 h-8 rounded-full border-2 border-background"
+                      loading="lazy"
+                    />`;
+                  }
+                  // Default avatar for users without one
+                  return `<div
+                    class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-xs font-medium"
+                    title="${name}"
+                  >${name.charAt(0).toUpperCase()}</div>`;
+                })
+                .join('');
+            }
+          }
+        }
+
+        // Show content, hide loading
+        loading?.classList.add('hidden');
+        content?.classList.remove('hidden');
+
+      } catch (error) {
+        // On any error, just hide the entire component gracefully
+        container.classList.add('hidden');
+      }
+    }
+  }
+
+  // Run on page load
+  document.addEventListener('DOMContentLoaded', loadBlueskyEngagement);
+
+  // Also run on Astro page transitions (View Transitions API)
+  document.addEventListener('astro:page-load', loadBlueskyEngagement);
+</script>

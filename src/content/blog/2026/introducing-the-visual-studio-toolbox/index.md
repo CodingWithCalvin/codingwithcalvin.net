@@ -3,6 +3,7 @@ title: "Introducing the Visual Studio Toolbox!"
 date: "2026-01-02T12:00:00-05:00"
 categories: [dotnet, csharp, visualstudio, winui]
 description: "Mission Control for your Visual Studio Installations, inspired by JetBrains Toolbox"
+blueskyPostId: 3mbhgd6et4b26
 ---
 
 If you've ever used JetBrains Toolbox, you know how convenient it is. It's the central hub for all your JetBrains IDEs — install new tools, manage updates, launch any version with a single click. Everything in one place, tucked away in the system tray.

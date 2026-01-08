@@ -3,6 +3,7 @@ title: "Introducing the Developer Tools Virtual Environment Manager!"
 date: "2026-01-05T12:00:00-05:00"
 categories: [golang, cli, python, node, ruby]
 description: "A unified, cross-platform runtime version manager that actually works on Windows"
+blueskyPostId: 3mbpawpkn4z26
 ---
 
 If you've ever tried to manage multiple versions of Python, Node.js, or Ruby on Windows, you know the pain. Tools like `nvm`, `pyenv`, and `rbenv` work great on macOS and Linux, but Windows support ranges from "hacky workarounds" to "just use WSL." And even on Unix systems, you're juggling three different tools with three different configurations.

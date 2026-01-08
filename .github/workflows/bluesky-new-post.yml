@@ -59,3 +59,77 @@ jobs:
     secrets:
       BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
       BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+
+  update-frontmatter:
+    needs: [detect, notify]
+    if: needs.detect.outputs.has_posts == 'true' && needs.notify.outputs.post_id != ''
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout blog repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Find and update blog post
+        run: |
+          POST_URL="${{ needs.detect.outputs.post_url }}"
+          POST_ID="${{ needs.notify.outputs.post_id }}"
+
+          echo "Post URL: $POST_URL"
+          echo "Post ID: $POST_ID"
+
+          # Extract slug from URL (e.g., https://www.codingwithcalvin.net/my-post/ -> my-post)
+          SLUG=$(echo "$POST_URL" | sed -E 's|https?://[^/]+/([^/]+)/?|\1|')
+          echo "Extracted slug: $SLUG"
+
+          # Find the markdown file (could be in any year directory)
+          FILE=$(find src/content/blog -path "*/${SLUG}/index.md" | head -1)
+
+          if [ -z "$FILE" ]; then
+            echo "Could not find file for slug: $SLUG"
+            exit 1
+          fi
+
+          echo "Found file: $FILE"
+
+          # Check if blueskyPostId already exists
+          if grep -q "^blueskyPostId:" "$FILE"; then
+            echo "blueskyPostId already exists, skipping"
+            exit 0
+          fi
+
+          # Add blueskyPostId before the closing --- of frontmatter
+          # Using awk for more reliable YAML manipulation
+          awk -v post_id="$POST_ID" '
+            BEGIN { in_frontmatter = 0; frontmatter_end = 0 }
+            /^---$/ {
+              if (in_frontmatter == 0) {
+                in_frontmatter = 1
+                print
+                next
+              } else {
+                print "blueskyPostId: \"" post_id "\""
+                in_frontmatter = 0
+                frontmatter_end = 1
+              }
+            }
+            { print }
+          ' "$FILE" > "$FILE.tmp" && mv "$FILE.tmp" "$FILE"
+
+          echo "Updated $FILE with blueskyPostId: $POST_ID"
+          echo "New frontmatter:"
+          head -20 "$FILE"
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git commit -m "chore(blog): add blueskyPostId to post frontmatter"
+          git push
