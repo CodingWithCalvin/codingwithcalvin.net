@@ -3,6 +3,7 @@ title: "Introducing rnr - A Zero-Dependency Task Runner"
 date: "2026-01-12T12:00:00-05:00"
 categories: [rust, oss, cli]
 description: "Meet rnr (pronounced 'runner') - a cross-platform task runner that lives inside your repo. Contributors clone and run, zero friction."
+blueskyPostId: "3mcap7y23wl2f"
 ---
 
 Have you ever cloned a repository, ready to contribute, only to discover you need to install Node.js, Python, Make, or some other global dependency just to run the build? I have. Many times. And honestly, it's frustrating.
