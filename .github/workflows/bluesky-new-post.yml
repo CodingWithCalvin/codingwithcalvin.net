@@ -68,7 +68,7 @@ jobs:
       - name: Checkout blog repo
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CONTRIBUTORS_TOKEN }}
 
       - name: Find and update blog post
         run: |

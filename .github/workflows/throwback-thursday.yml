@@ -14,7 +14,7 @@ jobs:
       rss_url: 'https://www.codingwithcalvin.net/rss.xml'
       history_variable_name: 'THROWBACK_HISTORY'
     secrets:
-      HISTORY_TOKEN: ${{ secrets.HISTORY_PAT }}
+      HISTORY_TOKEN: ${{ secrets.CONTRIBUTORS_TOKEN }}
 
   post-bluesky:
     needs: select
