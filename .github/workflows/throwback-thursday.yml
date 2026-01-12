@@ -12,6 +12,9 @@ jobs:
     uses: CodingWithCalvin/.github/.github/workflows/random-blog-post-from-rss.yml@main
     with:
       rss_url: 'https://www.codingwithcalvin.net/rss.xml'
+      history_variable_name: 'THROWBACK_HISTORY'
+    secrets:
+      HISTORY_TOKEN: ${{ secrets.HISTORY_PAT }}
 
   post-bluesky:
     needs: select
