@@ -3,6 +3,7 @@ title: "Introducing the Visual Studio MCP Server!"
 date: "2026-01-14T12:00:00-05:00"
 categories: [dotnet, csharp, extensibility, visualstudio, ai, mcp]
 description: "A Visual Studio extension that exposes IDE features through the Model Context Protocol, enabling AI assistants to interact with Visual Studio programmatically."
+blueskyPostId: "3mcfc5n5pxc2s"
 ---
 
 JetBrains is shipping MCP servers for their IDEs. Visual Studio isn't.
