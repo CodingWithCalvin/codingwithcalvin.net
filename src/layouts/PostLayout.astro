@@ -62,6 +62,27 @@ const ogImageUrl = image?.src;
         <slot />
       </div>
 
+      <script>
+        import mermaid from 'mermaid';
+
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: 'dark'
+        });
+
+        // Find all mermaid code blocks (Shiki uses data-language attribute)
+        document.querySelectorAll('pre[data-language="mermaid"]').forEach(async (pre) => {
+          const code = pre.textContent || '';
+          const div = document.createElement('div');
+          div.className = 'mermaid';
+
+          const { svg } = await mermaid.render('mermaid-' + Math.random().toString(36).substr(2, 9), code);
+          div.innerHTML = svg;
+
+          pre.replaceWith(div);
+        });
+      </script>
+
       <blockquote class="mt-12 border-l-4 border-primary bg-background-2 rounded-r-lg p-6 text-center">
         <p class="text-text-muted italic">
           This post, "{title}", first appeared on<br />
