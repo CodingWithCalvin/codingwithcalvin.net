@@ -3,6 +3,7 @@ title: "Introducing the Visual Studio Code MCP Server!"
 date: "2026-01-15T12:00:00-05:00"
 categories: [typescript, extensibility, vscode, ai, mcp]
 description: "A VS Code extension that exposes the IDE's language intelligence through the Model Context Protocol, enabling AI assistants to leverage IntelliSense, Go to Definition, Find References, and more."
+blueskyPostId: "3mci66mistd2p"
 ---
 
 Yesterday I [introduced the Visual Studio MCP Server](https://www.codingwithcalvin.net/introducing-the-visual-studio-mcp-server/). Today, it's VS Code's turn.
