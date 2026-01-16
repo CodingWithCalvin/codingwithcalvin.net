@@ -1,6 +1,10 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
+import sanitizeHtml from 'sanitize-html';
+import MarkdownIt from 'markdown-it';
+
+const parser = new MarkdownIt();
 
 // Get the date portion in Eastern time and return a Date at noon UTC
 // This ensures the pubDate displays the correct calendar date regardless of timezone
@@ -40,6 +44,9 @@ export async function GET(context: APIContext) {
         description: post.data.description || '',
         link: `/${slug}/`,
         categories: post.data.categories,
+        content: sanitizeHtml(parser.render(post.body ?? ''), {
+          allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
+        }),
       };
 
       if (post.data.image) {
