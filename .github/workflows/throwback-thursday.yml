@@ -34,20 +34,3 @@ jobs:
       BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
       BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
 
-  post-linkedin:
-    needs: select
-    if: needs.select.outputs.has_post == 'true'
-    uses: CodingWithCalvin/.github/.github/workflows/linkedin-post.yml@main
-    with:
-      post_text: |
-        Throwback! Originally posted ${{ needs.select.outputs.post_date }}
-
-        ${{ needs.select.outputs.post_title }}
-
-        ${{ needs.select.outputs.post_hashtags }} #ThrowbackThursday
-      article_url: ${{ needs.select.outputs.post_url }}
-      article_title: ${{ needs.select.outputs.post_title }}
-      article_description: ${{ needs.select.outputs.post_description }}
-    secrets:
-      LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
-      LINKEDIN_CLIENT_ID: ${{ secrets.LINKEDIN_CLIENT_ID }}
