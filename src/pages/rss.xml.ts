@@ -51,21 +51,27 @@ export async function GET(context: APIContext) {
       };
 
       const image = getPostImage(post);
+      const imageUrl = `${site}${image.src}`;
+      const imageType = getMimeType(image.src);
+
       item.enclosure = {
-        url: `${site}${image.src}`,
-        type: getMimeType(image.src),
+        url: imageUrl,
+        type: imageType,
         length: 0,
       };
 
-      // Add custom data for bluesky post ID if present
+      // Add media:content and optional bluesky post ID
+      let customData = `<media:content url="${imageUrl}" type="${imageType}" medium="image" />`;
       if (post.data.blueskyPostId) {
-        item.customData = `<bluesky:postId>${post.data.blueskyPostId}</bluesky:postId>`;
+        customData += `<bluesky:postId>${post.data.blueskyPostId}</bluesky:postId>`;
       }
+      item.customData = customData;
 
       return item;
     }),
     xmlns: {
       bluesky: 'https://bsky.app/ns',
+      media: 'http://search.yahoo.com/mrss/',
     },
     customData: `<language>en-us</language>`,
   });
