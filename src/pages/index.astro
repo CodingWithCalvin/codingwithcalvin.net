@@ -14,7 +14,8 @@ const latestPosts = allPosts
     <div class="container mx-auto px-4">
       <div class="relative">
         <div class="absolute inset-0 bg-primary/25 blur-3xl -z-10"></div>
-        <div class="flex flex-col md:flex-row gap-8 mb-12 max-w-4xl mx-auto">
+        <div class="flex flex-col md:flex-row gap-8 mb-12 mx-auto items-center justify-center max-w-[85%]">
+          <div class="hidden lg:block text-[24rem] font-bold text-[#FFB833] opacity-20 select-none leading-none -mt-20">&#123;</div>
         <div class="flex-1">
           <h1 class="text-4xl font-heading mb-4">Who am I?</h1>
           <h3 class="text-xl text-text-muted mb-2">Husband | Father | Woodworker</h3>
@@ -27,12 +28,13 @@ const latestPosts = allPosts
           </p>
         </div>
         <div class="flex-shrink-0">
-          <img 
-            src="/images/homepage.png" 
-            alt="Calvin Allen caricature" 
+          <img
+            src="/images/homepage.png"
+            alt="Calvin Allen caricature"
             class="w-64 h-auto rounded-lg"
           />
         </div>
+          <div class="hidden lg:block text-[24rem] font-bold text-[#FFB833] opacity-20 select-none leading-none -mt-20">&#125;</div>
       </div>
       </div>
 
@@ -46,6 +48,7 @@ const latestPosts = allPosts
           {latestPosts.map(post => (
             <PostCard
               title={post.data.title}
+              subtitle={post.data.subtitle}
               slug={getSlug(post.id)}
               date={post.data.date}
               description={post.data.description}

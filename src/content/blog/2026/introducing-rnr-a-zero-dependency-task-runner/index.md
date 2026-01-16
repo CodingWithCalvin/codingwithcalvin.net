@@ -2,7 +2,8 @@
 title: "Introducing rnr - A Zero-Dependency Task Runner"
 date: "2026-01-12T12:00:00-05:00"
 categories: [rust, oss, cli]
-description: "Meet rnr (pronounced 'runner') - a cross-platform task runner that lives inside your repo. Contributors clone and run, zero friction."
+description: "Most task runners require Node.js, Make, or other global dependencies. rnr (pronounced 'runner') is different - the binaries live inside your repository. Contributors clone your project and immediately run tasks. No setup, no version mismatches, zero friction."
+subtitle: "Clone the repo and run, zero friction!"
 blueskyPostId: "3mcap7y23wl2f"
 ---
 

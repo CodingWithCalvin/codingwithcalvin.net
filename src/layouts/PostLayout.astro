@@ -8,6 +8,7 @@ import BlueskyEngagement from '../components/BlueskyEngagement.astro';
 
 interface Props {
   title: string;
+  subtitle?: string;
   slug: string;
   date: Date;
   categories: string[];
@@ -17,7 +18,7 @@ interface Props {
   blueskyPostId?: string;
 }
 
-const { title, slug, date, categories, description, image, youtube, blueskyPostId } = Astro.props;
+const { title, subtitle, slug, date, categories, description, image, youtube, blueskyPostId } = Astro.props;
 
 const formattedDate = date.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -35,10 +36,14 @@ const ogImageUrl = image?.src;
 <BaseLayout title={title} description={description} image={ogImageUrl} type="article">
   <article class="py-12">
     <div class="container mx-auto px-4 max-w-3xl relative md:pl-8">
-      <div class="absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-b from-primary via-primary/50 to-transparent rounded-full hidden md:block"></div>
+      <div class="absolute left-0 top-0 bottom-0 w-3 bg-gradient-to-b from-primary via-primary/50 to-transparent hidden md:block"></div>
+      <div class="absolute left-3 top-0 bottom-0 w-1 bg-gradient-to-b from-[#FFB833] via-[#FFB833]/50 to-transparent hidden md:block"></div>
       <header class="mb-8">
         <time class="text-text-muted text-sm">{formattedDate}</time>
-        <h1 class="text-4xl font-heading mt-2 mb-4">{title}</h1>
+        <h1 class="text-4xl font-heading mt-2 mb-2">{title}</h1>
+        {subtitle && (
+          <p class="text-[#FFB833] text-xl mb-4">{subtitle}</p>
+        )}
         <CategoryBadges categories={categories} />
       </header>
 
@@ -90,12 +95,12 @@ const ogImageUrl = image?.src;
         </p>
       </blockquote>
 
-      <hr class="mt-12 border-t border-text-muted/30" />
+      <hr class="mt-12 border-t border-[#FFB833]/30" />
 
       {blueskyPostId && (
         <>
           <BlueskyEngagement postId={blueskyPostId} />
-          <hr class="mt-12 border-t border-text-muted/30" />
+          <hr class="mt-12 border-t border-[#FFB833]/30" />
         </>
       )}
 

@@ -4,6 +4,7 @@ import type { ImageMetadata } from 'astro';
 
 interface Props {
   title: string;
+  subtitle?: string;
   slug: string;
   date: Date;
   description?: string;
@@ -11,7 +12,7 @@ interface Props {
   image?: ImageMetadata;
 }
 
-const { title, slug, date, description, categories, image } = Astro.props;
+const { title, subtitle, slug, date, description, categories, image } = Astro.props;
 
 const formattedDate = date.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -21,20 +22,22 @@ const formattedDate = date.toLocaleDateString('en-US', {
 });
 ---
 
-<article class="bg-background-2 rounded-lg overflow-hidden hover:bg-background-3 transition-colors">
+<article class="bg-background-2 rounded-lg overflow-hidden hover:bg-background-3 transition-colors relative">
   {image && (
     <a href={`/${slug}/`} class="block aspect-video overflow-hidden">
       <Image
         src={image}
         alt={title}
-        width={400}
-        height={225}
+        width={1920}
+        height={1080}
+        quality={100}
+        format="png"
         class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
         loading="lazy"
       />
     </a>
   )}
-  <div class="p-6">
+  <div class="p-6 min-h-[320px] pb-12">
     <div class="flex flex-wrap gap-2 mb-3">
       {categories.map(category => (
         <a
@@ -45,14 +48,17 @@ const formattedDate = date.toLocaleDateString('en-US', {
         </a>
       ))}
     </div>
-    <h2 class="text-xl font-heading mb-2">
+    <h2 class="text-xl font-heading mb-1">
       <a href={`/${slug}/`} class="text-text hover:text-primary no-underline">
         {title}
       </a>
     </h2>
-    {description && (
-      <p class="text-text-muted text-sm mb-3 line-clamp-2">{description}</p>
+    {subtitle && (
+      <p class="text-[#FFB833] text-sm mb-2">{subtitle}</p>
     )}
-    <time class="text-text-muted text-xs">{formattedDate}</time>
+    {description && (
+      <p class="text-text-muted text-sm mb-3 line-clamp-6">{description}</p>
+    )}
+    <time class="text-text-muted text-xs absolute bottom-6 right-6">{formattedDate}</time>
   </div>
 </article>
