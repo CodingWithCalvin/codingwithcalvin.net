@@ -60,8 +60,11 @@ export async function GET(context: APIContext) {
         length: 0,
       };
 
-      // Add media:content and optional bluesky post ID
+      // Add media:content, subtitle, and optional bluesky post ID
       let customData = `<media:content url="${imageUrl}" type="${imageType}" medium="image" />`;
+      if (post.data.subtitle) {
+        customData += `<subtitle>${post.data.subtitle}</subtitle>`;
+      }
       if (post.data.blueskyPostId) {
         customData += `<bluesky:postId>${post.data.blueskyPostId}</bluesky:postId>`;
       }

@@ -2,7 +2,8 @@
 title: "Introducing the 'Git Ranger' Visual Studio extension!"
 date: "2026-01-16T12:00:00-05:00"
 categories: [dotnet, csharp, extensibility, visualstudio]
-description: "A new Visual Studio extension bringing enhanced Git tooling to your editor!"
+description: "Git Ranger brings enhanced Git tooling to Visual Studio 2022 and 2026. See who modified each line, when, and why - right in your editor. Inline annotations, gutter margins, author color coding, age heat maps, and more. Inspired by GitLens for VS Code."
+subtitle: "Enhanced Git tooling for Visual Studio!"
 ---
 
 Introducing "[Git Ranger](https://marketplace.visualstudio.com/items?itemName=CodingWithCalvin.VS-GitRanger)", an extension for Visual Studio 2022 (and 2026!) that brings enhanced Git tooling directly into your editor. If you've ever used GitLens in VS Code, this extension draws inspiration from that experience and aims to bring similar capabilities to Visual Studio.

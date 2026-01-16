@@ -1,6 +1,11 @@
 import { createInterface } from "readline";
 import { mkdir, writeFile } from "fs/promises";
 import { existsSync } from "fs";
+import { spawn } from "child_process";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const rl = createInterface({
   input: process.stdin,
@@ -29,6 +34,19 @@ function getISODate() {
   return now.toISOString().replace("Z", "").split(".")[0] + offsetStr;
 }
 
+async function generateCover(postDir) {
+  return new Promise((resolve, reject) => {
+    const scriptPath = join(__dirname, "generate-cover.js");
+    const child = spawn("node", [scriptPath, postDir], {
+      stdio: "inherit",
+    });
+    child.on("close", (code) => {
+      if (code === 0) resolve();
+      else reject(new Error(`Cover generation failed with code ${code}`));
+    });
+  });
+}
+
 async function main() {
   console.log("\n📝 New Blog Post\n");
 
@@ -49,7 +67,14 @@ async function main() {
     : [];
 
   const description = await ask("Description (optional): ");
-  const includeCover = await ask("Include cover image? (y/N): ");
+
+  const includeCover = await ask("Generate cover image? (y/N): ");
+  const wantsCover = includeCover.toLowerCase() === "y";
+
+  let subtitle = "";
+  if (wantsCover) {
+    subtitle = await ask("Cover subtitle (optional): ");
+  }
 
   rl.close();
 
@@ -72,9 +97,8 @@ async function main() {
     frontmatter.push(`description: "${description}"`);
   }
 
-  const wantsCover = includeCover.toLowerCase() === "y";
-  if (wantsCover) {
-    frontmatter.push("image: ./cover.png");
+  if (subtitle) {
+    frontmatter.push(`subtitle: "${subtitle}"`);
   }
 
   frontmatter.push("---", "", "Your content here...", "");
@@ -83,8 +107,15 @@ async function main() {
   await writeFile(`${dir}/index.md`, frontmatter.join("\n"));
 
   console.log(`\n✅ Created: ${dir}/index.md`);
+
   if (wantsCover) {
-    console.log(`📷 Don't forget to add cover.png to ${dir}/`);
+    console.log(`\n🎨 Generating cover image...`);
+    try {
+      await generateCover(dir);
+    } catch (err) {
+      console.log(`⚠️  Cover generation failed: ${err.message}`);
+      console.log(`   You can run 'npm run cover' later to generate it.`);
+    }
   }
 }
 

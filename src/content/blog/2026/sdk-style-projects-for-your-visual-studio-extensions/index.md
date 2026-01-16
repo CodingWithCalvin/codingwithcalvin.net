@@ -2,7 +2,8 @@
 title: "SDK-style Projects for your Visual Studio Extensions!"
 date: "2026-01-01T12:00:00-05:00"
 categories: [dotnet, csharp, vsix]
-description: "Remember that MSBuild SDK post from last week? Well, I actually built something with it - an SDK that brings modern project files to Visual Studio extension development."
+description: "Tired of hundreds of lines of XML in your VSIX project files? CodingWithCalvin.VsixSdk is an MSBuild SDK that brings modern SDK-style .csproj files to Visual Studio extension development. Clean project files, dotnet CLI support, and no more XML soup."
+subtitle: "Modern project files for VSIX development!"
 blueskyPostId: 3mbezw2qfgt2m
 ---
 

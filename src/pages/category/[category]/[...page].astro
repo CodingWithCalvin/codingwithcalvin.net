@@ -54,6 +54,7 @@ const getSlug = (id: string) => id.split('/').pop() || id;
         {page.data.map(post => (
           <PostCard
             title={post.data.title}
+            subtitle={post.data.subtitle}
             slug={getSlug(post.id)}
             date={post.data.date}
             description={post.data.description}

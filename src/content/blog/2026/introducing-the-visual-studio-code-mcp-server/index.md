@@ -2,7 +2,8 @@
 title: "Introducing the Visual Studio Code MCP Server!"
 date: "2026-01-15T12:00:00-05:00"
 categories: [typescript, extensibility, vscode, ai, mcp]
-description: "A VS Code extension that exposes the IDE's language intelligence through the Model Context Protocol, enabling AI assistants to leverage IntelliSense, Go to Definition, Find References, and more."
+description: "VS Code has incredible language intelligence - IntelliSense, Go to Definition, Find References - but it's locked inside the IDE. This extension bridges that gap, exposing VS Code's language server capabilities through MCP so your AI tools can tap into the same semantic understanding."
+subtitle: "Giving AI access to VS Code's language intelligence!"
 blueskyPostId: "3mci66mistd2p"
 ---
 

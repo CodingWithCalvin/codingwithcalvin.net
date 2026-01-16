@@ -2,7 +2,8 @@
 title: "Introducing the Developer Tools Virtual Environment Manager!"
 date: "2026-01-05T12:00:00-05:00"
 categories: [golang, cli, python, node, ruby]
-description: "A unified, cross-platform runtime version manager that actually works on Windows"
+description: "Tired of juggling nvm, pyenv, and rbenv? dtvem is a unified, cross-platform runtime version manager written in Go that manages Python, Node.js, and Ruby - and actually works on Windows without WSL."
+subtitle: "One tool to rule all your runtimes!"
 blueskyPostId: 3mbpawpkn4z26
 ---
 

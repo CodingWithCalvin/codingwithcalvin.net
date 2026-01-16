@@ -2,7 +2,8 @@
 title: "Introducing the Visual Studio Toolbox!"
 date: "2026-01-02T12:00:00-05:00"
 categories: [dotnet, csharp, visualstudio, winui]
-description: "Mission Control for your Visual Studio Installations, inspired by JetBrains Toolbox"
+description: "Inspired by JetBrains Toolbox, this Windows system tray app automatically detects all your Visual Studio installations - 2019, 2022, 2026, experimental hives - and puts them one click away. No more hunting through the Start menu."
+subtitle: "Mission Control for Visual Studio!"
 blueskyPostId: 3mbhgd6et4b26
 ---
 

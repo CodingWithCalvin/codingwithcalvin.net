@@ -2,7 +2,8 @@
 title: "Introducing vscwhere!"
 date: "2026-01-08T12:00:00-05:00"
 categories: [rust, cli, vscode]
-description: "A CLI tool for locating Visual Studio Code installations on Windows, inspired by Microsoft's vswhere"
+description: "Need to find VS Code installations for CI/CD scripts or automation? vscwhere is a CLI tool written in Rust that locates all Visual Studio Code installations on Windows - Stable and Insiders builds alike. Same familiar interface as Microsoft's vswhere."
+subtitle: "Like vswhere, but for VS Code!"
 blueskyPostId: 3mbwhet7cbl24
 ---
 
