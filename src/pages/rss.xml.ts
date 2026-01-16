@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
 import sanitizeHtml from 'sanitize-html';
 import MarkdownIt from 'markdown-it';
+import { getPostImage } from '../lib/posts';
 
 const parser = new MarkdownIt();
 
@@ -49,13 +50,12 @@ export async function GET(context: APIContext) {
         }),
       };
 
-      if (post.data.image) {
-        item.enclosure = {
-          url: `${site}${post.data.image.src}`,
-          type: getMimeType(post.data.image.src),
-          length: 0,
-        };
-      }
+      const image = getPostImage(post);
+      item.enclosure = {
+        url: `${site}${image.src}`,
+        type: getMimeType(image.src),
+        length: 0,
+      };
 
       // Add custom data for bluesky post ID if present
       if (post.data.blueskyPostId) {
