@@ -4,6 +4,7 @@ date: "2026-01-19T12:00:00-05:00"
 categories: [dotnet, csharp, extensibility, visualstudio, couchbase]
 description: "Couchbase Explorer brings database browsing and management directly into Visual Studio 2022 and 2026. Connect to your Couchbase Server clusters, browse buckets, scopes, and collections, and view documents - all without leaving your IDE."
 subtitle: "Couchbase database tooling for Visual Studio!"
+blueskyPostId: "3mcsa6nntss22"
 ---
 
 Introducing "[Couchbase Explorer](https://marketplace.visualstudio.com/items?itemName=CodingWithCalvin.CouchbaseExplorer)", an extension for Visual Studio 2022 (and 2026!) that brings Couchbase database browsing and management directly into your IDE. If you've ever found yourself constantly switching between Visual Studio and Couchbase's web console while developing, this extension is for you.
