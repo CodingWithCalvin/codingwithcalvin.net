@@ -42,7 +42,7 @@ jobs:
       rss_url: 'https://www.codingwithcalvin.net/rss.xml'
       target_date: ${{ inputs.target_date }}
 
-  notify:
+  notify-bluesky:
     needs: detect
     if: needs.detect.outputs.has_posts == 'true'
     uses: CodingWithCalvin/.github/.github/workflows/bluesky-post.yml@main
@@ -60,9 +60,27 @@ jobs:
       BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
       BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
 
+  notify-x:
+    needs: detect
+    if: needs.detect.outputs.has_posts == 'true'
+    uses: CodingWithCalvin/.github/.github/workflows/x-post.yml@main
+    with:
+      post_text: |
+        New Blog Post!
+
+        ${{ needs.detect.outputs.post_title }}
+
+        ${{ needs.detect.outputs.post_hashtags }}
+      embed_url: ${{ needs.detect.outputs.post_url }}
+    secrets:
+      X_CONSUMER_KEY: ${{ secrets.X_CONSUMER_KEY }}
+      X_CONSUMER_KEY_SECRET: ${{ secrets.X_CONSUMER_KEY_SECRET }}
+      X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+      X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+
   update-frontmatter:
-    needs: [detect, notify]
-    if: needs.detect.outputs.has_posts == 'true' && needs.notify.outputs.post_id != ''
+    needs: [detect, notify-bluesky]
+    if: needs.detect.outputs.has_posts == 'true' && needs.notify-bluesky.outputs.post_id != ''
     runs-on: ubuntu-latest
     steps:
       - name: Checkout blog repo
@@ -73,7 +91,7 @@ jobs:
       - name: Find and update blog post
         run: |
           POST_URL="${{ needs.detect.outputs.post_url }}"
-          POST_ID="${{ needs.notify.outputs.post_id }}"
+          POST_ID="${{ needs.notify-bluesky.outputs.post_id }}"
 
           echo "Post URL: $POST_URL"
           echo "Post ID: $POST_ID"
