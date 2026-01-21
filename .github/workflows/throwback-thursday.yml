@@ -34,3 +34,21 @@ jobs:
       BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
       BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
 
+  post-x:
+    needs: select
+    if: needs.select.outputs.has_post == 'true'
+    uses: CodingWithCalvin/.github/.github/workflows/x-post.yml@main
+    with:
+      post_text: |
+        Throwback! Originally posted ${{ needs.select.outputs.post_date }}
+
+        ${{ needs.select.outputs.post_title }}
+
+        ${{ needs.select.outputs.post_hashtags }} #ThrowbackThursday
+      embed_url: ${{ needs.select.outputs.post_url }}
+    secrets:
+      X_CONSUMER_KEY: ${{ secrets.X_CONSUMER_KEY }}
+      X_CONSUMER_KEY_SECRET: ${{ secrets.X_CONSUMER_KEY_SECRET }}
+      X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+      X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+
