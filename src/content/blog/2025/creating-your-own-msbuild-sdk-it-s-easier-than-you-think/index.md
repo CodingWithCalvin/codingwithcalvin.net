@@ -3,6 +3,7 @@ title: "Creating Your Own MSBuild SDK - It's Easier Than You Think!"
 date: "2025-12-25T12:00:00-05:00"
 categories: [msbuild, dotnet]
 description: "An MSBuild SDK is basically a NuGet package that automatically imports .props and .targets files into your project. That's it. That's the whole thing."
+subtitle: "Build your own SDK package!"
 ---
 
 > This post is part of the 2025 C# Advent Calendar.

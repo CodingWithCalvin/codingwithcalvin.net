@@ -3,6 +3,7 @@ title: "Uploading Files with HttpClient in .NET 6"
 date: "2022-04-12T12:00:00-05:00"
 categories: [dotnet,csharp,httpclient]
 description: "I recently needed to figure out a way to send files to a third-party 'document manager' system using `HttpClient` in .NET 6.0. This 'document manager' system already had an API for uploading files, which we had previously gotten working in our teams Postman collection."
+subtitle: "Multipart form data uploads!"
 ---
 
 ### The Problem

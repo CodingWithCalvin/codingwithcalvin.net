@@ -3,6 +3,7 @@ title: "Reflecting on 2025"
 date: "2025-12-31T12:00:00-05:00"
 categories: [meta, retrospective]
 description: "A year of highs and lows - from a promotion to a career pivot, health challenges, and a burst of open source work to close out the year."
+subtitle: "A year of change and growth!"
 ---
 
 2025 was a year of change. Some of it planned, some of it not. Looking back, it feels like I lived through two or three different years packed into one.

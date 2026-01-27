@@ -3,6 +3,7 @@ title: "GitKraken Git GUI How-To: Cloning a Repository"
 date: "2020-05-09T12:00:00-05:00"
 categories: [gitkraken,git]
 description: "In this tutorial, I'm going to show you how to use the GitKraken Git GUI to clone a repository"
+subtitle: "Getting started with GitKraken!"
 ---
 
 If you're new to the GitKraken Git GUI or interested in it, one of the first things you'll want to do after installing it is clone a repository so you can get to work.

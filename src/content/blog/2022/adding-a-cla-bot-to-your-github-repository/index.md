@@ -3,6 +3,7 @@ title: "Adding a CLA Bot to Your GitHub Repository"
 date: "2022-05-27T12:00:00-05:00"
 categories: [github,devops,cla]
 description: "Today, I spent a little bit of time figuring out how to get a proper CLA bot attached to some GitHub repositories. Gotta tell ya, it wasn't that hard, but I wanted to blog it anyway so I can refer back when I have to do it again in 5 years."
+subtitle: "Automating contributor agreements!"
 ---
 
 Today, I spent a little bit of time figuring out how to get a proper CLA bot attached to some GitHub repositories. Gotta tell ya, it wasn't that hard, but I wanted to blog it anyway so I can refer back when I have to do it again in 5 years. Here we go.

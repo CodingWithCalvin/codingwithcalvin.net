@@ -3,6 +3,7 @@ title: "Deleting Failed AzureDevOps Service Connections"
 categories: [azure,devops,postman]
 description: "I had three broken / failed AzureDevOps service connections that I could not remove via the UI.  I finally figured it out using AzureDevOps API.  Read on to find out how!"
 date: "2020-04-19T12:00:00-05:00"
+subtitle: "Using the API when UI fails!"
 ---
 
 I've let them linger for too long.  It's time to figure out a way to delete the three service connections in my Azure DevOps project that don't work, and can't be deleted through the UI.  There has to be a way!

@@ -3,6 +3,7 @@ title: "Introducing the 'Breakpoint Notifier' Visual Studio extension!"
 date: "2023-04-08T12:00:00-05:00"
 categories: [dotnet, csharp, extensibility, visualstudio]
 description: "Another new Visual Studio extension based on a request from a friend. Take a look, let me know what you think!"
+subtitle: "Never miss a breakpoint again!"
 ---
 
 Introducing "[Breakpoint Notifier](https://marketplace.visualstudio.com/items?itemName=coding-with-calvin.BreakpointNotifier)", an extension for Visual Studio 2022 and up that tosses up a messagebox when a breakpoint is hit while you're debugging. A potentially useful extension if you like to go watch YouTube videos while you wait for a long running process to finally get to that breakpoint.

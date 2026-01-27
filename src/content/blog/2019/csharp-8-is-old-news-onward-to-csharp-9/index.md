@@ -3,6 +3,7 @@ title: "C# 8 is old news.  Onward, to C# 9!"
 categories: [csharp,dotnet,csadvent]
 description: "Let's take a peek at the current list of proposals for C# 9!"
 date: "2019-12-25T12:00:00-05:00"
+subtitle: "A peek at upcoming C# features!"
 ---
 
 > This post is part of the 2019 C# Advent Calendar.  

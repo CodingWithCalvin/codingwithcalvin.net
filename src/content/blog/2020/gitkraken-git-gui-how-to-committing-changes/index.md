@@ -3,6 +3,7 @@ title: "GitKraken Git GUI How-To: Committing Changes"
 date: "2020-06-19T12:00:00-05:00"
 categories: [gitkraken,git]
 description: "In this post, we'll take a look at how to commit your changes inside the GitKraken Git GUI application."
+subtitle: "Saving your work in GitKraken!"
 ---
 
 In my previous post, "[GitKraken Git GUI How-To: Add & Remove Files](https://www.codingwithcalvin.net/gitkraken-git-gui-how-to-add-remove-files)", we went over how to add and remove (stage and unstage) changes using the GitKraken Git GUI application.
