@@ -4,6 +4,7 @@ date: "2026-01-27T12:00:00-05:00"
 categories: [dotnet, csharp, extensibility, visualstudio]
 description: "Stop squinting at minified JSON in the debugger. I built an extension that gives you beautiful, formatted views of your string data while debugging!"
 subtitle: "Beautiful debug visualizers for Visual Studio!"
+blueskyPostId: "3mdgmpph3sm2h"
 ---
 
 If you've ever found yourself debugging an application and hovering over a string variable that contains a massive blob of minified JSON, XML, or some other structured data - you know the pain. You squint at the DataTip, try to make sense of the wall of text, maybe copy it out to a separate tool to format it, and by then you've lost your debugging flow entirely.
