@@ -3,6 +3,7 @@ title: "My Blogging Process - Part 1"
 categories: [meta,blogging]
 description: "Somewhat of a 'meta' post, but here's how I get new blog posts into the world!"
 date: "2020-01-21T12:00:00-05:00"
+subtitle: "Behind the scenes of my blog!"
 ---
 
 After a conversation about "how we blog" in a Slack channel I'm part of, I decided it may be best to just blog it.  Nothing more meta than blogging about your blog, right?

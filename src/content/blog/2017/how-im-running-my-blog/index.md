@@ -2,6 +2,7 @@
 title: "How I'm Running My Blog - Part I"
 categories: [meta]
 date: "2017-10-13T12:00:00-05:00"
+subtitle: "Jekyll, HTTPS, and self-hosting!"
 ---
 
 This post is pretty meta, actually, but I found it a little too interesting not to publish.

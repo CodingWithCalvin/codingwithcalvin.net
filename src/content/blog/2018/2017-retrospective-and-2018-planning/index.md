@@ -2,6 +2,7 @@
 title: "2017 Retrospective and 2018 Planning"
 categories: [meta,retrospective,planning]
 date: "2018-01-05T12:00:00-05:00"
+subtitle: "Looking back and planning ahead!"
 ---
 
 ## 2017

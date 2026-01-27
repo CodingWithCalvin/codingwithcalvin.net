@@ -2,6 +2,7 @@
 title: "CodePaLOUsa 2013 Review"
 categories: [codepalousa, conference, review]
 date: "2013-05-01T12:00:00-05:00"
+subtitle: "A midwest developer conference experience!"
 ---
 
 I had the opportunity this year to attend one of the midwest’s premiere community-ran developer conferences, CodePaLOUsa, which was held in Louisville, KY on April 25th-27th.

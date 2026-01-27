@@ -2,6 +2,7 @@
 title: "iTunes Podcast Feeds Now Support LetsEncrypt Certificates!"
 categories: [itunes, letsencrypt, podcast]
 date: "2016-12-19T12:00:00-05:00"
+subtitle: "Free SSL for your podcast feeds!"
 ---
 
 For all of you podcasters out there, Apple has FINALLY enabled support for [LetsEncrypt](https://letsencrypt.org) certificates to be used on your podcast feeds. I only recently ran into this issue standing up a new feed for [The Talking Devs](https://www.thetalkingdevs.com), and getting denied by the iTunes submit process (but accepted right away via Googles).

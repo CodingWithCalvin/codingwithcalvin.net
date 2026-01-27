@@ -2,6 +2,7 @@
 title: "Storing Images in Azure Blob Storage with Ease"
 categories: [azure, csharp, dotnet]
 date: "2012-11-12T12:00:00-05:00"
+subtitle: "Cloud storage made simple!"
 ---
 
 On a recent project, we had a need to integrate Azure blob storage with our web application (also hosted on Azure) to store images. What we found, is that it’s so easy!

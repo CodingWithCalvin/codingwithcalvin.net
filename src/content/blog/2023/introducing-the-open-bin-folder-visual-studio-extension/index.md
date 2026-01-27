@@ -1,8 +1,9 @@
 ---
 title: "Introducing the 'Open Bin Folder' Visual Studio extension!"
-date: "2023-04-02T16:08:01-04:00"
+date: "2023-04-02T12:00:00-05:00"
 categories: [dotnet, csharp, extensibility, visualstudio]
 description: "I released a new extension for Visual Studio, and I want you to know about it!"
+subtitle: "Quick access to your output directory!"
 ---
 
 One week ago, I [stumbled across a post on the Visual Studio developer community](https://developercommunity.visualstudio.com/t/Please-add-an-Open-Current-Bin-command/10248475), asking Microsoft to add a button / context menu item that could open the current projects bin folder with a single click.

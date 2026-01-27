@@ -1,8 +1,9 @@
 ---
 title: "Introducing the 'Visual Studio VSIX Signer' GitHub Action"
-date: "2023-04-06T12:09:57-04:00"
+date: "2023-04-06T12:00:00-05:00"
 categories: [dotnet, csharp, extensibility, devops]
 description: "Before you deploy that Visual Studio extension, you may want to sign it so folks know you're legit. This GitHub Action can help!"
+subtitle: "Sign your extensions automatically!"
 ---
 
 Introducing "[Visual Studio VSIX Signer](https://github.com/marketplace/actions/visual-studio-vsix-signer)", a GitHub Action that assists you in signing your Visual Studio extensions through a workflow on GitHub!

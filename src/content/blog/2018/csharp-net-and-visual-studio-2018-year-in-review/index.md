@@ -3,6 +3,7 @@ title: "C#, .NET, and Visual Studio - 2018 Year in Review"
 categories: ["dotnet","csharp","visualstudio","csadvent"]
 description: "Let's take a look back through 2018 to see how C#, .NET, and Visual Studio have progressed!"
 date: "2018-12-25T12:00:00-05:00"
+subtitle: "A year of .NET highlights!"
 ---
 
 > My second contribution to this year's CSAdvent (and one of the final two posts!), hosted by my buddy Matt Groves.  Visit [https://crosscuttingconcerns.com/The-Second-Annual-C-Advent](https://crosscuttingconcerns.com/The-Second-Annual-C-Advent) to see the full calendar of posts!

@@ -1,8 +1,9 @@
 ---
 title: "Installing Docker, and Docker-Compose, in WSL2/Ubuntu on Windows"
-date: "2021-09-02T14:01:44-04:00"
+date: "2021-09-02T12:00:00-05:00"
 categories: [wsl,docker]
 description: "Since Docker Desktop has a new subscription model, I needed a way to run docker and docker-compose, without subscribing. That's easier said than done on Windows, though, so WSL2 to the rescue!"
+subtitle: "Docker without Docker Desktop!"
 ---
 
 Docker Desktop just announced/released their new subscription model, and it hasn't sat well with many folks.  The good news is there are ways around it, even on Windows.

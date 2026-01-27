@@ -1,8 +1,9 @@
 ---
 title: "Introducing the 'Visual Studio VSIX Versioner' GitHub Action"
-date: "2023-04-05T12:00:45-04:00"
+date: "2023-04-05T12:00:00-05:00"
 categories: [dotnet, csharp, extensibility, devops]
 description: "Having problems versioning that Visual Studio extension you're trying to publish through a GitHub workflow? I gotchu."
+subtitle: "Automate your extension versioning!"
 ---
 
 Introducing "[Visual Studio VSIX Versioner](https://github.com/marketplace/actions/visual-studio-vsix-versioner)", a GitHub Action that assists you in versioning your Visual Studio extensions before you publish to the marketplace through a workflow on GitHub!

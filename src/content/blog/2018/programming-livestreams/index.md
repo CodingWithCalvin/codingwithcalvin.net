@@ -2,6 +2,7 @@
 title: "Programming Live Streams"
 categories: [programming, streaming, twitch]
 date: "2018-02-02T12:00:00-05:00"
+subtitle: "Watch developers code live on Twitch!"
 ---
 
 Recently, I've become somewhat hooked on watching a few people live code various things on Twitch.  

@@ -3,6 +3,7 @@ title: "Becoming a GitKraken Ambassador"
 categories: [gitkraken,meta,ambassador]
 description: "I've been accepted into the GitKraken Ambassadorship program - let's discuss!"
 date: "2019-05-17T12:00:00-05:00"
+subtitle: "Joining the GitKraken community!"
 ---
 
 I've been promoting the [GitKraken Git Client](https://www.gitkraken.com/git-client) for a little while on social media, because it's such a beautiful, cross-platform, and just overall fantastic GUI Git client made by the folks over at [Axosoft](https://www.axosoft.com/).

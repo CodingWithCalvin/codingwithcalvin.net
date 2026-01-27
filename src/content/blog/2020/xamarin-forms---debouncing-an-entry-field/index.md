@@ -3,6 +3,7 @@ title: "Xamarin Forms - Debouncing an Entry Field"
 categories: [dotnet,xamarin,csharp]
 description: "While adding a search-as-you-type input to our Xamarin.Forms application, I wanted to 'debounce' it to save network requests.  Read on to find out how I did it"
 date: "2020-01-18T12:00:00-05:00"
+subtitle: "Search-as-you-type optimization!"
 ---
 
 > Curious what "debounce" means?

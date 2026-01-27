@@ -1,8 +1,9 @@
 ---
 title: "What's the Difference Anyway?! Class, Struct, Record, oh my!"
-date: "2021-12-25T08:00:00-05:00"
+date: "2021-12-25T12:00:00-05:00"
 categories: [dotnet,csharp]
 description: "In this post, we'll talk briefly about the differences between a class, struct, and a record in C#."
+subtitle: "Understanding C# type fundamentals!"
 ---
 
 > This blog post is part of the 2021 C# Advent Calendar (the fifth year!). [Please check out all of the other awesome posts in this years C# Advent.](https://www.csadvent.christmas/)

@@ -2,6 +2,7 @@
 title: "CodeMash 2018 Review"
 categories: [codemash, conference, review]
 date: "2018-01-19T12:00:00-05:00"
+subtitle: "Back at CodeMash after a year away!"
 ---
 
 After missing CodeMash last year for my wife's cancer surgery, I was able to make my triumphant return to CodeMash this year.

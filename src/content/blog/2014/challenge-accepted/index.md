@@ -2,6 +2,7 @@
 title: "Challenge, Accepted!"
 categories: [career, meta]
 date: "2014-05-23T12:00:00-05:00"
+subtitle: "A new career adventure begins!"
 ---
 
 The last few weeks have been a little stressful here at the Allen household due to the job situation, but things are turning around!

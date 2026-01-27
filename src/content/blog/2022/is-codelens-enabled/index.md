@@ -1,8 +1,9 @@
 ---
 title: "Is CodeLens Enabled?"
-date: "2022-06-08T12:20:36-05:00"
+date: "2022-06-08T12:00:00-05:00"
 categories: [csharp, dotnet, extensibility]
 description: "What this did, however, is gave us cause for figuring out if CodeLens is enabled in Visual Studio at all (our provider doesn't do much good if everything is disabled)."
+subtitle: "Checking CodeLens settings programmatically!"
 ---
 
 In the CodeStream extension for Visual Studio, we recently added our own CodeLens provider ([I blogged a little about THAT problem in another post](https://www.codingwithcalvin.net/extending-visual-studio-codelens-functionality/)) that provides information from New Relics observability platform / agents. The idea being that you could see at the method level, what the average duration, throughput, or errors, have been recorded over a certain timeframe. More on that that some other time 😊.

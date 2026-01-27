@@ -1,8 +1,9 @@
 ---
 title: "Extending Visual Studio CodeLens Functionality - Part II"
-date: "2023-04-01T16:34:44-04:00"
+date: "2023-04-01T12:00:00-05:00"
 categories: [dotnet, csharp, extensibility]
 description: "You've got your own Visual Studio extension with custom CodeLens entries (because you used part I of this series), but now you find yourself needing to call code in the main extension host FROM the CodeLens Provider. How? Read on!"
+subtitle: "Cross-process communication for CodeLens!"
 ---
 
 > Check out the other posts in this series!

@@ -2,6 +2,7 @@
 title: "Visual Studio Extension - Open in Notepad++"
 categories: [extensibility, visualstudio, notepadplusplus, oss]
 date: "2016-04-22T12:00:00-05:00"
+subtitle: "Quick access to your favorite editor!"
 ---
 
 The past weekend, I took a few moments to relish in the "fun" that is programming something that is not work-related. That creation came to be a Visual Studio extension, known as, "Open in Notepad++".

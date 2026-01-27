@@ -2,6 +2,7 @@
 title: "Creating a default Fiddler rule for Localhost traffic only"
 categories: [programming, fiddler]
 date: "2018-05-30T12:00:00-05:00"
+subtitle: "Filter out the noise in Fiddler!"
 ---
 
 Fiddler is a fantastic tool for assisting in debugging HTTP request/responses.

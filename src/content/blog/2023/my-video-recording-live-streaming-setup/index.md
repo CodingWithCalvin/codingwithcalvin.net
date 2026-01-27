@@ -1,8 +1,9 @@
 ---
 title: "My Video Recording / Live Streaming Setup"
-date: "2023-06-01T11:29:24-04:00"
+date: "2023-06-01T12:00:00-05:00"
 categories: [meta, content]
 description: "Definitely a meta-post, but I've had a few questions about the hardware I started using to produce videos / live-stream"
+subtitle: "Hardware and software for content creation!"
 ---
 
 I've recently been outfitting my office with a new barrage of hardware so that I can produce (hopefully) high-quality videos for YouTube, as well as live-stream (at some point).

@@ -2,6 +2,7 @@
 title: "Channel 9 PowerShell Download Script for dotNetConf 2014 Videos"
 categories: [channel9,dotnetconf,powershell]
 date: "2014-06-04T12:00:00-05:00"
+subtitle: "Download dotNetConf videos with PowerShell!"
 ---
 
 Based on my previous script of a nearly identical title, this script will snag the 2014 dotNetConf videos (high quality MP4s) from Channel 9.

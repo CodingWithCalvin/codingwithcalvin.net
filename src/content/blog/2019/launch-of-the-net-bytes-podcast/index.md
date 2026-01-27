@@ -3,6 +3,7 @@ title: "Launch of the .NET Bytes Podcast!"
 categories: ["dotnet","csharp","visualstudio"]
 description: "I've launched a new podcast with Matt Groves (of the Cross-Cutting-Concerns fame) to disseminate the news about .NET, C#, Visual Studio and everything in between from Redmond (Microsoft) and around the world!"
 date: "2019-03-04T12:00:00-05:00"
+subtitle: "Your source for .NET news!"
 ---
 
 Just a quick post today about the launch of our new podcast, "[.NET Bytes](https://www.dotnetbytes.fm/)".  And, by "our", I mean me and [Matt Groves](https://crosscuttingconcerns.com/) (of Cross-Cutting-Concerns fame)
