@@ -61,7 +61,7 @@ It's not just about formatting, though. Each visualizer window gives you:
 
 ## How To Use It
 
-1. Install the extension from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=CodingWithCalvin.Debugalizers)
+1. Install the extension from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=CodingWithCalvin.VS-Debugalizers)
 2. Start debugging your application
 3. Hover over any string variable
 4. Click the magnifying glass icon in the DataTip
