@@ -1,6 +1,6 @@
 ---
 title: "My Video Recording / Live Streaming Setup"
-date: "2023-06-01T11:29:24-04:00"
+date: "2023-06-01T12:00:00-05:00"
 categories: [meta, content]
 description: "Definitely a meta-post, but I've had a few questions about the hardware I started using to produce videos / live-stream"
 ---

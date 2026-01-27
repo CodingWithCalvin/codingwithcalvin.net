@@ -1,6 +1,6 @@
 ---
 title: "Finding Symbols in Your C# Projects Using Roslyn"
-date: "2023-06-30T12:14:32-04:00"
+date: "2023-06-30T12:00:00-05:00"
 categories: [dotnet, csharp, vsix]
 description: "From a Visual Studio extension, learn how to search and navigate to, a symbol in the currently loaded solution using Roslyn."
 ---

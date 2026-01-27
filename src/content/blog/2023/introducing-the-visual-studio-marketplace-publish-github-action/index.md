@@ -1,6 +1,6 @@
 ---
 title: 'Introducing the "Visual Studio Marketplace Publisher" GitHub Action'
-date: "2023-04-04T14:39:50-04:00"
+date: "2023-04-04T12:00:00-05:00"
 categories: [dotnet, csharp, extensibility, devops]
 description: "You've got your own Visual Studio extension, open source on GitHub, but you need to figure out HOW to publish it to the Visual Studio marketplace - this new GitHub Action can help!"
 ---

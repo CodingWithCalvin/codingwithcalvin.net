@@ -1,6 +1,6 @@
 ---
 title: "Introducing the 'Breakpoint Notifier' Visual Studio extension!"
-date: "2023-04-08T21:22:49-04:00"
+date: "2023-04-08T12:00:00-05:00"
 categories: [dotnet, csharp, extensibility, visualstudio]
 description: "Another new Visual Studio extension based on a request from a friend. Take a look, let me know what you think!"
 ---

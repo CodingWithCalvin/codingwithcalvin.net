@@ -1,6 +1,6 @@
 ---
 title: "Introducing the 'Open Bin Folder' Visual Studio extension!"
-date: "2023-04-02T16:08:01-04:00"
+date: "2023-04-02T12:00:00-05:00"
 categories: [dotnet, csharp, extensibility, visualstudio]
 description: "I released a new extension for Visual Studio, and I want you to know about it!"
 ---

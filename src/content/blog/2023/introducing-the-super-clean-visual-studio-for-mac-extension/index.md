@@ -1,6 +1,6 @@
 ---
 title: "Introducing the 'Super Clean' Visual Studio - for Mac - extension!"
-date: "2023-04-19T16:57:55-04:00"
+date: "2023-04-19T12:00:00-05:00"
 categories: [dotnet, csharp, extensibility, vsmac]
 description: "Visual Studio for Mac gets left out of the loop sometimes when we talk about extensibility, unfortunately. I decided to learn how, and this is my story!"
 ---

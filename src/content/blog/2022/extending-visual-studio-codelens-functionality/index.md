@@ -1,6 +1,6 @@
 ---
 title: "Extending Visual Studio CodeLens Functionality"
-date: "2022-05-24T12:19:53-05:00"
+date: "2022-05-24T12:00:00-05:00"
 categories: [dotnet, csharp, extensibility]
 description: "If you have your own Visual Studio extension, and you want to add your own custom CodeLens entries - I'm here to help, because I just (finally!) figured out how to do this (plus a few extras!)"
 ---

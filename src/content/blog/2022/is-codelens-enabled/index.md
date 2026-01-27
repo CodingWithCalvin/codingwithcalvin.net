@@ -1,6 +1,6 @@
 ---
 title: "Is CodeLens Enabled?"
-date: "2022-06-08T12:20:36-05:00"
+date: "2022-06-08T12:00:00-05:00"
 categories: [csharp, dotnet, extensibility]
 description: "What this did, however, is gave us cause for figuring out if CodeLens is enabled in Visual Studio at all (our provider doesn't do much good if everything is disabled)."
 ---

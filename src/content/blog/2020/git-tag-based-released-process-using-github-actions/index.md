@@ -1,6 +1,6 @@
 ---
 title: "Git Tag Based Released Process Using GitHub Actions"
-date: "2020-05-08T14:58:37-04:00"
+date: "2020-05-08T12:00:00-05:00"
 categories: [csharp,git,github]
 description: "In this post, we're going to take a look at using Git Tags and Conditional Steps in GitHub Actions to create a release process."
 ---

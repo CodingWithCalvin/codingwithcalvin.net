@@ -1,6 +1,6 @@
 ---
 title: "Clean Coding in C# - Part I"
-date: "2020-04-30T09:13:31-04:00"
+date: "2020-04-30T12:00:00-05:00"
 categories: [csharp,dotnet]
 description: "The first post in a new series about what I consider to be 'clean code' (using C#, of course). In this one, let's take a look at conditionals (if/else statements)"
 ---

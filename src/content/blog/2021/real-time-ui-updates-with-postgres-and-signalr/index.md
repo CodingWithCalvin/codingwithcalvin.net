@@ -1,6 +1,6 @@
 ---
 title: "Real-Time UI Updates with Postgres and SignalR"
-date: "2021-05-16T15:19:28-04:00"
+date: "2021-05-16T12:00:00-05:00"
 categories: [postgres,signalr,dotnet]
 description: "In this post, I'll discuss how I sent new database records to the UI with Postgres and SignalR."
 ---
