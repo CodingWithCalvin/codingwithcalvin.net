@@ -11,7 +11,7 @@ If you've ever found yourself debugging an application and hovering over a strin
 
 I decided to fix that problem for myself, and now I'm sharing it with you!
 
-Introducing "[Debugalizers](https://marketplace.visualstudio.com/items?itemName=CodingWithCalvin.Debugalizers)", a Visual Studio extension that provides beautiful, formatted debug visualizers for over 30 different data formats.
+Introducing "[Debugalizers](https://marketplace.visualstudio.com/items?itemName=CodingWithCalvin.VS-Debugalizers)", a Visual Studio extension that provides beautiful, formatted debug visualizers for over 30 different data formats.
 
 ## What Does It Do?
 
