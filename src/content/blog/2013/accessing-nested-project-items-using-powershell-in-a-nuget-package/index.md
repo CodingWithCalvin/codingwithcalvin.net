@@ -1,9 +1,8 @@
 ---
 title: "Accessing Nested Project Items using PowerShell in a Nuget Package"
 categories: [nuget, powershell]
-redirect_from:
-  - /archive/2013/02/16/accessing-nested-project-items-using-powershell-in-a-nuget-package
 date: "2013-02-16T12:00:00-05:00"
+subtitle: "NuGet package automation with PowerShell!"
 ---
 
 Recently a need arose to have a few project-level items added to a project via a NuGet package. While this was no big deal, we ran into an issue of having the items marked as `Copy if Newer` for the `Copy to Output Directory` action, and couldn’t manage to find a way to change these properties. 

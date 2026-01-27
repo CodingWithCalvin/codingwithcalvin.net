@@ -2,6 +2,7 @@
 title: "Channel 9 PowerShell Download Script for Build 2014 Videos"
 categories: [channel9,build,powershell]
 date: "2014-04-06T12:00:00-05:00"
+subtitle: "Download conference videos with PowerShell!"
 ---
 
 Crazy long title, but you get the idea.

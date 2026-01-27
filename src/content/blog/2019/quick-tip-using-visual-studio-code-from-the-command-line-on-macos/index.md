@@ -3,6 +3,7 @@ title: "Quick Tip: Using Visual Studio Code from the Command-Line on macOS"
 categories: [vscode,macos,commandline]
 description: "I recently needed to automate launching VSCode from a rake task on my Macbook..  This post shows the steps necessary to allow this to work."
 date: "2019-12-26T12:00:00-05:00"
+subtitle: "Launching VS Code from terminal!"
 ---
 
 As part of my new job, I had to get (and learn!) a new Macbook.

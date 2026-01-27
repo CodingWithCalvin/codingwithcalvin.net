@@ -2,6 +2,7 @@
 title: "Imposter Syndrome - The Return"
 categories: [career, meta, impostersyndrome]
 date: "2014-06-28T12:00:00-05:00"
+subtitle: "Dealing with self-doubt as a developer!"
 ---
 
 As most of you know, I recently started a new job with Heuristic Solutions working on their LearningBuilder product. I’ve been with them now for about a month, and up until about last week, things were going great. Then, out of nowhere, The Imposter Monster made its unwelcoming return.

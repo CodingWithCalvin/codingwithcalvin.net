@@ -3,6 +3,7 @@ title: "The Software Developers' Dictionary"
 categories: [dictionary, sdd]
 description: "Starting a dictionary for software professionals, because we like to use strange terms that have no meaning in traditional life."
 date: "2018-06-14T12:00:00-05:00"
+subtitle: "Defining developer terminology!"
 ---
 
 Recently, I read a question that I simply didn't know the answer to:

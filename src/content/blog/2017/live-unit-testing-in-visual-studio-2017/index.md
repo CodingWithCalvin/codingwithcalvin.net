@@ -2,6 +2,7 @@
 title: "Live Unit Testing in Visual Studio 2017"
 categories: [testing, visualstudio]
 date: "2017-12-24T12:00:00-05:00"
+subtitle: "Continuous testing in your IDE!"
 ---
 
 Welcome to the Christmas Eve edition (December 24th, 2017) of of the inaugural [C# Advent Calendar](https://crosscuttingconcerns.com/The-First-C-Advent-Calendar)!  Please go and check out the other 23 *awesome* posts in the series.

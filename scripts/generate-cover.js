@@ -280,7 +280,9 @@ async function generateCover(title, subtitle) {
 
 // Parse frontmatter from markdown file
 function parseFrontmatter(content) {
-  const match = content.match(/^---\n([\s\S]*?)\n---/);
+  // Normalize line endings to handle both Windows (CRLF) and Unix (LF)
+  const normalizedContent = content.replace(/\r\n/g, "\n");
+  const match = normalizedContent.match(/^---\n([\s\S]*?)\n---/);
   if (!match) return {};
 
   const frontmatter = {};

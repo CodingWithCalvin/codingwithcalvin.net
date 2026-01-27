@@ -2,6 +2,7 @@
 title: "Three 'Must Have' Visual Studio Extensions"
 categories: [extensions, visualstudio]
 date: "2016-04-28T12:00:00-05:00"
+subtitle: "My favorite productivity boosters!"
 ---
 
 Every single time I install Visual Studio, the very next step I take is to install my favorite extensions. I only have three, and here they are, in order:

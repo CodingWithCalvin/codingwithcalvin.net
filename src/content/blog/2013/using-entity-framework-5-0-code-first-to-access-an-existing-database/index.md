@@ -2,6 +2,7 @@
 title: "Using Entity Framework 5.0 Code First to Access an Existing Database"
 categories: [csharp, dotnet, mvc, entityframework]
 date: "2013-01-19T12:00:00-05:00"
+subtitle: "Code First against existing databases!"
 ---
 
 In this post, I’ll show you some of the basics on how to utilize Entity Framework 5.0’s “Code-First” features to develop a data access layer against an existing database. I’ll be demonstrating these concepts with a new MVC 4 Web API application and SQL Server 2012, but I won’t be covering either of those in this tutorial.

@@ -2,6 +2,7 @@
 title: "Remove DRM From Google Play Music"
 categories: [python, drm, google]
 date: "2015-06-03T12:00:00-05:00"
+subtitle: "Transferring music between accounts!"
 ---
 
 I purchase all of my music through Google Play, and I primarily use their web application to listen to it. As a precaution, I also use the Music Manager application to keep a local backup of all of this music on my NAS.

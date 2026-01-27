@@ -2,6 +2,7 @@
 title: "StirTrek 2013 Review"
 categories: [stirtrek, conference, review]
 date: "2013-05-20T12:00:00-05:00"
+subtitle: "Conference review and Star Trek!"
 ---
 
 Oh man, StirTrek was awesome this year! There were a ton of people there – I think around 1200, total. It did, at times, make me a little claustrophobic, which I have never had a problem with before, so that was new  :)

@@ -2,6 +2,7 @@
 title: "CodeMash 2015 Review"
 categories: [conference,review,codemash]
 date: "2015-01-12T12:00:00-05:00"
+subtitle: "Finally made it to CodeMash!"
 ---
 
 I’ve known about CodeMash for about 3 years, and of those three years, I had to skip out on TWO of them. The first year had already sold out before I found out, so there wasn’t much I could do in that situation. The second year, our daughter was born one week before (which I obviously knew ahead of time), so I couldn’t go then either.

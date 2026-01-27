@@ -2,6 +2,7 @@
 title: "Using sqlDBM - A Web-based Physical Data-Modeling Tool"
 categories: [database, physical, datamodel]
 date: "2018-06-12T12:00:00-05:00"
+subtitle: "Database design in your browser!"
 ---
 
 I recently stumbled upon a new tool for modeling database structures - [sqlDBM](https://sqldbm.com), and I had to share it because its awesome.

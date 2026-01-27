@@ -3,6 +3,7 @@ title: "Using .editorconfig in Visual Studio to create discoverable standards"
 categories: [dotnet, csharp, visualstudio, csadvent]
 description: "Using .editorconfig in Visual Studio to create discoverable standards"
 date: "2018-12-05T12:00:00-05:00"
+subtitle: "Consistent code style for your team!"
 ---
 
 > My contribution to this year's CSAdvent, hosted by my buddy Matt Groves, is all about trying to surface your coding and naming standards right in Visual Studio.  Visit [https://crosscuttingconcerns.com/The-Second-Annual-C-Advent](https://crosscuttingconcerns.com/The-Second-Annual-C-Advent) to see the full calendar of posts!

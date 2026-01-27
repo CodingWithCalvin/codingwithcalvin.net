@@ -3,6 +3,7 @@ title: "Cross-posting to Dev.To"
 categories: [devto,meta]
 description: "I've started cross-posting all blog posts over to my dev.to profile.  Have you?"
 date: "2019-05-18T12:00:00-05:00"
+subtitle: "Expanding blog reach with dev.to!"
 ---
 
 I finally decided to jump on the [dev.to](https://www.dev.to) bandwagon, and I don't say that lightly.  I generally despise third-party blogging platforms and that usually turns out to be a good decision (i.e., [Medium](https://www.medium.com)).

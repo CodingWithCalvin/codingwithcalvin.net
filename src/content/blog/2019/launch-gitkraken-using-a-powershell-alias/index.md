@@ -3,6 +3,7 @@ title: "Launch GitKraken Using a PowerShell Alias"
 categories: [gitkraken,powershell]
 description: "I usually have a powershell window open to an active projects folder, and sometimes I just want to fire off GitKraken at that same folder, from the PowerShell window."
 date: "2019-07-20T12:00:00-05:00"
+subtitle: "Command-line shortcuts for Git GUI!"
 ---
 
 It's no surprise how much I love [GitKraken](https://www.gitkraken.com/git-client) (the single best Git GUI in existence), right?
