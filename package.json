@@ -9,8 +9,7 @@
     "astro": "astro",
     "new": "node scripts/new-post.js",
     "cover": "node scripts/generate-cover.js",
-    "copy-originals": "node scripts/copy-originals.js",
-    "compress": "node scripts/compress-images.js"
+    "copy-originals": "node scripts/copy-originals.js"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.14",
