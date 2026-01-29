@@ -86,6 +86,88 @@ const ogImageUrl = image?.src;
 
           pre.replaceWith(div);
         });
+
+        // Create lightbox overlay
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox-overlay';
+        lightbox.innerHTML = `
+          <div class="lightbox-header">
+            <span class="lightbox-title">Full-size image</span>
+            <span class="lightbox-hint">Click outside or press Esc to close</span>
+          </div>
+          <div class="lightbox-container">
+            <img src="" alt="" />
+          </div>
+          <button class="lightbox-close" aria-label="Close">&times;</button>
+          <div class="lightbox-footer">
+            <span>Click anywhere outside the image to close</span>
+          </div>
+        `;
+        document.body.appendChild(lightbox);
+
+        const lightboxImg = lightbox.querySelector('.lightbox-container img');
+        const closeBtn = lightbox.querySelector('.lightbox-close');
+        const container = lightbox.querySelector('.lightbox-container');
+
+        // Close lightbox on overlay click (but not container), close button, or Escape key
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox || e.target === closeBtn || e.target.closest('.lightbox-header') || e.target.closest('.lightbox-footer')) {
+            lightbox.classList.remove('active');
+          }
+        });
+        // Prevent closing when clicking the container
+        container.addEventListener('click', (e) => e.stopPropagation());
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') lightbox.classList.remove('active');
+        });
+
+        // Get the current post slug from the URL
+        const pathParts = window.location.pathname.split('/').filter(Boolean);
+        const slug = pathParts[pathParts.length - 1] || pathParts[pathParts.length - 2];
+
+        // Make prose images clickable to open lightbox with original
+        document.querySelectorAll('.prose img').forEach((img) => {
+          // Skip if already wrapped in a link
+          if (img.parentElement?.tagName === 'A') return;
+
+          img.addEventListener('click', () => {
+            // Extract the filename from the optimized src
+            const src = img.getAttribute('src') || '';
+            const alt = img.getAttribute('alt') || '';
+
+            // Try to find the original image
+            // The optimized path is like /_astro/filename.hash.webp
+            // We need to map it back to /originals/YEAR/SLUG/filename.png
+            const match = src.match(/\/_astro\/([^.]+)\./);
+            if (match) {
+              const baseName = match[1];
+              // Try common extensions
+              const year = window.location.pathname.match(/\/(\d{4})\//)?.[1];
+              if (year && slug) {
+                // Try to load the original
+                const originalPath = `/originals/${year}/${slug}/${baseName}.png`;
+                lightboxImg.src = originalPath;
+                lightboxImg.alt = alt;
+                lightbox.classList.add('active');
+
+                // Fallback to optimized if original fails
+                lightboxImg.onerror = () => {
+                  // Try jpg
+                  lightboxImg.src = `/originals/${year}/${slug}/${baseName}.jpg`;
+                  lightboxImg.onerror = () => {
+                    // Fall back to optimized version
+                    lightboxImg.src = src;
+                  };
+                };
+              }
+            } else {
+              // Use the src as-is if we can't parse it
+              lightboxImg.src = src;
+              lightboxImg.alt = alt;
+              lightbox.classList.add('active');
+            }
+          });
+        });
       </script>
 
       <blockquote class="mt-12 border-l-4 border-primary bg-background-2 rounded-r-lg p-6 text-center">

@@ -2,6 +2,8 @@
 dist/
 # generated types
 .astro/
+# generated original images for lightbox
+public/originals/
 
 # dependencies
 node_modules/
