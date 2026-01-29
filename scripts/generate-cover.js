@@ -14,14 +14,308 @@ const HEIGHT = 1080;
 
 // Brand colors
 const COLORS = {
+  // Blue shades
   blue: "#3B8DBD",
   darkBlue: "#1a5a7a",
   darkerBlue: "#0d3d54",
   darkestBlue: "#0a2a3a",
+  // Orange (for accents and backgrounds)
   orange: "#FFB833",
+  darkOrange: "#F0A020",
+  darkerOrange: "#E08C10",
+  darkestOrange: "#D07800",
+  // Purple shades (for alternate styles)
+  purple: "#9B59B6",
+  darkPurple: "#7D3C98",
+  darkerPurple: "#5B2C6F",
+  darkestPurple: "#3D1F4A",
+  // Green shades (for alternate styles)
+  green: "#27AE60",
+  darkGreen: "#1E8449",
+  darkerGreen: "#196F3D",
+  darkestGreen: "#145A32",
+  // Slate shades (for alternate styles)
+  slate: "#6B7B8C",
+  darkSlate: "#556270",
+  darkerSlate: "#434F5A",
+  darkestSlate: "#343D46",
+  // Accent variations
+  gold: "#FFCC00",
+  amber: "#FFA500",
+  // Neutrals
   white: "#FFFFFF",
   gray: "#6D6E71",
 };
+
+// Style definitions
+const STYLES = [
+  {
+    name: "Classic",
+    angle: -15,
+    direction: "ltr", // left to right
+    calvinPosition: "right",
+    primary: "blue",
+    accent: COLORS.orange,
+  },
+  {
+    name: "Reversed",
+    angle: 15,
+    direction: "rtl", // right to left
+    calvinPosition: "left",
+    primary: "blue",
+    accent: COLORS.orange,
+  },
+  {
+    name: "Steep",
+    angle: -25,
+    direction: "ltr",
+    calvinPosition: "right",
+    primary: "blue",
+    accent: COLORS.gold,
+  },
+  {
+    name: "Steep Reversed",
+    angle: 25,
+    direction: "rtl",
+    calvinPosition: "left",
+    primary: "blue",
+    accent: COLORS.gold,
+  },
+  {
+    name: "Gentle",
+    angle: -8,
+    direction: "ltr",
+    calvinPosition: "right",
+    primary: "blue",
+    accent: COLORS.amber,
+  },
+  {
+    name: "Gentle Reversed",
+    angle: 8,
+    direction: "rtl",
+    calvinPosition: "left",
+    primary: "blue",
+    accent: COLORS.amber,
+  },
+  {
+    name: "Purple",
+    angle: -15,
+    direction: "ltr",
+    calvinPosition: "right",
+    primary: "purple",
+    accent: COLORS.orange,
+  },
+  {
+    name: "Purple Reversed",
+    angle: 15,
+    direction: "rtl",
+    calvinPosition: "left",
+    primary: "purple",
+    accent: COLORS.orange,
+  },
+  {
+    name: "Purple Steep",
+    angle: -25,
+    direction: "ltr",
+    calvinPosition: "right",
+    primary: "purple",
+    accent: COLORS.gold,
+  },
+  {
+    name: "Purple Steep Reversed",
+    angle: 25,
+    direction: "rtl",
+    calvinPosition: "left",
+    primary: "purple",
+    accent: COLORS.gold,
+  },
+  {
+    name: "Purple Gentle",
+    angle: -8,
+    direction: "ltr",
+    calvinPosition: "right",
+    primary: "purple",
+    accent: COLORS.amber,
+  },
+  {
+    name: "Purple Gentle Reversed",
+    angle: 8,
+    direction: "rtl",
+    calvinPosition: "left",
+    primary: "purple",
+    accent: COLORS.amber,
+  },
+  {
+    name: "Green",
+    angle: -15,
+    direction: "ltr",
+    calvinPosition: "right",
+    primary: "green",
+    accent: COLORS.orange,
+  },
+  {
+    name: "Green Reversed",
+    angle: 15,
+    direction: "rtl",
+    calvinPosition: "left",
+    primary: "green",
+    accent: COLORS.orange,
+  },
+  {
+    name: "Green Steep",
+    angle: -25,
+    direction: "ltr",
+    calvinPosition: "right",
+    primary: "green",
+    accent: COLORS.gold,
+  },
+  {
+    name: "Green Steep Reversed",
+    angle: 25,
+    direction: "rtl",
+    calvinPosition: "left",
+    primary: "green",
+    accent: COLORS.gold,
+  },
+  {
+    name: "Green Gentle",
+    angle: -8,
+    direction: "ltr",
+    calvinPosition: "right",
+    primary: "green",
+    accent: COLORS.amber,
+  },
+  {
+    name: "Green Gentle Reversed",
+    angle: 8,
+    direction: "rtl",
+    calvinPosition: "left",
+    primary: "green",
+    accent: COLORS.amber,
+  },
+  {
+    name: "Orange",
+    angle: -15,
+    direction: "ltr",
+    calvinPosition: "right",
+    primary: "orange",
+    accent: COLORS.blue,
+  },
+  {
+    name: "Orange Reversed",
+    angle: 15,
+    direction: "rtl",
+    calvinPosition: "left",
+    primary: "orange",
+    accent: COLORS.blue,
+  },
+  {
+    name: "Orange Gentle",
+    angle: -8,
+    direction: "ltr",
+    calvinPosition: "right",
+    primary: "orange",
+    accent: COLORS.blue,
+  },
+  {
+    name: "Orange Gentle Reversed",
+    angle: 8,
+    direction: "rtl",
+    calvinPosition: "left",
+    primary: "orange",
+    accent: COLORS.blue,
+  },
+  {
+    name: "Slate",
+    angle: -15,
+    direction: "ltr",
+    calvinPosition: "right",
+    primary: "slate",
+    accent: COLORS.orange,
+  },
+  {
+    name: "Slate Reversed",
+    angle: 15,
+    direction: "rtl",
+    calvinPosition: "left",
+    primary: "slate",
+    accent: COLORS.orange,
+  },
+  {
+    name: "Slate Steep",
+    angle: -25,
+    direction: "ltr",
+    calvinPosition: "right",
+    primary: "slate",
+    accent: COLORS.orange,
+  },
+  {
+    name: "Slate Steep Reversed",
+    angle: 25,
+    direction: "rtl",
+    calvinPosition: "left",
+    primary: "slate",
+    accent: COLORS.orange,
+  },
+  {
+    name: "Slate Gentle",
+    angle: -8,
+    direction: "ltr",
+    calvinPosition: "right",
+    primary: "slate",
+    accent: COLORS.orange,
+  },
+  {
+    name: "Slate Gentle Reversed",
+    angle: 8,
+    direction: "rtl",
+    calvinPosition: "left",
+    primary: "slate",
+    accent: COLORS.orange,
+  },
+];
+
+// Get colors for a style's primary color scheme
+function getStyleColors(style) {
+  if (style.primary === "purple") {
+    return {
+      lightest: COLORS.purple,
+      light: COLORS.darkPurple,
+      dark: COLORS.darkerPurple,
+      darkest: COLORS.darkestPurple,
+    };
+  }
+  if (style.primary === "green") {
+    return {
+      lightest: COLORS.green,
+      light: COLORS.darkGreen,
+      dark: COLORS.darkerGreen,
+      darkest: COLORS.darkestGreen,
+    };
+  }
+  if (style.primary === "orange") {
+    return {
+      lightest: COLORS.orange,
+      light: COLORS.darkOrange,
+      dark: COLORS.darkerOrange,
+      darkest: COLORS.darkestOrange,
+    };
+  }
+  if (style.primary === "slate") {
+    return {
+      lightest: COLORS.slate,
+      light: COLORS.darkSlate,
+      dark: COLORS.darkerSlate,
+      darkest: COLORS.darkestSlate,
+    };
+  }
+  return {
+    lightest: COLORS.blue,
+    light: COLORS.darkBlue,
+    dark: COLORS.darkerBlue,
+    darkest: COLORS.darkestBlue,
+  };
+}
 
 // Load image as base64
 function loadImageBase64(filename) {
@@ -46,8 +340,100 @@ function loadFontLoraItalic() {
   return readFileSync(fontPath);
 }
 
+// Create background layers based on style
+function createBackgroundLayers(style, colors) {
+  const { angle, direction } = style;
+  const skew = `skewX(${angle}deg)`;
+
+  // For RTL, we flip the starting positions
+  const positions = direction === "ltr"
+    ? ["15%", "30%", "45%"]
+    : ["85%", "70%", "55%"];
+
+  // For RTL, layers come from the right, so we adjust with right positioning
+  const positionProp = direction === "ltr" ? "left" : "right";
+
+  return {
+    type: "div",
+    props: {
+      style: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        display: "flex",
+      },
+      children: [
+        // Darkest layer (base)
+        {
+          type: "div",
+          props: {
+            style: {
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundColor: colors.darkest,
+            },
+          },
+        },
+        // Dark angled layer
+        {
+          type: "div",
+          props: {
+            style: {
+              position: "absolute",
+              top: 0,
+              [positionProp]: positions[0],
+              width: "100%",
+              height: "100%",
+              backgroundColor: colors.dark,
+              transform: skew,
+            },
+          },
+        },
+        // Medium angled layer
+        {
+          type: "div",
+          props: {
+            style: {
+              position: "absolute",
+              top: 0,
+              [positionProp]: positions[1],
+              width: "100%",
+              height: "100%",
+              backgroundColor: colors.light,
+              transform: skew,
+            },
+          },
+        },
+        // Lightest angled layer
+        {
+          type: "div",
+          props: {
+            style: {
+              position: "absolute",
+              top: 0,
+              [positionProp]: positions[2],
+              width: "100%",
+              height: "100%",
+              backgroundColor: colors.lightest,
+              transform: skew,
+            },
+          },
+        },
+      ],
+    },
+  };
+}
+
 // Create the cover template
-function createTemplate(title, subtitle, logoBase64, calvinBase64) {
+function createTemplate(title, subtitle, logoBase64, calvinBase64, style = STYLES[0]) {
+  const colors = getStyleColors(style);
+  const calvinOnRight = style.calvinPosition === "right";
+
   return {
     type: "div",
     props: {
@@ -58,84 +444,11 @@ function createTemplate(title, subtitle, logoBase64, calvinBase64) {
         flexDirection: "column",
         position: "relative",
         overflow: "hidden",
-        backgroundColor: COLORS.darkestBlue,
+        backgroundColor: colors.darkest,
       },
       children: [
         // Background layers (angled shapes)
-        {
-          type: "div",
-          props: {
-            style: {
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              display: "flex",
-            },
-            children: [
-              // Darkest layer (base)
-              {
-                type: "div",
-                props: {
-                  style: {
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    backgroundColor: COLORS.darkestBlue,
-                  },
-                },
-              },
-              // Dark blue angled layer
-              {
-                type: "div",
-                props: {
-                  style: {
-                    position: "absolute",
-                    top: 0,
-                    left: "15%",
-                    width: "100%",
-                    height: "100%",
-                    backgroundColor: COLORS.darkerBlue,
-                    transform: "skewX(-15deg)",
-                  },
-                },
-              },
-              // Medium blue angled layer
-              {
-                type: "div",
-                props: {
-                  style: {
-                    position: "absolute",
-                    top: 0,
-                    left: "30%",
-                    width: "100%",
-                    height: "100%",
-                    backgroundColor: COLORS.darkBlue,
-                    transform: "skewX(-15deg)",
-                  },
-                },
-              },
-              // Light blue angled layer
-              {
-                type: "div",
-                props: {
-                  style: {
-                    position: "absolute",
-                    top: 0,
-                    left: "45%",
-                    width: "100%",
-                    height: "100%",
-                    backgroundColor: COLORS.blue,
-                    transform: "skewX(-15deg)",
-                  },
-                },
-              },
-            ],
-          },
-        },
+        createBackgroundLayers(style, colors),
         // Decorative code brackets
         {
           type: "div",
@@ -176,10 +489,13 @@ function createTemplate(title, subtitle, logoBase64, calvinBase64) {
                     display: "flex",
                     flexDirection: "column",
                     gap: 16,
-                    paddingLeft: 20,
+                    paddingLeft: calvinOnRight ? 20 : 0,
+                    paddingRight: calvinOnRight ? 0 : 20,
+                    alignItems: calvinOnRight ? "flex-start" : "flex-end",
+                    textAlign: calvinOnRight ? "left" : "right",
                   },
                   children: [
-                    // Main title (max 2 lines to avoid overlapping Calvin)
+                    // Main title
                     {
                       type: "div",
                       props: {
@@ -194,7 +510,7 @@ function createTemplate(title, subtitle, logoBase64, calvinBase64) {
                         children: title,
                       },
                     },
-                    // Subtitle (can wrap to multiple lines, width constrained to avoid Calvin)
+                    // Subtitle
                     subtitle
                       ? {
                           type: "div",
@@ -202,7 +518,7 @@ function createTemplate(title, subtitle, logoBase64, calvinBase64) {
                             style: {
                               fontSize: 78,
                               fontWeight: 400,
-                              color: COLORS.orange,
+                              color: style.accent,
                               lineHeight: 1.2,
                               maxWidth: "85%",
                               textShadow: "0 3px 6px rgba(0,0,0,0.7), 0 1px 2px rgba(0,0,0,0.5)",
@@ -214,23 +530,34 @@ function createTemplate(title, subtitle, logoBase64, calvinBase64) {
                   ].filter(Boolean),
                 },
               },
-              // Logo (bottom left)
+              // Logo (bottom, opposite side from Calvin)
               {
-                type: "img",
+                type: "div",
                 props: {
-                  src: logoBase64,
-                  width: 320,
-                  height: 166,
                   style: {
-                    objectFit: "contain",
-                    opacity: 0.4,
+                    display: "flex",
+                    justifyContent: calvinOnRight ? "flex-start" : "flex-end",
                   },
+                  children: [
+                    {
+                      type: "img",
+                      props: {
+                        src: logoBase64,
+                        width: 320,
+                        height: 166,
+                        style: {
+                          objectFit: "contain",
+                          opacity: 0.4,
+                        },
+                      },
+                    },
+                  ],
                 },
               },
             ],
           },
         },
-        // Calvin mascot (absolute positioned, bottom right)
+        // Calvin mascot (absolute positioned)
         {
           type: "img",
           props: {
@@ -240,9 +567,9 @@ function createTemplate(title, subtitle, logoBase64, calvinBase64) {
             style: {
               position: "absolute",
               bottom: -40,
-              right: 0,
+              [calvinOnRight ? "right" : "left"]: 0,
               objectFit: "contain",
-              transform: "scaleX(-1)",
+              ...(calvinOnRight ? { transform: "scaleX(-1)" } : {}),
             },
           },
         },
@@ -251,15 +578,48 @@ function createTemplate(title, subtitle, logoBase64, calvinBase64) {
   };
 }
 
+// Get a random style
+function getRandomStyle() {
+  const index = Math.floor(Math.random() * STYLES.length);
+  return { style: STYLES[index], index: index + 1 };
+}
+
+// Get style by number (1-indexed)
+function getStyleByNumber(num) {
+  const index = num - 1;
+  if (index >= 0 && index < STYLES.length) {
+    return STYLES[index];
+  }
+  return null;
+}
+
 // Generate the cover image
-async function generateCover(title, subtitle) {
+async function generateCover(title, subtitle, styleNum = null) {
   const font = loadFont();
   const fontBold = loadFontBold();
   const fontLoraItalic = loadFontLoraItalic();
   const logoBase64 = loadImageBase64("logo.png");
   const calvinBase64 = loadImageBase64("calvin.png");
 
-  const template = createTemplate(title, subtitle, logoBase64, calvinBase64);
+  let style;
+  let styleIndex;
+
+  if (styleNum !== null) {
+    style = getStyleByNumber(styleNum);
+    styleIndex = styleNum;
+    if (!style) {
+      console.error(`Invalid style number: ${styleNum}. Must be 1-${STYLES.length}.`);
+      process.exit(1);
+    }
+  } else {
+    const random = getRandomStyle();
+    style = random.style;
+    styleIndex = random.index;
+  }
+
+  console.log(`    Style: ${styleIndex}. ${style.name}`);
+
+  const template = createTemplate(title, subtitle, logoBase64, calvinBase64, style);
 
   const svg = await satori(template, {
     width: WIDTH,
@@ -386,7 +746,7 @@ async function selectPost(posts) {
 }
 
 // Generate cover for a single post
-async function generateForPost(post) {
+async function generateForPost(post, styleNum = null, outputSuffix = "") {
   const content = readFileSync(post.indexPath, "utf-8");
   const frontmatter = parseFrontmatter(content);
 
@@ -403,21 +763,43 @@ async function generateForPost(post) {
   console.log(`    Title: ${title}`);
   if (subtitle) console.log(`    Subtitle: ${subtitle}`);
 
-  const png = await generateCover(title, subtitle);
-  const outputPath = join(post.path, "cover.png");
+  const png = await generateCover(title, subtitle, styleNum);
+  const filename = outputSuffix ? `cover-${outputSuffix}.png` : "cover.png";
+  const outputPath = join(post.path, filename);
   writeFileSync(outputPath, png);
 
   console.log(`    Saved: ${outputPath}\n`);
   return true;
 }
 
+// Parse CLI arguments
+function parseArgs(args) {
+  const result = {
+    path: null,
+    style: null,
+    allStyles: false,
+  };
+
+  for (const arg of args) {
+    if (arg.startsWith("--style=")) {
+      result.style = parseInt(arg.split("=")[1], 10);
+    } else if (arg === "--all-styles") {
+      result.allStyles = true;
+    } else if (!arg.startsWith("--")) {
+      result.path = arg;
+    }
+  }
+
+  return result;
+}
+
 // Main CLI
 async function main() {
   const args = process.argv.slice(2);
+  const { path: postPath, style: styleNum, allStyles } = parseArgs(args);
 
   // Direct path provided
-  if (args[0]) {
-    const postPath = args[0];
+  if (postPath) {
     const indexPath = join(postPath, "index.md");
 
     if (!existsSync(indexPath)) {
@@ -432,7 +814,15 @@ async function main() {
       year: postPath.split(/[/\\]/).slice(-2)[0],
     };
 
-    await generateForPost(post);
+    if (allStyles) {
+      console.log(`\nGenerating all ${STYLES.length} style variations...\n`);
+      for (let i = 1; i <= STYLES.length; i++) {
+        await generateForPost(post, i, `style-${i}`);
+      }
+      console.log("Done! Generated all style variations.");
+    } else {
+      await generateForPost(post, styleNum);
+    }
     return;
   }
 
@@ -466,7 +856,7 @@ async function main() {
       indexPath,
       slug: path.split(/[/\\]/).pop(),
       year: path.split(/[/\\]/).slice(-2)[0],
-    });
+    }, styleNum);
     return;
   }
 
@@ -474,7 +864,7 @@ async function main() {
   console.log(`\nGenerating ${selection.length} cover(s)...\n`);
 
   for (const post of selection) {
-    await generateForPost(post);
+    await generateForPost(post, styleNum);
   }
 
   console.log("Done!");
