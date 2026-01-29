@@ -100,12 +100,14 @@ const year = date.getFullYear();
             <span class="lightbox-title">Full-size image</span>
             <span class="lightbox-hint">Click outside or press Esc to close</span>
           </div>
+          <button class="lightbox-nav lightbox-prev" aria-label="Previous image">&#8249;</button>
           <div class="lightbox-container">
             <img src="" alt="" />
           </div>
+          <button class="lightbox-nav lightbox-next" aria-label="Next image">&#8250;</button>
           <button class="lightbox-close" aria-label="Close">&times;</button>
           <div class="lightbox-footer">
-            <span>Click anywhere outside the image to close</span>
+            <span class="lightbox-counter"></span>
           </div>
         `;
         document.body.appendChild(lightbox);
@@ -113,6 +115,74 @@ const year = date.getFullYear();
         const lightboxImg = lightbox.querySelector('.lightbox-container img');
         const closeBtn = lightbox.querySelector('.lightbox-close');
         const container = lightbox.querySelector('.lightbox-container');
+        const prevBtn = lightbox.querySelector('.lightbox-prev');
+        const nextBtn = lightbox.querySelector('.lightbox-next');
+        const counter = lightbox.querySelector('.lightbox-counter');
+
+        // Get year and slug from data attributes
+        const article = document.querySelector('article[data-year][data-slug]');
+        const year = article?.dataset.year;
+        const slug = article?.dataset.slug;
+
+        // Collect all prose images (excluding those wrapped in links)
+        const proseImages = Array.from(document.querySelectorAll('.prose img')).filter(
+          (img) => img.parentElement?.tagName !== 'A'
+        );
+        let currentIndex = 0;
+
+        // Function to get original image path
+        function getOriginalPath(src, baseName) {
+          if (year && slug && baseName) {
+            return `/originals/${year}/${slug}/${baseName}.png`;
+          }
+          return src;
+        }
+
+        // Function to load image with fallbacks
+        function loadImage(src, alt, baseName) {
+          lightboxImg.src = getOriginalPath(src, baseName);
+          lightboxImg.alt = alt;
+
+          if (baseName && year && slug) {
+            lightboxImg.onerror = () => {
+              lightboxImg.src = `/originals/${year}/${slug}/${baseName}.jpg`;
+              lightboxImg.onerror = () => {
+                lightboxImg.src = src;
+              };
+            };
+          }
+        }
+
+        // Function to update navigation state
+        function updateNavigation() {
+          prevBtn.classList.toggle('disabled', currentIndex === 0);
+          nextBtn.classList.toggle('disabled', currentIndex === proseImages.length - 1);
+          counter.textContent = `${currentIndex + 1} / ${proseImages.length}`;
+        }
+
+        // Function to show image at index
+        function showImage(index) {
+          if (index < 0 || index >= proseImages.length) return;
+          currentIndex = index;
+          const img = proseImages[index];
+          const src = img.getAttribute('src') || '';
+          const alt = img.getAttribute('alt') || '';
+          const match = src.match(/\/_astro\/([^.]+)\./);
+          const baseName = match ? match[1] : null;
+          loadImage(src, alt, baseName);
+          updateNavigation();
+        }
+
+        // Navigation handlers
+        prevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (currentIndex > 0) showImage(currentIndex - 1);
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (currentIndex < proseImages.length - 1) showImage(currentIndex + 1);
+        });
 
         // Close lightbox on overlay click (but not container), close button, or Escape key
         lightbox.addEventListener('click', (e) => {
@@ -122,52 +192,26 @@ const year = date.getFullYear();
         });
         // Prevent closing when clicking the container
         container.addEventListener('click', (e) => e.stopPropagation());
+
+        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
+          if (!lightbox.classList.contains('active')) return;
           if (e.key === 'Escape') lightbox.classList.remove('active');
+          if (e.key === 'ArrowLeft' && currentIndex > 0) showImage(currentIndex - 1);
+          if (e.key === 'ArrowRight' && currentIndex < proseImages.length - 1) showImage(currentIndex + 1);
         });
 
-        // Get year and slug from data attributes
-        const article = document.querySelector('article[data-year][data-slug]');
-        const year = article?.dataset.year;
-        const slug = article?.dataset.slug;
-
         // Make prose images clickable to open lightbox with original
-        document.querySelectorAll('.prose img').forEach((img) => {
-          // Skip if already wrapped in a link
-          if (img.parentElement?.tagName === 'A') return;
-
+        proseImages.forEach((img, index) => {
           img.addEventListener('click', () => {
-            // Extract the filename from the optimized src
+            currentIndex = index;
             const src = img.getAttribute('src') || '';
             const alt = img.getAttribute('alt') || '';
-
-            // Try to find the original image
-            // The optimized path is like /_astro/filename.hash.webp
-            // We need to map it back to /originals/YEAR/SLUG/filename.png
             const match = src.match(/\/_astro\/([^.]+)\./);
-            if (match && year && slug) {
-              const baseName = match[1];
-              // Try to load the original
-              const originalPath = `/originals/${year}/${slug}/${baseName}.png`;
-              lightboxImg.src = originalPath;
-              lightboxImg.alt = alt;
-              lightbox.classList.add('active');
-
-              // Fallback to optimized if original fails
-              lightboxImg.onerror = () => {
-                // Try jpg
-                lightboxImg.src = `/originals/${year}/${slug}/${baseName}.jpg`;
-                lightboxImg.onerror = () => {
-                  // Fall back to optimized version
-                  lightboxImg.src = src;
-                };
-              };
-            } else {
-              // Use the src as-is if we can't parse it
-              lightboxImg.src = src;
-              lightboxImg.alt = alt;
-              lightbox.classList.add('active');
-            }
+            const baseName = match ? match[1] : null;
+            loadImage(src, alt, baseName);
+            updateNavigation();
+            lightbox.classList.add('active');
           });
         });
       </script>
