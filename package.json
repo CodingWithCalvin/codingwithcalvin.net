@@ -3,12 +3,13 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "node scripts/copy-originals.js && astro dev",
+    "build": "node scripts/copy-originals.js && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "new": "node scripts/new-post.js",
-    "cover": "node scripts/generate-cover.js"
+    "cover": "node scripts/generate-cover.js",
+    "copy-originals": "node scripts/copy-originals.js"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.14",
