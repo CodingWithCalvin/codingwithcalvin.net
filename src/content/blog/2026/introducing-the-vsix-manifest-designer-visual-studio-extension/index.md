@@ -4,6 +4,7 @@ date: "2026-01-29T12:00:00-05:00"
 categories: [dotnet, csharp, extensibility, visualstudio]
 description: "Tired of editing raw XML in your VSIX manifest files? Me too. So I built a modern, visual designer that integrates seamlessly with Visual Studio 2022 and 2026."
 subtitle: "A modern designer for extension developers!"
+blueskyPostId: "3mdkzr5loub2l"
 ---
 
 I'll be honest - I've been building Visual Studio extensions for years now, and one thing that has always bugged me is editing the `source.extension.vsixmanifest` file. Sure, Visual Studio has a built-in designer, but let's just say it hasn't aged gracefully. It feels clunky, looks outdated, and doesn't play nice with modern SDK-style VSIX projects (like the ones you can create with [VsixSdk](https://www.codingwithcalvin.net/sdk-style-projects-for-your-visual-studio-extensions/)).
