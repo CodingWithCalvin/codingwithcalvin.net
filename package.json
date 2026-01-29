@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "new": "node scripts/new-post.js",
-    "cover": "node scripts/generate-cover.js"
+    "cover": "node scripts/generate-cover.js",
+    "compress": "node scripts/compress-images.js"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.14",
