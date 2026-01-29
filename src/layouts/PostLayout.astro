@@ -31,10 +31,13 @@ const postUrl = `https://www.codingwithcalvin.net/${slug}/`;
 
 // Get the image URL for OG tags - use the src property from ImageMetadata
 const ogImageUrl = image?.src;
+
+// Extract year for lightbox original image paths
+const year = date.getFullYear();
 ---
 
 <BaseLayout title={title} description={description} image={ogImageUrl} type="article">
-  <article class="py-12">
+  <article class="py-12" data-year={year} data-slug={slug}>
     <div class="container mx-auto px-4 max-w-3xl relative md:pl-8">
       <div class="absolute left-0 top-0 bottom-0 w-3 bg-gradient-to-b from-primary via-primary/50 to-transparent hidden md:block"></div>
       <div class="absolute left-3 top-0 bottom-0 w-1 bg-gradient-to-b from-[#FFB833] via-[#FFB833]/50 to-transparent hidden md:block"></div>
@@ -123,9 +126,10 @@ const ogImageUrl = image?.src;
           if (e.key === 'Escape') lightbox.classList.remove('active');
         });
 
-        // Get the current post slug from the URL
-        const pathParts = window.location.pathname.split('/').filter(Boolean);
-        const slug = pathParts[pathParts.length - 1] || pathParts[pathParts.length - 2];
+        // Get year and slug from data attributes
+        const article = document.querySelector('article[data-year][data-slug]');
+        const year = article?.dataset.year;
+        const slug = article?.dataset.slug;
 
         // Make prose images clickable to open lightbox with original
         document.querySelectorAll('.prose img').forEach((img) => {
@@ -141,27 +145,23 @@ const ogImageUrl = image?.src;
             // The optimized path is like /_astro/filename.hash.webp
             // We need to map it back to /originals/YEAR/SLUG/filename.png
             const match = src.match(/\/_astro\/([^.]+)\./);
-            if (match) {
+            if (match && year && slug) {
               const baseName = match[1];
-              // Try common extensions
-              const year = window.location.pathname.match(/\/(\d{4})\//)?.[1];
-              if (year && slug) {
-                // Try to load the original
-                const originalPath = `/originals/${year}/${slug}/${baseName}.png`;
-                lightboxImg.src = originalPath;
-                lightboxImg.alt = alt;
-                lightbox.classList.add('active');
+              // Try to load the original
+              const originalPath = `/originals/${year}/${slug}/${baseName}.png`;
+              lightboxImg.src = originalPath;
+              lightboxImg.alt = alt;
+              lightbox.classList.add('active');
 
-                // Fallback to optimized if original fails
+              // Fallback to optimized if original fails
+              lightboxImg.onerror = () => {
+                // Try jpg
+                lightboxImg.src = `/originals/${year}/${slug}/${baseName}.jpg`;
                 lightboxImg.onerror = () => {
-                  // Try jpg
-                  lightboxImg.src = `/originals/${year}/${slug}/${baseName}.jpg`;
-                  lightboxImg.onerror = () => {
-                    // Fall back to optimized version
-                    lightboxImg.src = src;
-                  };
+                  // Fall back to optimized version
+                  lightboxImg.src = src;
                 };
-              }
+              };
             } else {
               // Use the src as-is if we can't parse it
               lightboxImg.src = src;
