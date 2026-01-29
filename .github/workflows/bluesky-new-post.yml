@@ -56,6 +56,7 @@ jobs:
       embed_url: ${{ needs.detect.outputs.post_url }}
       embed_title: ${{ needs.detect.outputs.post_title }}
       embed_description: ${{ needs.detect.outputs.post_description }}
+      embed_image_url: ${{ needs.detect.outputs.post_image_url }}
     secrets:
       BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
       BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
