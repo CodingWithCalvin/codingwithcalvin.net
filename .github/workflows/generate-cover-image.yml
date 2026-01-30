@@ -1,0 +1,124 @@
+name: Generate Cover Images
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'src/content/blog/**/index.md'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate-covers:
+    name: Generate Missing Cover Images
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Find blog posts needing covers
+        id: find-posts
+        run: |
+          # Get list of changed files in this PR
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+
+          # Find blog post directories with changes but no cover.png
+          POSTS_NEEDING_COVERS=""
+
+          for file in $CHANGED_FILES; do
+            # Check if it's a blog post index.md
+            if [[ "$file" =~ ^src/content/blog/[0-9]+/.+/index\.md$ ]]; then
+              POST_DIR=$(dirname "$file")
+              COVER_PATH="$POST_DIR/cover.png"
+
+              # Check if cover.png already exists
+              if [ ! -f "$COVER_PATH" ]; then
+                POSTS_NEEDING_COVERS="$POSTS_NEEDING_COVERS $POST_DIR"
+                echo "Post needs cover: $POST_DIR"
+              else
+                echo "Post already has cover: $POST_DIR"
+              fi
+            fi
+          done
+
+          # Trim leading space and output
+          POSTS_NEEDING_COVERS=$(echo "$POSTS_NEEDING_COVERS" | xargs)
+          echo "posts=$POSTS_NEEDING_COVERS" >> $GITHUB_OUTPUT
+
+          if [ -z "$POSTS_NEEDING_COVERS" ]; then
+            echo "No posts need cover images"
+            echo "has_posts=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_posts=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Generate cover images
+        if: steps.find-posts.outputs.has_posts == 'true'
+        run: |
+          for post_dir in ${{ steps.find-posts.outputs.posts }}; do
+            echo "Generating cover for: $post_dir"
+            node scripts/generate-cover.js "$post_dir"
+          done
+
+      - name: Commit and push cover images
+        if: steps.find-posts.outputs.has_posts == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Add only the generated cover images
+          for post_dir in ${{ steps.find-posts.outputs.posts }}; do
+            git add "$post_dir/cover.png"
+          done
+
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No new cover images to commit"
+            echo "committed=false" >> $GITHUB_OUTPUT
+          else
+            git commit -m "ci(blog): generate cover images for new posts [skip ci]"
+            git push
+            echo "committed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Comment on PR with cover images
+        if: steps.find-posts.outputs.has_posts == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get the commit SHA after push
+          COMMIT_SHA=$(git rev-parse HEAD)
+
+          # Build comment body with all generated covers
+          COMMENT="## 🖼️ Generated Cover Images\n\n"
+
+          for post_dir in ${{ steps.find-posts.outputs.posts }}; do
+            # Extract post title from directory name
+            POST_SLUG=$(basename "$post_dir")
+            POST_YEAR=$(basename $(dirname "$post_dir"))
+
+            # Build raw GitHub URL for the image
+            IMAGE_URL="https://raw.githubusercontent.com/${{ github.repository }}/${COMMIT_SHA}/${post_dir}/cover.png"
+
+            COMMENT="${COMMENT}### ${POST_YEAR}/${POST_SLUG}\n\n"
+            COMMENT="${COMMENT}![Cover Image](${IMAGE_URL})\n\n"
+          done
+
+          COMMENT="${COMMENT}---\n*If you'd like a different style, delete the cover image and push again, or generate one locally with \`npm run cover\`.*"
+
+          # Post comment to PR
+          echo -e "$COMMENT" | gh pr comment ${{ github.event.pull_request.number }} --body-file -
