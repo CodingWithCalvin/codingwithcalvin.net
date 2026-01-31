@@ -3,13 +3,15 @@ import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import Pagination from '../../components/Pagination.astro';
-import { getProjectsWithImages, getProjectSlug } from '../../lib/projects';
+import { getProjectsWithStats, getProjectSlug } from '../../lib/projects';
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const allProjects = await getProjectsWithImages();
-  // Sort by GitHub stars (highest first)
+  const allProjects = await getProjectsWithStats();
+  // Sort by GitHub stars (highest first), using live stats when available
   const sortedProjects = allProjects.sort((a, b) => {
-    return (b.data.stars ?? 0) - (a.data.stars ?? 0);
+    const aStars = a.githubStats?.stars ?? a.data.stars ?? 0;
+    const bStars = b.githubStats?.stars ?? b.data.stars ?? 0;
+    return bStars - aStars;
   });
 
   return paginate(sortedProjects, { pageSize: 9 });
@@ -27,18 +29,22 @@ const { page } = Astro.props;
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {page.data.map(project => (
-          <ProjectCard
-            title={project.data.title}
-            slug={getProjectSlug(project.id)}
-            description={project.data.description}
-            techStack={project.data.techStack}
-            repoUrl={project.data.repoUrl}
-            image={project.resolvedImage}
-            stars={project.data.stars}
-            downloads={project.data.downloads}
-          />
-        ))}
+        {page.data.map(project => {
+          const stars = project.githubStats?.stars ?? project.data.stars;
+          const downloads = project.marketplaceStats?.downloads ?? project.marketplaceStats?.installs ?? project.data.downloads;
+          return (
+            <ProjectCard
+              title={project.data.title}
+              slug={getProjectSlug(project.id)}
+              description={project.data.description}
+              techStack={project.data.techStack}
+              repoUrl={project.data.repoUrl}
+              image={project.resolvedImage}
+              stars={stars}
+              downloads={downloads}
+            />
+          );
+        })}
       </div>
 
       {page.lastPage > 1 && (

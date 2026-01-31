@@ -11,7 +11,7 @@ startDate: "2025-12-23"
 stars: 0
 marketplace:
   type: "nuget"
-  url: "https://www.nuget.org/packages/Otel4Vsix"
+  url: "https://www.nuget.org/packages/CodingWithCalvin.Otel4Vsix"
 ---
 
 

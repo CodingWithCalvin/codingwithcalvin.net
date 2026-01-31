@@ -11,7 +11,7 @@ startDate: "2025-12-24"
 stars: 21
 marketplace:
   type: "nuget"
-  url: "https://www.nuget.org/packages/VsixSdk"
+  url: "https://www.nuget.org/packages/CodingWithCalvin.VsixSdk"
 ---
 
 
