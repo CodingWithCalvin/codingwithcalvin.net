@@ -1,0 +1,56 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro:content';
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import { getProjectsWithStats, getProjectSlug } from '../../lib/projects';
+
+export const getStaticPaths = (async () => {
+  const projects = await getProjectsWithStats();
+  return projects.map(project => ({
+    params: { slug: getProjectSlug(project.id) },
+    props: { project, slug: getProjectSlug(project.id) },
+  }));
+}) satisfies GetStaticPaths;
+
+const { project, slug } = Astro.props;
+const { Content } = await render(project);
+
+// Merge frontmatter data with live stats
+// Live stats take precedence over static frontmatter values
+const marketplaceStats = project.marketplaceStats || {};
+const githubStats = project.githubStats;
+
+const downloads = marketplaceStats.downloads ?? marketplaceStats.installs ?? project.data.downloads;
+const rating = marketplaceStats.rating;
+const ratingCount = marketplaceStats.ratingCount;
+
+// GitHub stats - live data takes precedence
+const stars = githubStats?.stars ?? project.data.stars;
+const forks = githubStats?.forks;
+const latestRelease = githubStats?.latestRelease;
+---
+
+<ProjectLayout
+  title={project.data.title}
+  slug={slug}
+  description={project.data.description}
+  longDescription={project.data.longDescription}
+  repoUrl={project.data.repoUrl}
+  demoUrl={project.data.demoUrl}
+  docsUrl={project.data.docsUrl}
+  techStack={project.data.techStack}
+  language={project.data.language}
+  status={project.data.status}
+  startDate={project.data.startDate}
+  lastUpdated={project.data.lastUpdated}
+  image={project.resolvedImage}
+  marketplace={project.data.marketplace}
+  stars={stars}
+  forks={forks}
+  downloads={downloads}
+  rating={rating}
+  ratingCount={ratingCount}
+  latestRelease={latestRelease}
+>
+  <Content />
+</ProjectLayout>

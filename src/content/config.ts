@@ -15,4 +15,38 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const projects = defineCollection({
+  loader: glob({ pattern: "**/index.md", base: "./src/content/projects" }),
+  schema: ({ image }) => z.object({
+    title: z.string(),
+    description: z.string(),
+    longDescription: z.string().optional(),
+    category: z.enum([
+      'vs-extension',
+      'vscode-extension',
+      'github-action',
+      'cli-tool',
+      'nuget-package',
+      'desktop-app',
+      'documentation',
+    ]),
+    repoUrl: z.string().url(),
+    demoUrl: z.string().url().optional(),
+    docsUrl: z.string().url().optional(),
+    techStack: z.array(z.string()),
+    language: z.string(),
+    status: z.enum(['active', 'maintained', 'archived', 'experimental']),
+    featured: z.boolean().default(false),
+    startDate: z.coerce.date(),
+    lastUpdated: z.coerce.date().optional(),
+    image: image().optional(),
+    marketplace: z.object({
+      type: z.enum(['vs-marketplace', 'nuget', 'npm', 'other']),
+      url: z.string().url(),
+    }).optional(),
+    stars: z.number().optional(),
+    downloads: z.number().optional(),
+  }),
+});
+
+export const collections = { blog, projects };
