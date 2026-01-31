@@ -33,7 +33,9 @@ jobs:
         run: npm ci
 
       - name: Build site
-        run: npm run build
+        run: npm run build:with-stats
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v3
