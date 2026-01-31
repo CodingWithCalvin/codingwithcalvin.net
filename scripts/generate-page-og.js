@@ -162,7 +162,7 @@ function createBaseTemplate(children, gradientColors) {
 
 // Home page template
 function createHomeTemplate(logoBase64, caricatureBase64) {
-  const gradientColors = { start: "#1a1a2e", mid: "#16213e", end: "#0f3460" };
+  const gradientColors = { start: "#2a2a3e", mid: "#26314e", end: "#1f4470" };
 
   const leftContent = {
     type: "div",
@@ -208,7 +208,7 @@ function createHomeTemplate(logoBase64, caricatureBase64) {
             style: {
               display: "flex",
               alignItems: "center",
-              marginTop: 48,
+              marginTop: "auto",
             },
             children: [
               {
@@ -271,9 +271,10 @@ function createHomeTemplate(logoBase64, caricatureBase64) {
         style: {
           display: "flex",
           flexDirection: "row",
-          alignItems: "center",
+          alignItems: "stretch",
           justifyContent: "space-between",
           width: "100%",
+          height: "100%",
         },
         children: [leftContent, rightContent].filter(Boolean),
       },
@@ -285,7 +286,7 @@ function createHomeTemplate(logoBase64, caricatureBase64) {
 
 // Blog page template
 function createBlogTemplate(caricatureBase64) {
-  const gradientColors = { start: "#2d1b4e", mid: "#1e3a5f", end: "#0d2137" };
+  const gradientColors = { start: "#4d3520", mid: "#5a4028", end: "#6a4830" };
 
   const leftContent = {
     type: "div",
@@ -301,7 +302,7 @@ function createBlogTemplate(caricatureBase64) {
           type: "div",
           props: {
             style: {
-              fontSize: 140,
+              fontSize: 100,
               fontWeight: 700,
               color: "#FFFFFF",
               lineHeight: 1.1,
@@ -331,7 +332,7 @@ function createBlogTemplate(caricatureBase64) {
             style: {
               display: "flex",
               alignItems: "center",
-              marginTop: 64,
+              marginTop: "auto",
             },
             children: [
               {
@@ -394,9 +395,10 @@ function createBlogTemplate(caricatureBase64) {
         style: {
           display: "flex",
           flexDirection: "row",
-          alignItems: "center",
+          alignItems: "stretch",
           justifyContent: "space-between",
           width: "100%",
+          height: "100%",
         },
         children: [leftContent, rightContent].filter(Boolean),
       },
@@ -408,7 +410,7 @@ function createBlogTemplate(caricatureBase64) {
 
 // Categories page template
 function createCategoriesTemplate(caricatureBase64) {
-  const gradientColors = { start: "#1a2f1a", mid: "#1e3a2e", end: "#0d2f1f" };
+  const gradientColors = { start: "#2a3f2a", mid: "#2e4a3e", end: "#1d3f2f" };
 
   // Sample category badges
   const categories = [".NET", "Visual Studio", "DevOps", "C#", "Open Source", "...And More!"];
@@ -455,7 +457,7 @@ function createCategoriesTemplate(caricatureBase64) {
           type: "div",
           props: {
             style: {
-              fontSize: 140,
+              fontSize: 100,
               fontWeight: 700,
               color: "#FFFFFF",
               lineHeight: 1.1,
@@ -484,7 +486,7 @@ function createCategoriesTemplate(caricatureBase64) {
             style: {
               display: "flex",
               alignItems: "center",
-              marginTop: 48,
+              marginTop: "auto",
             },
             children: [
               {
@@ -547,9 +549,10 @@ function createCategoriesTemplate(caricatureBase64) {
         style: {
           display: "flex",
           flexDirection: "row",
-          alignItems: "center",
+          alignItems: "stretch",
           justifyContent: "space-between",
           width: "100%",
+          height: "100%",
         },
         children: [leftContent, rightContent].filter(Boolean),
       },
@@ -561,7 +564,7 @@ function createCategoriesTemplate(caricatureBase64) {
 
 // Projects page template
 function createProjectsTemplate(iconImages) {
-  const gradientColors = { start: "#1a1a2e", mid: "#16213e", end: "#0f3460" };
+  const gradientColors = { start: "#3a2a50", mid: "#4a3060", end: "#302545" };
 
   const leftContent = {
     type: "div",
@@ -577,7 +580,7 @@ function createProjectsTemplate(iconImages) {
           type: "div",
           props: {
             style: {
-              fontSize: 115,
+              fontSize: 100,
               fontWeight: 700,
               color: "#FFFFFF",
               lineHeight: 1.1,
@@ -591,7 +594,7 @@ function createProjectsTemplate(iconImages) {
           type: "div",
           props: {
             style: {
-              fontSize: 115,
+              fontSize: 100,
               fontWeight: 700,
               color: "#FFFFFF",
               lineHeight: 1.1,
@@ -621,7 +624,7 @@ function createProjectsTemplate(iconImages) {
             style: {
               display: "flex",
               alignItems: "center",
-              marginTop: 64,
+              marginTop: "auto",
             },
             children: [
               {
@@ -748,9 +751,10 @@ function createProjectsTemplate(iconImages) {
         style: {
           display: "flex",
           flexDirection: "row",
-          alignItems: "center",
+          alignItems: "stretch",
           justifyContent: "space-between",
           width: "100%",
+          height: "100%",
         },
         children: [leftContent, rightContent],
       },
