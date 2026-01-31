@@ -1,0 +1,23 @@
+---
+interface Props {
+  techStack: string[];
+  limit?: number;
+}
+
+const { techStack, limit } = Astro.props;
+const displayTech = limit ? techStack.slice(0, limit) : techStack;
+const remaining = limit ? techStack.length - limit : 0;
+---
+
+<div class="flex flex-wrap gap-2">
+  {displayTech.map(tech => (
+    <span class="text-xs bg-background-3 text-text-muted px-2 py-1 rounded">
+      {tech}
+    </span>
+  ))}
+  {remaining > 0 && (
+    <span class="text-xs bg-background-3 text-text-muted px-2 py-1 rounded">
+      +{remaining}
+    </span>
+  )}
+</div>
