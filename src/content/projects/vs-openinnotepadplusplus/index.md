@@ -7,7 +7,6 @@ repoUrl: "https://github.com/CodingWithCalvin/VS-OpenInNotepadPlusPlus"
 techStack: ["C#", ".NET Framework", "VSIX", "Visual Studio SDK"]
 language: "C#"
 status: "maintained"
-featured: false
 startDate: "2018-08-11"
 stars: 12
 marketplace:

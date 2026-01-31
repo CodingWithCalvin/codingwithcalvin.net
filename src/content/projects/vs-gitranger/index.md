@@ -7,7 +7,6 @@ repoUrl: "https://github.com/CodingWithCalvin/VS-GitRanger"
 techStack: ["C#", ".NET", "VSIX", "Visual Studio SDK", "Git"]
 language: "C#"
 status: "active"
-featured: true
 startDate: "2025-12-23"
 stars: 3
 marketplace:

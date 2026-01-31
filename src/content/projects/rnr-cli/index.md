@@ -8,7 +8,6 @@ docsUrl: "https://rnrcli.io"
 techStack: ["Rust", "CLI", "Cross-platform"]
 language: "Rust"
 status: "active"
-featured: false
 startDate: "2026-01-09"
 stars: 0
 ---

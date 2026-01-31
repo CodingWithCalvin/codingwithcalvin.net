@@ -8,7 +8,6 @@ demoUrl: "https://github.com/marketplace/actions/vs-marketplace-publisher"
 techStack: ["TypeScript", "Node.js", "GitHub Actions"]
 language: "TypeScript"
 status: "maintained"
-featured: false
 startDate: "2023-03-24"
 stars: 5
 ---

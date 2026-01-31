@@ -7,7 +7,6 @@ repoUrl: "https://github.com/CodingWithCalvin/VSToolbox"
 techStack: ["C#", ".NET", "WPF", "Windows"]
 language: "C#"
 status: "active"
-featured: false
 startDate: "2025-12-30"
 stars: 4
 ---

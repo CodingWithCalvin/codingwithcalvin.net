@@ -7,7 +7,6 @@ repoUrl: "https://github.com/CodingWithCalvin/VS-MCPServer"
 techStack: ["C#", ".NET", "VSIX", "Visual Studio SDK", "MCP"]
 language: "C#"
 status: "active"
-featured: true
 startDate: "2026-01-12"
 stars: 5
 marketplace:

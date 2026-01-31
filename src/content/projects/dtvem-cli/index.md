@@ -8,7 +8,6 @@ docsUrl: "https://dtvem.io"
 techStack: ["Go", "CLI", "Cross-platform"]
 language: "Go"
 status: "active"
-featured: false
 startDate: "2025-12-04"
 stars: 5
 ---

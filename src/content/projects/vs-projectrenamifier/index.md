@@ -7,7 +7,6 @@ repoUrl: "https://github.com/CodingWithCalvin/VS-ProjectRenamifier"
 techStack: ["C#", ".NET Framework", "VSIX", "Visual Studio SDK", "Roslyn"]
 language: "C#"
 status: "active"
-featured: true
 startDate: "2024-05-17"
 stars: 9
 marketplace:

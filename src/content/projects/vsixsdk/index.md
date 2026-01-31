@@ -7,7 +7,6 @@ repoUrl: "https://github.com/CodingWithCalvin/VsixSdk"
 techStack: ["C#", ".NET", "MSBuild", "VSIX", "Visual Studio SDK"]
 language: "C#"
 status: "active"
-featured: true
 startDate: "2025-12-24"
 stars: 21
 marketplace:

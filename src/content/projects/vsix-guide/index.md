@@ -8,7 +8,6 @@ demoUrl: "https://vsix.guide"
 techStack: ["MDX", "Astro", "Documentation"]
 language: "MDX"
 status: "active"
-featured: false
 startDate: "2026-01-29"
 stars: 0
 ---

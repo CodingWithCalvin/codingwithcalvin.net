@@ -7,7 +7,6 @@ repoUrl: "https://github.com/CodingWithCalvin/VSCWhere"
 techStack: ["Rust", "CLI", "Windows"]
 language: "Rust"
 status: "active"
-featured: false
 startDate: "2026-01-06"
 stars: 1
 ---

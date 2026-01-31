@@ -36,7 +36,6 @@ const projects = defineCollection({
     techStack: z.array(z.string()),
     language: z.string(),
     status: z.enum(['active', 'maintained', 'archived', 'experimental']),
-    featured: z.boolean().default(false),
     startDate: z.coerce.date(),
     lastUpdated: z.coerce.date().optional(),
     image: image().optional(),

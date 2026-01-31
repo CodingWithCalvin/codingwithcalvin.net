@@ -7,7 +7,6 @@ repoUrl: "https://github.com/CodingWithCalvin/VS-CouchbaseExplorer"
 techStack: ["C#", ".NET Framework", "VSIX", "Visual Studio SDK", "Couchbase"]
 language: "C#"
 status: "maintained"
-featured: false
 startDate: "2023-04-13"
 stars: 1
 marketplace:

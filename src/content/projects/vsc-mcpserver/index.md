@@ -7,7 +7,6 @@ repoUrl: "https://github.com/CodingWithCalvin/VSC-MCPServer"
 techStack: ["TypeScript", "Node.js", "VS Code Extension API", "MCP"]
 language: "TypeScript"
 status: "active"
-featured: true
 startDate: "2026-01-14"
 stars: 0
 marketplace:

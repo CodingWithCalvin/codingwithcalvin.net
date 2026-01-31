@@ -8,7 +8,6 @@ demoUrl: "https://github.com/marketplace/actions/jetbrains-marketplace-publisher
 techStack: ["TypeScript", "Node.js", "GitHub Actions"]
 language: "TypeScript"
 status: "maintained"
-featured: false
 startDate: "2024-09-24"
 stars: 2
 ---

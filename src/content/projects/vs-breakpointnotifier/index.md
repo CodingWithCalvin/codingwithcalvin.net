@@ -7,7 +7,6 @@ repoUrl: "https://github.com/CodingWithCalvin/VS-BreakpointNotifier"
 techStack: ["C#", ".NET Framework", "VSIX", "Visual Studio SDK"]
 language: "C#"
 status: "maintained"
-featured: false
 startDate: "2023-04-05"
 stars: 5
 marketplace:

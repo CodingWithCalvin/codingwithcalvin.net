@@ -7,7 +7,6 @@ repoUrl: "https://github.com/CodingWithCalvin/Otel4Vsix"
 techStack: ["C#", ".NET", "OpenTelemetry", "VSIX"]
 language: "C#"
 status: "active"
-featured: false
 startDate: "2025-12-23"
 stars: 0
 marketplace:

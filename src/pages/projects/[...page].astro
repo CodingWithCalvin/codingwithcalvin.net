@@ -7,12 +7,9 @@ import { getProjectsWithImages, getProjectSlug } from '../../lib/projects';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const allProjects = await getProjectsWithImages();
-  // Sort by featured first, then by start date (newest first)
+  // Sort by GitHub stars (highest first)
   const sortedProjects = allProjects.sort((a, b) => {
-    if (a.data.featured !== b.data.featured) {
-      return a.data.featured ? -1 : 1;
-    }
-    return b.data.startDate.getTime() - a.data.startDate.getTime();
+    return (b.data.stars ?? 0) - (a.data.stars ?? 0);
   });
 
   return paginate(sortedProjects, { pageSize: 9 });
@@ -26,7 +23,7 @@ const { page } = Astro.props;
     <div class="container mx-auto px-4">
       <h1 class="text-4xl font-heading mb-4">Open Source Projects</h1>
       <p class="text-text-muted text-lg mb-8">
-        A collection of open source projects I've created and maintain.
+        A collection of open source projects I've created and maintain, sorted by GitHub stars.
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

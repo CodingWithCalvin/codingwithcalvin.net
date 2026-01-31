@@ -7,7 +7,6 @@ repoUrl: "https://github.com/CodingWithCalvin/VS-VsixManifestDesigner"
 techStack: ["C#", ".NET", "VSIX", "Visual Studio SDK", "WPF"]
 language: "C#"
 status: "active"
-featured: false
 startDate: "2026-01-04"
 stars: 2
 marketplace:

@@ -7,7 +7,6 @@ repoUrl: "https://github.com/CodingWithCalvin/VS-OpenBinFolder"
 techStack: ["C#", ".NET Framework", "VSIX", "Visual Studio SDK"]
 language: "C#"
 status: "maintained"
-featured: false
 startDate: "2023-03-24"
 stars: 6
 marketplace:

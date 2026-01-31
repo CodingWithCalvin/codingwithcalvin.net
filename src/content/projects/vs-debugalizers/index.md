@@ -7,7 +7,6 @@ repoUrl: "https://github.com/CodingWithCalvin/VS-Debugalizers"
 techStack: ["C#", ".NET", "VSIX", "Visual Studio SDK", "Debug Visualizers"]
 language: "C#"
 status: "active"
-featured: false
 startDate: "2026-01-24"
 stars: 3
 marketplace:
