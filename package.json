@@ -12,6 +12,7 @@
     "new:project": "node scripts/new-project.js",
     "cover": "node scripts/generate-cover.js",
     "cover:project": "node scripts/generate-project-cover.js",
+    "cover:projects-og": "node scripts/generate-projects-og.js",
     "copy-originals": "node scripts/copy-originals.js",
     "fetch:stats": "node scripts/fetch-project-stats.js"
   },
