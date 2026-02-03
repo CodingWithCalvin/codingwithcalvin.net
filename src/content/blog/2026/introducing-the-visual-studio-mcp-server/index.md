@@ -36,7 +36,7 @@ flowchart LR
 
 ## Getting Started
 
-The extension is available on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=CodingWithCalvin.VS-MCPServer). Install it, configure settings at **Tools > Options > MCP Server** if needed, then start the server via **Tools > MCP Server > Start Server** (or enable auto-start).
+The extension is available on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=CodingWithCalvin.VS-MCPServer). Install it, configure settings at **Tools > Options > MCP Server** if needed, then start the server via **Extensions > MCP Server > Start Server** (or enable auto-start).
 
 From there, configure your MCP client to connect to `http://localhost:5050/sse`. The extension supports Visual Studio 2022 and 2026, on both ARM64 and AMD64.
 
