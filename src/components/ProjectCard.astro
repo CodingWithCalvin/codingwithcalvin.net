@@ -13,12 +13,13 @@ interface Props {
   image?: ImageMetadata;
   stars?: number;
   downloads?: number;
+  category?: string;
 }
 
-const { title, slug, description, techStack, repoUrl, image, stars, downloads } = Astro.props;
+const { title, slug, description, techStack, repoUrl, image, stars, downloads, category } = Astro.props;
 ---
 
-<article class="bg-background-2 rounded-lg overflow-hidden hover:bg-background-3 transition-colors relative flex flex-col">
+<article class="project-card bg-background-2 rounded-lg overflow-hidden hover:bg-background-3 transition-colors relative flex flex-col" data-category={category}>
   {image && (
     <a href={`/projects/${slug}/`} class="block aspect-video overflow-hidden">
       <Image
