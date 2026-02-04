@@ -2,10 +2,9 @@
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
-import Pagination from '../../components/Pagination.astro';
 import { getProjectsWithStats, getProjectSlug } from '../../lib/projects';
 
-export const getStaticPaths = (async ({ paginate }) => {
+export const getStaticPaths = (async () => {
   const allProjects = await getProjectsWithStats();
   // Sort by GitHub stars (highest first), using live stats when available
   const sortedProjects = allProjects.sort((a, b) => {
@@ -14,10 +13,32 @@ export const getStaticPaths = (async ({ paginate }) => {
     return bStars - aStars;
   });
 
-  return paginate(sortedProjects, { pageSize: 9 });
+  return [{ params: { page: undefined }, props: { projects: sortedProjects } }];
 }) satisfies GetStaticPaths;
 
-const { page } = Astro.props;
+const { projects } = Astro.props;
+
+// Category labels for filter buttons
+const categoryLabels: Record<string, string> = {
+  'vs-extension': 'VS Extensions',
+  'vscode-extension': 'VS Code Extensions',
+  'github-action': 'GitHub Actions',
+  'cli-tool': 'CLI Tools',
+  'nuget-package': 'NuGet Packages',
+  'desktop-app': 'Desktop Apps',
+  'documentation': 'Documentation',
+};
+
+// Get unique categories from projects, sorted by count (descending)
+const categoryCounts = projects.reduce((acc, project) => {
+  const cat = project.data.category;
+  acc[cat] = (acc[cat] || 0) + 1;
+  return acc;
+}, {} as Record<string, number>);
+
+const categories = Object.entries(categoryCounts)
+  .sort((a, b) => b[1] - a[1])
+  .map(([cat]) => cat);
 ---
 
 <BaseLayout title="Open Source Projects" description="Open source projects by Calvin Allen" image="/images/projects-og.png">
@@ -28,8 +49,28 @@ const { page } = Astro.props;
         A collection of open source projects I've created and maintain, sorted by GitHub stars.
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {page.data.map(project => {
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap gap-2 mb-8" id="filter-buttons">
+        <button
+          type="button"
+          class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-colors bg-primary text-white"
+          data-category="all"
+        >
+          All ({projects.length})
+        </button>
+        {categories.map(cat => (
+          <button
+            type="button"
+            class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-colors bg-background-2 text-text-muted hover:bg-background-3"
+            data-category={cat}
+          >
+            {categoryLabels[cat] || cat} ({categoryCounts[cat]})
+          </button>
+        ))}
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+        {projects.map(project => {
           const stars = project.githubStats?.stars ?? project.data.stars;
           const downloads = project.marketplaceStats?.downloads ?? project.marketplaceStats?.installs ?? project.data.downloads;
           return (
@@ -42,18 +83,48 @@ const { page } = Astro.props;
               image={project.resolvedImage}
               stars={stars}
               downloads={downloads}
+              category={project.data.category}
             />
           );
         })}
       </div>
-
-      {page.lastPage > 1 && (
-        <Pagination
-          currentPage={page.currentPage}
-          totalPages={page.lastPage}
-          baseUrl="/projects/"
-        />
-      )}
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  function initProjectFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = (button as HTMLElement).dataset.category;
+
+        // Update active button styling
+        filterButtons.forEach(btn => {
+          btn.classList.remove('bg-primary', 'text-white');
+          btn.classList.add('bg-background-2', 'text-text-muted', 'hover:bg-background-3');
+        });
+        button.classList.remove('bg-background-2', 'text-text-muted', 'hover:bg-background-3');
+        button.classList.add('bg-primary', 'text-white');
+
+        // Filter project cards
+        projectCards.forEach(card => {
+          const cardCategory = (card as HTMLElement).dataset.category;
+          if (category === 'all' || cardCategory === category) {
+            (card as HTMLElement).style.display = '';
+          } else {
+            (card as HTMLElement).style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // Run on page load
+  document.addEventListener('DOMContentLoaded', initProjectFilters);
+
+  // Also run on Astro page transitions (View Transitions API)
+  document.addEventListener('astro:page-load', initProjectFilters);
+</script>
