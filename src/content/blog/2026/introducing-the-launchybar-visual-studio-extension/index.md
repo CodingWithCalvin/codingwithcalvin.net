@@ -4,6 +4,7 @@ date: "2026-02-05T12:00:00-05:00"
 categories: [dotnet, csharp, extensibility, visualstudio]
 description: "Miss VS Code's Activity Bar? LaunchyBar brings that same quick-access toolbar experience to Visual Studio!"
 subtitle: "Quick access to your favorite tools!"
+blueskyPostId: "3me4syg2acz2z"
 ---
 
 Introducing "[LaunchyBar](https://marketplace.visualstudio.com/items?itemName=CodingWithCalvin.VS-LaunchyBar)", an extension for Visual Studio 2022 (and 2026!) that brings the beloved Activity Bar concept from VS Code and JetBrains IDEs right into your Visual Studio workflow.
