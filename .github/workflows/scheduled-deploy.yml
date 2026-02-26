@@ -12,7 +12,7 @@ on:
       - 'package-lock.json'
       - 'tsconfig.json'
   schedule:
-    # Run at 7:50 AM Eastern (12:50 UTC) - 10 min before Bluesky post
+    # Run at 7:50 AM Eastern (12:50 UTC)
     - cron: '50 12 * * *'
   workflow_dispatch:
 
